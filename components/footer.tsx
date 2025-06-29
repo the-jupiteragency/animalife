@@ -42,20 +42,40 @@ export function Footer() {
     setResult(null);
 
     startTransition(async () => {
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      try {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
 
-      setResult({
-        success: true,
-        message: "Thank you for your message! We'll get back to you soon.",
-      });
+        const data = await response.json();
 
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-      });
+        if (data.success) {
+          setResult({
+            success: true,
+            message: data.message,
+          });
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            message: "",
+          });
+        } else {
+          setResult({
+            success: false,
+            message: data.message || "Something went wrong. Please try again.",
+          });
+        }
+      } catch (error) {
+        setResult({
+          success: false,
+          message: "Failed to send message. Please try again.",
+        });
+      }
     });
   };
 
@@ -74,7 +94,9 @@ export function Footer() {
           ? {
               ...prev,
               errors: prev.errors
-                ? { ...prev.errors, [name]: undefined }
+                ? Object.fromEntries(
+                    Object.entries(prev.errors).filter(([key]) => key !== name)
+                  )
                 : undefined,
             }
           : null
