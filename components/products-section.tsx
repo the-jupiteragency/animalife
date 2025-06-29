@@ -279,7 +279,7 @@ export function ProductsSection() {
             </div>
 
             {/* Auto-slide indicators */}
-            {filteredProducts.length > 4 && (
+            {/* {filteredProducts.length > 4 && (
               <div className="flex justify-center mt-6 gap-2">
                 {Array.from({
                   length: Math.max(0, filteredProducts.length - 3),
@@ -288,7 +288,7 @@ export function ProductsSection() {
                     key={index}
                     onClick={() => {
                       setCurrentSlideIndex(index);
-                      setIsAutoPlaying(false);
+                      setIsAutoPlaying(true);
                     }}
                     className={`
                       h-2 rounded-full transition-all duration-300
@@ -297,7 +297,7 @@ export function ProductsSection() {
                   />
                 ))}
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </div>
