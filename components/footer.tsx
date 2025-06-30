@@ -765,12 +765,12 @@ export function Footer() {
                 >
                   About
                 </a>
-                <a
+                {/* <a
                   href="#contact"
                   className="text-white hover:text-[#F9F4DF] transition-colors duration-300 font-semibold text-lg"
                 >
                   Contact
-                </a>
+                </a> */}
               </nav>
 
               {/* Social Media Icons */}
