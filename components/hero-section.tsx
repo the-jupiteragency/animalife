@@ -321,14 +321,14 @@ export function HeroSection() {
               className="max-w-xl"
             >
               <h1
-                className="text-xl xl:text-3xl font-bold text-[#F9F4DF] mb-6 leading-tight"
+                className="text-xl xl:text-3xl font-bold text-[#13513D] mb-6 leading-tight"
                 style={{ fontFamily: "Poppins" }}
               >
                 {currentSlide.heading}
               </h1>
 
               <p
-                className="text-lg xl:text-xl text-[#F9F4DF]/90 mb-8 leading-relaxed"
+                className="text-lg xl:text-xl text-[#13513D]/90 mb-8 leading-relaxed"
                 style={{ fontFamily: "Poppins" }}
               >
                 {currentSlide.subheading}
@@ -338,7 +338,7 @@ export function HeroSection() {
           <div className="pt-6">
             <Link
               href="/products"
-              className="inline-flex items-center justify-center font-bold rounded-full px-8 py-4 text-lg shadow-lg gap-2 transform transition-transform hover:scale-105 bg-[#F9F4DF] text-[#0A3024] hover:bg-[#A7552E] hover:text-white"
+              className="inline-flex items-center justify-center font-bold rounded-full px-8 py-4 text-lg shadow-lg gap-2 transform transition-transform hover:scale-105 bg-[#13513D] text-[#F9F4DF] hover:bg-[#A7552E] hover:text-white"
             >
               View Products
               <IoIosArrowDropright className="h-5 w-5 " />

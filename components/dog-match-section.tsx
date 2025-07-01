@@ -24,21 +24,20 @@ const dogCategories = [
     defaultColor: "from-[#F5F1E8] to-[#E8DCC0]",
     products: [
       {
-        name: "Small Breed Puppy",
-        price: "220 EGP",
+        name: "Puppy",
+        price: "",
         size: "1.5kg",
         image: "/package-1kg-small.webp",
-        description:
-          "Specially formulated for small breed puppies up to 12 months",
+        description: "Specially formulated for puppy puppies up to 12 months",
         features: [
           "High protein for growth",
           "Small kibble size",
           "DHA for brain development",
         ],
         sizes: [
-          { size: "1.5kg", price: "220 EGP", image: "/package-1kg-small.webp" },
-          { size: "3kg", price: "420 EGP", image: "/package-1kg-small.webp" },
-          { size: "7kg", price: "900 EGP", image: "/package-1kg-small.webp" },
+          { size: "1.5kg", price: "", image: "/package-1kg-small.webp" },
+          { size: "3kg", price: "", image: "/package-1kg-small.webp" },
+          { size: "7kg", price: "", image: "/package-1kg-small.webp" },
         ],
       },
     ],
@@ -53,7 +52,7 @@ const dogCategories = [
     products: [
       {
         name: "Small Breed Adult",
-        price: "200 EGP",
+        price: "",
         size: "1.5kg",
         image: "/package-1kg-small.webp",
         description: "Complete nutrition for adult small breed dogs",
@@ -63,9 +62,9 @@ const dogCategories = [
           "Dental care formula",
         ],
         sizes: [
-          { size: "1.5kg", price: "200 EGP", image: "/package-1kg-small.webp" },
-          { size: "3kg", price: "380 EGP", image: "/package-1kg-small.webp" },
-          { size: "7kg", price: "850 EGP", image: "/package-1kg-small.webp" },
+          { size: "1.5kg", price: "", image: "/package-1kg-small.webp" },
+          { size: "3kg", price: "", image: "/package-1kg-small.webp" },
+          { size: "7kg", price: "", image: "/package-1kg-small.webp" },
         ],
       },
     ],
@@ -80,7 +79,7 @@ const dogCategories = [
     products: [
       {
         name: "Large Breed Puppy",
-        price: "220 EGP",
+        price: "",
         size: "1.5kg",
         image: "/package-1kg-medium.webp",
         description:
@@ -93,11 +92,11 @@ const dogCategories = [
         sizes: [
           {
             size: "1.5kg",
-            price: "220 EGP",
+            price: "",
             image: "/package-1kg-medium.webp",
           },
-          { size: "3kg", price: "420 EGP", image: "/package-3kg-medium.webp" },
-          { size: "7kg", price: "900 EGP", image: "/package-3kg-medium.webp" },
+          { size: "3kg", price: "", image: "/package-3kg-medium.webp" },
+          { size: "7kg", price: "", image: "/package-3kg-medium.webp" },
         ],
       },
     ],
@@ -112,7 +111,7 @@ const dogCategories = [
     products: [
       {
         name: "Medium & Large Adult",
-        price: "200 EGP",
+        price: "",
         size: "1.5kg",
         image: "/package-1kg-medium.webp",
         description:
@@ -125,11 +124,11 @@ const dogCategories = [
         sizes: [
           {
             size: "1.5kg",
-            price: "200 EGP",
+            price: "",
             image: "/package-1kg-medium.webp",
           },
-          { size: "3kg", price: "380 EGP", image: "/package-3kg-medium.webp" },
-          { size: "7kg", price: "850 EGP", image: "/package-3kg-medium.webp" },
+          { size: "3kg", price: "", image: "/package-3kg-medium.webp" },
+          { size: "7kg", price: "", image: "/package-3kg-medium.webp" },
         ],
       },
     ],

@@ -718,10 +718,22 @@ export function Footer() {
 
               {/* Contact Info - Simplified */}
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 mt-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="flex items-center gap-3">
+                <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="w-5 h-5 text-[#F9F4DF]" />
+                    <div className="flex flex-row items-start gap-3">
+                      <p className="text-white font-medium">Address</p>
+                      <a
+                        href="https://maps.app.goo.gl/r6jFjGYrDzwUVGxB8"
+                        className="text-[#F9F4DF] hover:text-white transition-colors duration-300"
+                      >
+                        32H Mourad Street, Giza Governorate, Egypt. PO 12511
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
                     <Mail className="w-5 h-5 text-[#F9F4DF]" />
-                    <div>
+                    <div className="flex flex-row items-start gap-3">
                       <p className="text-white font-medium">Email Us</p>
                       <a
                         href="mailto:info@animalife-mena.com"
@@ -731,15 +743,15 @@ export function Footer() {
                       </a>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-start gap-3">
                     <Phone className="w-5 h-5 text-[#F9F4DF]" />
-                    <div>
+                    <div className="flex flex-row items-start gap-3">
                       <p className="text-white font-medium">Call Us</p>
                       <a
-                        href="tel:+201234567890"
+                        href="tel:+201222294101"
                         className="text-[#F9F4DF] hover:text-white transition-colors duration-300"
                       >
-                        +20 (123) 456-7890
+                        +20 (122) 229-4101
                       </a>
                     </div>
                   </div>

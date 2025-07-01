@@ -320,7 +320,7 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
               )}
 
               {/* Store Availability - Only show if product has sizes and selectedSize exists */}
-              {product.sizes &&
+              {/* {product.sizes &&
                 selectedSize &&
                 storeAvailability[
                   selectedSize as keyof typeof storeAvailability
@@ -360,7 +360,7 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
                       ))}
                     </div>
                   </div>
-                )}
+                )} */}
 
               {/* Simple Features */}
               <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">

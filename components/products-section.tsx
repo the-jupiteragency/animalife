@@ -11,26 +11,26 @@ import Link from "next/link";
 
 const productCategories = [
   "All Products",
-  "Small Breed Puppy",
+  "Puppy",
   "Small breed adult",
-  "Large Breed Puppy",
-  "Medium & Large breed adult",
+  "Medium & Large Breed adult",
+  "Giant Breed Adult",
 ];
 
 const products = [
   {
     id: 1,
-    name: "Small Breed Puppy",
-    category: "Small Breed Puppy",
+    name: "Puppy",
+    category: "Puppy",
     product: "Dog Food",
     size: "1kg",
-    price: "200 EGP",
+    price: "",
     image: "/package-1kg-small.webp",
     hoverImage: "/cardhover.png",
     sizes: [
-      { size: "1kg", price: "200 EGP", image: "/package-1kg-small.webp" },
-      { size: "3kg", price: "380 EGP", image: "/package-3kg-small.webp" },
-      { size: "5kg", price: "850 EGP", image: "/package-5kg-small.webp" },
+      { size: "1kg", price: "", image: "/package-1kg-small.webp" },
+      { size: "3kg", price: "", image: "/package-3kg-small.webp" },
+      { size: "5kg", price: "", image: "/package-5kg-small.webp" },
     ],
   },
   {
@@ -39,13 +39,13 @@ const products = [
     category: "Small breed adult",
     product: "Dog Food",
     size: "3kg",
-    price: "380 EGP",
+    price: "",
     image: "/package-3kg-small.webp",
     hoverImage: "/cardhover.png",
     sizes: [
-      { size: "1kg", price: "200 EGP", image: "/package-1kg-small.webp" },
-      { size: "3kg", price: "380 EGP", image: "/package-3kg-small.webp" },
-      { size: "5kg", price: "850 EGP", image: "/package-5kg-small.webp" },
+      { size: "1kg", price: "", image: "/package-1kg-small.webp" },
+      { size: "3kg", price: "", image: "/package-3kg-small.webp" },
+      { size: "5kg", price: "", image: "/package-5kg-small.webp" },
     ],
   },
   {
@@ -54,45 +54,45 @@ const products = [
     category: "Small breed adult",
     product: "Dog Food",
     size: "5kg",
-    price: "850 EGP",
+    price: "",
     image: "/package-5kg-small.webp",
     hoverImage: "/cardhover.png",
     sizes: [
-      { size: "1kg", price: "200 EGP", image: "/package-1kg-small.webp" },
-      { size: "3kg", price: "380 EGP", image: "/package-3kg-small.webp" },
-      { size: "5kg", price: "850 EGP", image: "/package-5kg-small.webp" },
+      { size: "1kg", price: "", image: "/package-1kg-small.webp" },
+      { size: "3kg", price: "", image: "/package-3kg-small.webp" },
+      { size: "5kg", price: "", image: "/package-5kg-small.webp" },
     ],
   },
   {
     id: 4,
     name: "Medium & Large Breed Adult",
-    category: "Large Breed Puppy",
+    category: "Medium & Large Breed adult",
     product: "Dog Food",
     size: "1kg",
-    price: "500 EGP",
+    price: "",
     image: "/package-1kg-medium.webp",
     hoverImage: "/cardhover.png",
     sizes: [
-      { size: "1kg", price: "200 EGP", image: "/package-1kg-medium.webp" },
-      { size: "3kg", price: "380 EGP", image: "/package-3kg-medium.webp" },
-      { size: "5kg", price: "850 EGP", image: "/package-5kg-medium.webp" },
-      { size: "10kg", price: "1000 EGP", image: "/package-10kg-medium.webp" },
+      { size: "1kg", price: "", image: "/package-1kg-medium.webp" },
+      { size: "3kg", price: "", image: "/package-3kg-medium.webp" },
+      { size: "5kg", price: "", image: "/package-5kg-medium.webp" },
+      { size: "10kg", price: "", image: "/package-10kg-medium.webp" },
     ],
   },
   {
     id: 5,
     name: "Medium & Large Breed Adult",
-    category: "Large Breed Puppy",
+    category: "Medium & Large Breed adult",
     product: "Dog Food",
     size: "3kg",
-    price: "380 EGP",
+    price: "",
     image: "/package-3kg-medium.webp",
     hoverImage: "/cardhover.png",
     sizes: [
-      { size: "1.5kg", price: "200 EGP", image: "/package-1kg-medium.webp" },
-      { size: "3kg", price: "380 EGP", image: "/package-3kg-medium.webp" },
-      { size: "5kg", price: "850 EGP", image: "/package-5kg-medium.webp" },
-      { size: "10kg", price: "1000 EGP", image: "/package-10kg-medium.webp" },
+      { size: "1.5kg", price: "", image: "/package-1kg-medium.webp" },
+      { size: "3kg", price: "", image: "/package-3kg-medium.webp" },
+      { size: "5kg", price: "", image: "/package-5kg-medium.webp" },
+      { size: "10kg", price: "", image: "/package-10kg-medium.webp" },
     ],
   },
   {
@@ -101,14 +101,14 @@ const products = [
     category: "Medium & Large breed adult",
     product: "Dog Food",
     size: "5kg",
-    price: "850 EGP",
+    price: "",
     image: "/package-5kg-medium.webp",
     hoverImage: "/cardhover.png",
     sizes: [
-      { size: "1.5kg", price: "200 EGP", image: "/package-1kg-medium.webp" },
-      { size: "3kg", price: "380 EGP", image: "/package-3kg-medium.webp" },
-      { size: "5kg", price: "850 EGP", image: "/package-5kg-medium.webp" },
-      { size: "10kg", price: "1000 EGP", image: "/package-10kg-medium.webp" },
+      { size: "1.5kg", price: "", image: "/package-1kg-medium.webp" },
+      { size: "3kg", price: "", image: "/package-3kg-medium.webp" },
+      { size: "5kg", price: "", image: "/package-5kg-medium.webp" },
+      { size: "10kg", price: "", image: "/package-10kg-medium.webp" },
     ],
   },
   {
@@ -117,14 +117,14 @@ const products = [
     category: "Medium & Large breed adult",
     product: "Dog Food",
     size: "10kg",
-    price: "1000 EGP",
+    price: "",
     image: "/package-10kg-medium.webp",
     hoverImage: "/cardhover.png",
     sizes: [
-      { size: "1.5kg", price: "200 EGP", image: "/package-1kg-medium.webp" },
-      { size: "3kg", price: "380 EGP", image: "/package-3kg-medium.webp" },
-      { size: "5kg", price: "850 EGP", image: "/package-5kg-medium.webp" },
-      { size: "10kg", price: "1000 EGP", image: "/package-10kg-medium.webp" },
+      { size: "1.5kg", price: "", image: "/package-1kg-medium.webp" },
+      { size: "3kg", price: "", image: "/package-3kg-medium.webp" },
+      { size: "5kg", price: "", image: "/package-5kg-medium.webp" },
+      { size: "10kg", price: "", image: "/package-10kg-medium.webp" },
     ],
   },
 ];
@@ -180,7 +180,7 @@ export function ProductsSection() {
   };
 
   return (
-    <section id="products" className="py-8 md:py-20 bg-[#F5F1E8]">
+    <section id="products" className="py-8 md:py-20 bg-[#F5F1E8] md:h-[700px]">
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Header - Mobile responsive with smaller font and justified layout */}
         <div className="flex flex-row items-center justify-between mb-6 md:mb-12 gap-2">
@@ -360,7 +360,9 @@ function ProductCard({
             }`}
           >
             <span>Product:</span>
-            <span className="font-medium text-gray-900">{product.product}</span>
+            <span className="font-medium text-gray-900 line-clamp-1">
+              {product.product}
+            </span>
             <span>•</span>
             <span>Size:</span>
             <span className="font-medium text-gray-900">{product.size}</span>

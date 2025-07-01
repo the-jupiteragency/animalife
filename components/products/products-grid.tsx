@@ -23,8 +23,8 @@ const allProducts = [
     category: "Small Breed Adult",
     product: "Dog Food",
     size: "1kg",
-    price: "200 EGP",
-    originalPrice: "250 EGP",
+    price: "",
+    originalPrice: "",
     image: "/package-1kg-small.webp",
     ageGroup: "Adult",
     breedSize: "Small",
@@ -38,8 +38,8 @@ const allProducts = [
     category: "Medium & Large Breed Adult",
     product: "Dog Food",
     size: "3kg",
-    price: "380 EGP",
-    originalPrice: "450 EGP",
+    price: "",
+    originalPrice: "",
     image: "/package-3kg-medium.webp",
     ageGroup: "Adult",
     breedSize: "Medium & Large",
@@ -53,8 +53,8 @@ const allProducts = [
     category: "Small Breed Puppy",
     product: "Dog Food",
     size: "1kg",
-    price: "220 EGP",
-    originalPrice: "270 EGP",
+    price: "",
+    originalPrice: "",
     image: "/package-1kg-small.webp",
     ageGroup: "Puppy",
     breedSize: "Small",
@@ -68,8 +68,8 @@ const allProducts = [
     category: "Large Breed Puppy",
     product: "Dog Food",
     size: "5kg",
-    price: "850 EGP",
-    originalPrice: "1000 EGP",
+    price: "",
+    originalPrice: "",
     image: "/package-5kg-medium.webp",
     ageGroup: "Puppy",
     breedSize: "Medium & Large",
@@ -83,8 +83,8 @@ const allProducts = [
     category: "Small Breed Adult",
     product: "Dog Food",
     size: "3kg",
-    price: "580 EGP",
-    originalPrice: "680 EGP",
+    price: "",
+    originalPrice: "",
     image: "/package-3kg-small.webp",
     ageGroup: "Adult",
     breedSize: "Small",
@@ -98,8 +98,8 @@ const allProducts = [
     category: "Medium & Large Breed Adult",
     product: "Dog Food",
     size: "10kg",
-    price: "1500 EGP",
-    originalPrice: "1800 EGP",
+    price: "",
+    originalPrice: "",
     image: "/package-10kg-medium.webp",
     ageGroup: "Adult",
     breedSize: "Medium & Large",
@@ -113,8 +113,8 @@ const allProducts = [
     category: "Small Breed Puppy",
     product: "Dog Food",
     size: "5kg",
-    price: "950 EGP",
-    originalPrice: "1100 EGP",
+    price: "",
+    originalPrice: "",
     image: "/package-5kg-small.webp",
     ageGroup: "Puppy",
     breedSize: "Small",
@@ -128,8 +128,8 @@ const allProducts = [
     category: "Medium & Large Breed Puppy",
     product: "Dog Food",
     size: "10kg",
-    price: "1800 EGP",
-    originalPrice: "2100 EGP",
+    price: "",
+    originalPrice: "",
     image: "/package-10kg-medium.webp",
     ageGroup: "Puppy",
     breedSize: "Medium & Large",
@@ -261,7 +261,7 @@ export function ProductsGrid() {
       </div>
 
       {/* Price Range */}
-      <div className="space-y-3">
+      {/* <div className="space-y-3">
         <h4 className="font-medium text-gray-800">Price Range</h4>
         <div className="px-2">
           <Slider
@@ -277,7 +277,7 @@ export function ProductsGrid() {
             <span>{priceRange[1]} EGP</span>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Age Group Filter */}
       <div className="space-y-3">
