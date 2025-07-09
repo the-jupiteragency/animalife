@@ -13,6 +13,20 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ProductModal } from "./product-modal";
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import {
+  Heart,
+  Utensils,
+  Shield,
+  Sparkles,
+  Zap,
+  TrendingUp,
+  Bone,
+  PawPrint,
+  ShieldCheck,
+  HandHeart,
+  Pill,
+  HeartPulse,
+} from "lucide-react";
 
 const dogCategories = [
   {
@@ -22,25 +36,7 @@ const dogCategories = [
     cardBg: "/card1-bg.webp",
     hoverColor: "from-[#E8DCC0] to-[#D4C4A8]",
     defaultColor: "from-[#F5F1E8] to-[#E8DCC0]",
-    products: [
-      {
-        name: "Puppy",
-        price: "",
-        size: "1.5kg",
-        image: "/package-1kg-small.webp",
-        description: "Specially formulated for puppy puppies up to 12 months",
-        features: [
-          "High protein for growth",
-          "Small kibble size",
-          "DHA for brain development",
-        ],
-        sizes: [
-          { size: "1.5kg", price: "", image: "/package-1kg-small.webp" },
-          { size: "3kg", price: "", image: "/package-1kg-small.webp" },
-          { size: "7kg", price: "", image: "/package-1kg-small.webp" },
-        ],
-      },
-    ],
+    description: "Coming Soon",
   },
   {
     id: "small-adult",
@@ -49,24 +45,10 @@ const dogCategories = [
     cardBg: "/card1-bg.webp",
     hoverColor: "from-[#E8DCC0] to-[#C4956B]",
     defaultColor: "from-[#F5F1E8] to-[#E8DCC0]",
-    products: [
-      {
-        name: "Small Breed Adult",
-        price: "",
-        size: "1.5kg",
-        image: "/package-1kg-small.webp",
-        description: "Complete nutrition for adult small breed dogs",
-        features: [
-          "Optimal protein levels",
-          "Joint support",
-          "Dental care formula",
-        ],
-        sizes: [
-          { size: "1.5kg", price: "", image: "/package-1kg-small.webp" },
-          { size: "3kg", price: "", image: "/package-1kg-small.webp" },
-          { size: "7kg", price: "", image: "/package-1kg-small.webp" },
-        ],
-      },
+    features: [
+      "Easy to chew and digest",
+      "Tested for safety, quality and nutritional accuracy",
+      "Trusted ingredients, proven to nourish and protect",
     ],
   },
   {
@@ -76,29 +58,10 @@ const dogCategories = [
     cardBg: "/card1-bg.webp",
     hoverColor: "from-[#E8DCC0] to-[#D4A574]",
     defaultColor: "from-[#F5F1E8] to-[#E8DCC0]",
-    products: [
-      {
-        name: "Large Breed Puppy",
-        price: "",
-        size: "1.5kg",
-        image: "/package-1kg-medium.webp",
-        description:
-          "Controlled calcium for proper bone development in large breed puppies",
-        features: [
-          "Controlled calcium/phosphorus",
-          "Large kibble size",
-          "Joint development support",
-        ],
-        sizes: [
-          {
-            size: "1.5kg",
-            price: "",
-            image: "/package-1kg-medium.webp",
-          },
-          { size: "3kg", price: "", image: "/package-3kg-medium.webp" },
-          { size: "7kg", price: "", image: "/package-3kg-medium.webp" },
-        ],
-      },
+    features: [
+      "Rich in essential vitamins and minerals",
+      "Tested for safety, quality and nutritional accuracy",
+      "Trusted ingredients, proven to nourish and protect",
     ],
   },
   {
@@ -108,29 +71,10 @@ const dogCategories = [
     cardBg: "/card1-bg.webp",
     hoverColor: "from-[#E8DCC0] to-[#B8956A]",
     defaultColor: "from-[#F5F1E8] to-[#E8DCC0]",
-    products: [
-      {
-        name: "Medium & Large Adult",
-        price: "",
-        size: "1.5kg",
-        image: "/package-1kg-medium.webp",
-        description:
-          "Balanced nutrition for active medium and large breed adult dogs",
-        features: [
-          "High energy formula",
-          "Joint support",
-          "Muscle maintenance",
-        ],
-        sizes: [
-          {
-            size: "1.5kg",
-            price: "",
-            image: "/package-1kg-medium.webp",
-          },
-          { size: "3kg", price: "", image: "/package-3kg-medium.webp" },
-          { size: "7kg", price: "", image: "/package-3kg-medium.webp" },
-        ],
-      },
+    features: [
+      "Promotes Digestive Health",
+      "Tested for safety, quality and nutritional accuracy",
+      "Trusted ingredients, proven to nourish and protect",
     ],
   },
 ];
@@ -371,66 +315,126 @@ function DogCategoryCard({
           </SheetTitle>
         </SheetHeader>
 
-        <div className="space-y-4">
-          {category.products.map((product: any, productIndex: number) => (
-            <Card
-              key={productIndex}
-              className="cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-[1.02] group border-2 hover:border-[#2d5a3d]/20"
+        <div className="space-y-6">
+          {/* Enhanced Product Description Card */}
+          <Card className="border-0 shadow-lg bg-gradient-to-br from-white to-[#F5F1E8]/30 overflow-hidden">
+            <div className="bg-gradient-to-r from-[#2d5a3d] to-[#1e3a2a] p-4 relative">
+              <div className="absolute inset-0 bg-black/10"></div>
+              <h4
+                className={`font-bold text-white relative z-10 flex items-center gap-3 ${isMobile ? "text-base" : "text-md"}`}
+              >
+                Perfect Nutrition for {category.title}
+              </h4>
+            </div>
+
+            <CardContent
+              className={`${isMobile ? "p-4" : "p-6"} bg-white/80 backdrop-blur-sm`}
             >
-              <CardContent className={isMobile ? "p-3" : "p-4 md:p-6"}>
-                <div className="flex items-start space-x-3 md:space-x-4">
-                  <div
-                    className={`relative flex-shrink-0 ${isMobile ? "w-10 h-12" : "w-16 h-20 md:w-20 md:h-24"}`}
+              {category.description ? (
+                <div className="text-center py-4">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-[#2d5a3d]/10 rounded-full mb-4">
+                    <Bone className="w-8 h-8 text-[#2d5a3d]" />
+                  </div>
+                  <p
+                    className={`text-gray-700 font-medium leading-relaxed ${isMobile ? "text-sm" : "text-base"}`}
                   >
-                    <Image
-                      src={product.image || "/placeholder.svg"}
-                      alt={product.name}
-                      fill
-                      className="object-contain rounded group-hover:scale-110 transition-transform duration-300"
-                      sizes="80px"
-                    />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h4
-                      className={`font-bold text-[#2d5a3d] group-hover:text-[#1e3a2a] transition-colors duration-300 mb-2 ${
-                        isMobile ? "text-sm" : "text-sm md:text-base"
-                      }`}
-                    >
-                      {product.name}
-                    </h4>
-                    <p
-                      className={`text-gray-600 mb-2 line-clamp-2 ${isMobile ? "text-xs" : "text-xs md:text-sm"}`}
-                    >
-                      {product.description}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <p
-                        className={`font-bold text-[#2d5a3d] group-hover:text-[#1e3a2a] transition-colors duration-300 ${
-                          isMobile ? "text-sm" : "text-sm md:text-base"
-                        }`}
-                      >
-                        {product.price}
-                      </p>
-                      <Button
-                        size="sm"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          openProductModal(product);
-                        }}
-                        className={`bg-[#2d5a3d] hover:bg-[#1e3a2a] text-white ${
-                          isMobile
-                            ? "text-xs px-3 py-1.5 h-auto"
-                            : "text-xs md:text-sm"
-                        }`}
-                      >
-                        {isMobile ? "View" : "View Details"}
-                      </Button>
-                    </div>
-                  </div>
+                    {category.description}
+                  </p>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
+              ) : (
+                <div className="space-y-4">
+                  {category.features?.map((feature: string, index: number) => {
+                    const getFeatureIcon = (index: number, feature: string) => {
+                      const iconClass = `${isMobile ? "w-5 h-5" : "w-6 h-6"} text-[#2d5a3d]`;
+
+                      // Icon mapping based on common feature keywords
+                      if (
+                        feature.toLowerCase().includes("nutrition") ||
+                        feature.toLowerCase().includes("balanced")
+                      ) {
+                        return <HandHeart className={iconClass} />;
+                      }
+                      if (
+                        feature.toLowerCase().includes("health") ||
+                        feature.toLowerCase().includes("dental")
+                      ) {
+                        return <HeartPulse className={iconClass} />;
+                      }
+                      if (
+                        feature.toLowerCase().includes("digest") ||
+                        feature.toLowerCase().includes("stomach")
+                      ) {
+                        return <PawPrint className={iconClass} />;
+                      }
+                      if (
+                        feature.toLowerCase().includes("vitamins") ||
+                        feature.toLowerCase().includes("minerals")
+                      ) {
+                        return <Pill className={iconClass} />;
+                      }
+                      if (
+                        feature.toLowerCase().includes("bone") ||
+                        feature.toLowerCase().includes("joint")
+                      ) {
+                        return <Shield className={iconClass} />;
+                      }
+                      if (
+                        feature.toLowerCase().includes("coat") ||
+                        feature.toLowerCase().includes("skin")
+                      ) {
+                        return <Sparkles className={iconClass} />;
+                      }
+                      if (
+                        feature.toLowerCase().includes("immune") ||
+                        feature.toLowerCase().includes("protect")
+                      ) {
+                        return <ShieldCheck className={iconClass} />;
+                      }
+                      if (
+                        feature.toLowerCase().includes("growth") ||
+                        feature.toLowerCase().includes("develop")
+                      ) {
+                        return <TrendingUp className={iconClass} />;
+                      }
+
+                      // Default icons based on index
+                      const defaultIcons = [
+                        Heart,
+                        Utensils,
+                        Shield,
+                        Sparkles,
+                        Zap,
+                        TrendingUp,
+                      ];
+                      const IconComponent =
+                        defaultIcons[index % defaultIcons.length];
+                      return <IconComponent className={iconClass} />;
+                    };
+
+                    return (
+                      <div
+                        key={index}
+                        className="group hover:bg-[#2d5a3d]/5 rounded-xl p-3 transition-all duration-300 hover:shadow-md"
+                      >
+                        <div className="flex items-start gap-4">
+                          <div className="flex-shrink-0 p-2 bg-[#2d5a3d]/10 rounded-lg group-hover:bg-[#2d5a3d]/20 transition-colors duration-300">
+                            {getFeatureIcon(index, feature)}
+                          </div>
+                          <div className="flex-1">
+                            <p
+                              className={`text-gray-700 leading-relaxed group-hover:text-gray-900 transition-colors duration-300 ${isMobile ? "text-sm" : "text-base"}`}
+                            >
+                              {feature}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </CardContent>
+          </Card>
         </div>
       </SheetContent>
     </Sheet>

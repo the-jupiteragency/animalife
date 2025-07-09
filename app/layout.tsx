@@ -4,11 +4,11 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "AnimalLife | Science-Driven Pet Nutrition & Wellness",
+  title: "AnimaLife | Science-Driven Pet Nutrition & Wellness",
   description:
-    "AnimalLife offers science-driven, complete, and balanced nutrition for pets. Discover products tailored to your pet's unique needs, expert advice, and a passionate community of animal lovers.",
+    "AnimaLife offers science-driven, complete, and balanced nutrition for pets. Discover products tailored to your pet's unique needs, expert advice, and a passionate community of animal lovers.",
   keywords: [
-    "AnimalLife",
+    "AnimaLife",
     "pet nutrition",
     "dog food",
     "cat food",
@@ -20,20 +20,20 @@ export const metadata: Metadata = {
     "pet academy",
     "pet community",
   ],
-  authors: [{ name: "AnimalLife Team", url: "https://animalife.vercel.app" }],
-  creator: "AnimalLife",
+  authors: [{ name: "AnimaLife Team", url: "https://animalife.vercel.app" }],
+  creator: "AnimaLife",
   openGraph: {
-    title: "AnimalLife | Science-Driven Pet Nutrition & Wellness",
+    title: "AnimaLife | Science-Driven Pet Nutrition & Wellness",
     description:
-      "AnimalLife offers science-driven, complete, and balanced nutrition for pets. Discover products tailored to your pet's unique needs, expert advice, and a passionate community of animal lovers.",
+      "AnimaLife offers science-driven, complete, and balanced nutrition for pets. Discover products tailored to your pet's unique needs, expert advice, and a passionate community of animal lovers.",
     url: "https://animalife.vercel.app",
-    siteName: "AnimalLife",
+    siteName: "AnimaLife",
     images: [
       {
         url: "/hero1.webp",
         width: 1200,
         height: 630,
-        alt: "AnimalLife - Science-Driven Pet Nutrition",
+        alt: "AnimaLife - Science-Driven Pet Nutrition",
       },
     ],
     locale: "en_US",

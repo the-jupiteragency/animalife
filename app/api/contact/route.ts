@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
 
     // Send notification email to admin
     await resend.emails.send({
-      from: "AnimalLife Contact <onboarding@resend.dev>",
+      from: "AnimaLife Contact <onboarding@resend.dev>",
       to: ["info@animalife-mena.com"],
       subject: `New Contact Form Submission from ${name}`,
       react: ContactEmailTemplate({

@@ -43,7 +43,7 @@
 //       <div className="container mx-auto px-4 relative z-10">
 //         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8 md:mb-12 gap-4">
 //           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#2d5a3d]">
-//             AnimalLife Academy
+//             AnimaLife Academy
 //           </h2>
 //           <Button
 //             variant="ghost"
@@ -113,7 +113,7 @@ export function AcademySection() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8 md:mb-12 gap-4">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#2d5a3d]">
-            AnimalLife Academy
+            AnimaLife Academy
           </h2>
           <Link href="/academy">
             <Button

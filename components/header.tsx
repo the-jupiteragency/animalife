@@ -33,7 +33,7 @@ export function Header() {
         >
           <Image
             src="/logo.svg"
-            alt="AnimalLife"
+            alt="AnimaLife"
             width={120}
             height={120}
             priority

@@ -33,9 +33,9 @@ export function CompleteDietSection() {
               </h2>
 
               <p className="text-sm xs:text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-[#2d5a3d]/80 leading-relaxed">
-                At AnimalLife, we've poured years of scientific research and
-                real pet parent feedback into developing our kibble shapes and
-                sizes. Every piece is tailored not just for breed size, but for
+                At AnimaLife, we've poured years of scientific research and real
+                pet parent feedback into developing our kibble shapes and sizes.
+                Every piece is tailored not just for breed size, but for
                 digestibility, dental support, and real-life eating habits.
               </p>
 
@@ -43,7 +43,7 @@ export function CompleteDietSection() {
                 href="/products"
                 className="inline-flex items-center bg-[#d4704a] text-white hover:bg-[#b85a3a] transition-all duration-300 transform hover:scale-105 rounded-full px-8 py-4 text-lg font-semibold shadow-xl"
               >
-                Shop Animalife
+                Shop AnimaLife
                 <IoIosArrowDropright className="ml-2 h-5 w-5" />
               </Link>
             </div>
@@ -65,7 +65,7 @@ export function CompleteDietSection() {
                   </h2>
 
                   <p className="text-lg xl:text-xl 2xl:text-2xl mb-8 xl:mb-10 text-[#2d5a3d]/80 leading-relaxed font-light">
-                    At AnimalLife, we've poured years of scientific research and
+                    At AnimaLife, we've poured years of scientific research and
                     real pet parent feedback into developing our kibble shapes
                     and sizes. Every piece is tailored not just for breed size,
                     but for digestibility, dental support, and real-life eating
@@ -76,7 +76,7 @@ export function CompleteDietSection() {
                     href="/products"
                     className="inline-flex items-center bg-[#d4704a] text-white hover:bg-[#b85a3a] transition-all duration-300 transform hover:scale-105 rounded-full px-8 py-4 xl:px-10 xl:py-5 text-lg xl:text-xl font-semibold shadow-xl group"
                   >
-                    Shop Animalife
+                    Shop AnimaLife
                     <IoIosArrowDropright className="ml-3 h-5 w-5 xl:h-6 xl:w-6 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
@@ -97,7 +97,7 @@ export function CompleteDietSection() {
                   </h2>
 
                   <p className="text-base md:text-lg mb-8 text-[#2d5a3d]/80 leading-relaxed">
-                    At AnimalLife, we've poured years of scientific research and
+                    At AnimaLife, we've poured years of scientific research and
                     real pet parent feedback into developing our kibble shapes
                     and sizes. Every piece is tailored not just for breed size,
                     but for digestibility, dental support, and real-life eating
@@ -108,7 +108,7 @@ export function CompleteDietSection() {
                     href="/products"
                     className="inline-flex items-center bg-[#d4704a] text-white hover:bg-[#b85a3a] transition-all duration-300 transform hover:scale-105 rounded-full px-8 py-4 text-lg font-semibold shadow-xl"
                   >
-                    Shop Animalife
+                    Shop AnimaLife
                     <IoIosArrowDropright className="ml-2 h-5 w-5" />
                   </Link>
                 </div>

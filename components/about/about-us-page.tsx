@@ -75,7 +75,7 @@ export function AboutUsPage() {
               </h1>
 
               <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-[#F9F4DF] leading-relaxed font-light max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
-                Born from a love of pets and a passion for science, AnimalLife
+                Born from a love of pets and a passion for science, AnimaLife
                 crafts nutrition that's as smart as it is delicious.
               </p>
             </div>
@@ -91,7 +91,7 @@ export function AboutUsPage() {
           <div className="relative h-[50vh] min-h-[400px]">
             <Image
               src="/about-mission-sec.webp"
-              alt="AnimalLife Mission"
+              alt="AnimaLife Mission"
               fill
               className="object-cover object-center"
               sizes="100vw"
@@ -102,11 +102,11 @@ export function AboutUsPage() {
           <div className="bg-white py-8 px-4">
             <div className="max-w-md mx-auto text-center">
               <h2 className="text-xl sm:text-2xl font-bold mb-4 text-[#134635] leading-tight">
-                Animalife Mission
+                AnimaLife Mission
               </h2>
               <div className="w-16 h-1 bg-[#d4704a] mb-4 rounded-full mx-auto"></div>
               <p className="text-sm text-[#134635]/90 leading-relaxed font-light">
-                To revolutionize pet wellness through research-backed food—
+                To revolutionize pet wellness through research-backed food,
                 because 'good enough' isn't enough.
               </p>
             </div>
@@ -118,7 +118,7 @@ export function AboutUsPage() {
           <div className="absolute inset-0">
             <Image
               src="/about-mission-sec.webp"
-              alt="AnimalLife Mission"
+              alt="AnimaLife Mission"
               fill
               className="object-cover object-center"
               sizes="100vw"
@@ -131,17 +131,17 @@ export function AboutUsPage() {
                 <div className="hidden lg:block"></div>
 
                 <div className="max-w-full lg:max-w-2xl lg:ml-auto">
-                  <div className="bg-white/95 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 md:p-8 lg:p-12 shadow-xl lg:bg-transparent lg:backdrop-blur-none lg:shadow-none">
+                  <div className="bg-white/95 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 md:p-8 lg:p-3 shadow-xl lg:bg-transparent lg:backdrop-blur-none lg:shadow-none">
                     {/* Single line heading with smaller text */}
                     <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 lg:mb-6 text-[#134635] leading-tight tracking-tight whitespace-nowrap">
-                      Animalife Mission
+                      AnimaLife Mission
                     </h2>
 
                     <div className="w-16 md:w-20 lg:w-24 xl:w-32 h-1 md:h-1.5 bg-[#d4704a] mb-4 md:mb-6 lg:mb-8 rounded-full"></div>
 
                     <p className="text-sm md:text-base lg:text-lg xl:text-xl text-[#134635]/90 leading-relaxed font-light">
                       To revolutionize pet wellness through research-backed
-                      food— because 'good enough' isn't enough.
+                      food, because 'good enough' isn't enough.
                     </p>
                   </div>
                 </div>
@@ -151,12 +151,12 @@ export function AboutUsPage() {
         </div>
       </section>
 
-      {/* Why AnimalLife Section */}
+      {/* Why AnimaLife Section */}
       <section className="relative py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32 overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="/about-why-bg.webp"
-            alt="Why AnimalLife Background"
+            alt="Why AnimaLife Background"
             fill
             className="object-cover object-center"
             sizes="100vw"
@@ -214,7 +214,7 @@ export function AboutUsPage() {
                   </h3>
                   <p className="text-sm sm:text-base md:text-base lg:text-lg xl:text-xl text-[#2d5a3d]/80 leading-relaxed">
                     High-quality animal protein, essential amino acids, and
-                    balanced nutrition—formulated to support digestion,
+                    balanced nutrition, formulated to support digestion,
                     vitality, and everyday wellbeing.
                   </p>
                 </div>
@@ -237,8 +237,8 @@ export function AboutUsPage() {
                     Vision
                   </h3>
                   <p className="text-sm sm:text-base md:text-base lg:text-lg xl:text-xl text-[#2d5a3d]/80 leading-relaxed">
-                    AnimalLife is the foundation of a comprehensive pet
-                    nutrition brand.
+                    AnimaLife is the foundation of a comprehensive pet nutrition
+                    brand.
                   </p>
                 </div>
               </div>

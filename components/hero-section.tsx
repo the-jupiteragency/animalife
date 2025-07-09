@@ -13,19 +13,19 @@ const heroSlides = [
     image: "/hero1.webp",
     heading: "Fuel Their Life With Science & Love.",
     subheading:
-      "Crafted to support your pet's unique needs from genetic predispositions to digestive sensitivities and metabolic health for balanced nutrition that truly fits.",
+      "Discover Our Wide Range of Products Dry food made for every stage, every size, and every need, all backed by science and created with care.",
   },
   {
     image: "/hero2.webp",
     heading: "Discover our wide dog range.",
     subheading:
-      "Crafted to support your pet's unique needs from genetic predispositions to digestive sensitivities and metabolic health for balanced nutrition that truly fits.",
+      "Care You Can Measure. Results You Can Feel. Backed by science, designed with heart, our recipes fuel wellbeing from the inside out, one bowl at a time.",
   },
   {
-    image: "/hero3.webp",
+    image: "/herotest.png",
     heading: "Whatever the breed, we have it.",
     subheading:
-      "Crafted to support your pet's unique needs from genetic predispositions to digestive sensitivities and metabolic health for balanced nutrition that truly fits.",
+      "Every Formula Starts with Care. Ends with Results. We dig deep into pet biology, behavior, and nutritional science so every ingredient has a purpose, and every bowl brings balance.",
   },
 ];
 
@@ -201,7 +201,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-screen overflow-hidden bg-cover bg-center bg-no-repeat"
+      className="relative max-h-screen overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage: "url('/hero-sec-bg.webp')",
         backgroundColor: "#1B4838",
@@ -209,11 +209,11 @@ export function HeroSection() {
     >
       {/* Mobile Layout */}
       <div className="block pt-16 lg:hidden">
-        <div className="container mx-auto px-4 py-12 min-h-screen flex flex-col justify-center">
+        <div className="container mx-auto px-4 py-12 min-h- flex flex-col justify-center">
           {/* Image Section */}
           <div className="flex-shrink-0 mb-8">
             <div
-              className="relative w-full max-w-[500px] mx-auto   overflow-hidden rounded-2xl shadow-2xl"
+              className="relative w-full max-w-[500px] mx-auto overflow-hidden rounded-2xl shadow-2xl"
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >
@@ -221,7 +221,7 @@ export function HeroSection() {
                 <motion.img
                   key={currentSlideIndex}
                   src={currentSlide.image}
-                  alt="AnimalLife hero image"
+                  alt="AnimaLife hero image"
                   className="w-full h-full object-cover"
                   variants={slideVariants}
                   initial="initial"
@@ -244,7 +244,7 @@ export function HeroSection() {
             </div>
 
             {/* Slide indicators */}
-            <div className="flex justify-center mt-6 space-x-3">
+            {/* <div className="flex justify-center mt-6 space-x-3">
               {heroSlides.map((_, index) => (
                 <button
                   key={index}
@@ -257,11 +257,11 @@ export function HeroSection() {
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Content Section - Better aligned */}
-          <div className="flex-1 flex flex-col justify-center text-center px-2">
+          <div className="flex-1 flex flex-col justify-normal text-center px-2">
             <AnimatePresence mode="wait">
               <motion.div
                 key={`mobile-content-${currentSlideIndex}`}
@@ -276,14 +276,14 @@ export function HeroSection() {
                 className="space-y-6"
               >
                 <h1
-                  className="text-lg sm:text-2xl md:text-xl font-bold leading-tight text-[#F9F4DF] max-w-sm mx-auto"
+                  className="text-lg sm:text-2xl md:text-xl font-bold leading-tight text-[#13513D] max-w-sm mx-auto"
                   style={{ fontFamily: "Poppins" }}
                 >
                   {currentSlide.heading}
                 </h1>
 
                 <p
-                  className="text-sm sm:text-base leading-relaxed text-[#F9F4DF]/90 max-w-xs sm:max-w-sm mx-auto"
+                  className="text-sm sm:text-base leading-relaxed text-[#13513D]/90 max-w-xs sm:max-w-sm mx-auto"
                   style={{ fontFamily: "Poppins" }}
                 >
                   {currentSlide.subheading}
@@ -306,7 +306,7 @@ export function HeroSection() {
       {/* Desktop Layout */}
       <div className="hidden lg:flex  min-h-screen">
         {/* Left: Text Content */}
-        <div className="flex-2 flex flex-col justify-center pl-16 xl:pl-24 pr-8 xl:pr-12">
+        <div className="flex flex-col justify-center pl-14 w-[1000px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={`desktop-content-${currentSlideIndex}`}
@@ -347,7 +347,7 @@ export function HeroSection() {
         </div>
 
         {/* Right: Image with curved edge */}
-        <div className="flex-1 relative overflow-hidden">
+        <div className="w-full relative overflow-hidden">
           <div
             className="absolute inset-0 z-10"
             style={{
@@ -360,7 +360,7 @@ export function HeroSection() {
             <motion.img
               key={`desktop-image-${currentSlideIndex}`}
               src={currentSlide.image}
-              alt="AnimalLife hero image"
+              alt="AnimaLife hero image"
               className="relative z-20 w-full h-full object-cover"
               style={{ clipPath: "ellipse(90% 100% at 100% 50%)" }}
               variants={slideVariants}

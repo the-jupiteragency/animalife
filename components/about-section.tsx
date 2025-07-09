@@ -62,7 +62,7 @@ export function AboutSection() {
                       : "translate-y-8 opacity-0"
                   }`}
                 >
-                  At Animalife, we've poured years of scientific research and
+                  At AnimaLife, we've poured years of scientific research and
                   real pet parent feedback into developing our kibble shapes and
                   sizes.
                 </p>
@@ -79,7 +79,7 @@ export function AboutSection() {
                     href="/about"
                     className="inline-flex items-center font-semibold px-5 py-3 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-full transition-all duration-300 ease-out shadow-lg hover:shadow-xl text-sm sm:text-base md:text-lg bg-[#F9F4DF] text-[#0A3024] hover:bg-[#A7552E] hover:text-white group"
                   >
-                    About Animalife
+                    About AnimaLife
                     <IoIosArrowDropright className="ml-2 h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 transition-transform duration-300 group-hover:translate-x-1" />
                   </Link>
                 </div>
