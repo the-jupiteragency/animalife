@@ -13,19 +13,19 @@ const heroSlides = [
     image: "/hero1.webp",
     heading: "Fuel Their Life With Science & Love.",
     subheading:
-      "Discover Our Wide Range of Products Dry food made for every stage, every size, and every need, all backed by science and created with care.",
+      "Discover Our Wide Range of Products.\nDry food made for every stage, every size, and every need.\nAll backed by science and created with care.",
   },
   {
     image: "/hero2.webp",
     heading: "Discover our wide dog range.",
     subheading:
-      "Care You Can Measure. Results You Can Feel. Backed by science, designed with heart, our recipes fuel wellbeing from the inside out, one bowl at a time.",
+      "Care You Can Measure. Results You Can Feel.\nBacked by science, designed with heart.\nOur recipes fuel wellbeing from the inside out, one bowl at a time.",
   },
   {
-    image: "/herotest.png",
+    image: "/hero3.webp",
     heading: "Whatever the breed, we have it.",
     subheading:
-      "Every Formula Starts with Care. Ends with Results. We dig deep into pet biology, behavior, and nutritional science so every ingredient has a purpose, and every bowl brings balance.",
+      "Every Formula Starts with Care. Ends with Results.\nWe dig deep into pet biology and nutritional science.\nEvery ingredient has a purpose, every bowl brings balance.",
   },
 ];
 
