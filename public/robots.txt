@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Disallow admin or private areas (if any)
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Allow all search engines to crawl images
+User-agent: *
+Allow: /public/
+Allow: /*.webp$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.svg$
+
+# Sitemap location
+Sitemap: https://animalife.vercel.app/sitemap.xml
+
+# Crawl delay (optional - adjust as needed)
+Crawl-delay: 1

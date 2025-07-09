@@ -306,7 +306,7 @@ export function HeroSection() {
       {/* Desktop Layout */}
       <div className="hidden lg:flex  min-h-screen">
         {/* Left: Text Content */}
-        <div className="flex flex-col justify-center pl-14 w-[1000px]">
+        <div className="flex flex-col justify-center pl-14 w-[1000px] pt-32">
           <AnimatePresence mode="wait">
             <motion.div
               key={`desktop-content-${currentSlideIndex}`}
