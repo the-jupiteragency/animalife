@@ -261,7 +261,7 @@ export function AboutUsPage() {
             {productCards.map((card) => (
               <Card
                 key={card.id}
-                className="relative overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer group rounded-xl sm:rounded-2xl"
+                className="relative overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 group rounded-xl sm:rounded-2xl"
                 onMouseEnter={() => setHoveredCard(card.id)}
                 onMouseLeave={() => setHoveredCard(null)}
               >

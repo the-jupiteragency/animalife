@@ -180,6 +180,12 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
                       >
                         {product.category}
                       </Badge>
+                      <Badge
+                        variant="outline"
+                        className="text-[#2d5a3d] border-[#2d5a3d] text-xs sm:text-sm"
+                      >
+                        1-7 Years
+                      </Badge>
                     </div>
                   </div>
                 </div>

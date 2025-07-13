@@ -8,6 +8,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import { ProductModal } from "./product-modal";
 import Image from "next/image";
 import Link from "next/link";
+import { Badge } from "./ui/badge";
 
 const productCategories = [
   "All Products",
@@ -669,12 +670,15 @@ function ProductCard({
   isMobile?: boolean;
 }) {
   const [isHovered, setIsHovered] = useState(false);
+  const isComingSoon =
+    product.category === "Small Breed Adult" ||
+    product.category === "Giant Breed Adult";
 
   return (
     <Card
       className={`flex-shrink-0 cursor-pointer bg-white border border-gray-200 rounded-xl md:rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group ${
         isMobile ? "w-48 sm:w-56" : "w-full sm:w-80"
-      }`}
+      } ${isComingSoon ? "opacity-75" : ""}`}
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -695,6 +699,18 @@ function ProductCard({
             className="object-cover transition-all duration-500 group-hover:scale-105"
             sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
           />
+
+          {/* Coming Soon Badge */}
+          {(product.category === "Small Breed Adult" ||
+            product.category === "Giant Breed Adult") && (
+            <div
+              className={`absolute top-2 right-2 ${isMobile ? "scale-75" : ""}`}
+            >
+              <Badge className="bg-orange-500 text-white font-semibold shadow-lg text-xs">
+                Coming Soon
+              </Badge>
+            </div>
+          )}
         </div>
 
         {/* Content Section */}
@@ -706,17 +722,21 @@ function ProductCard({
           </h3>
 
           <div
-            className={`flex items-center gap-1 sm:gap-2 mb-2 sm:mb-3 text-gray-600 ${
-              isMobile ? "text-xs" : "text-sm"
-            }`}
+            className={`space-y-1 mb-2 sm:mb-3 ${isMobile ? "text-xs" : "text-sm"}`}
           >
-            <span>Product:</span>
-            <span className="font-medium text-gray-900 line-clamp-1">
-              {product.product}
-            </span>
-            <span>•</span>
-            <span>Size:</span>
-            <span className="font-medium text-gray-900">{product.size}</span>
+            <div className="flex flex-wrap items-center gap-1 text-gray-600">
+              <span>Product:</span>
+              <span className="font-medium text-gray-900">
+                {product.product}
+              </span>
+            </div>
+            <div className="flex flex-wrap items-center gap-1 text-gray-600">
+              <span>Size:</span>
+              <span className="font-medium text-gray-900">{product.size}</span>
+              <span>•</span>
+              <span>Age:</span>
+              <span className="font-medium text-gray-900">1-7 Years</span>
+            </div>
           </div>
 
           <p

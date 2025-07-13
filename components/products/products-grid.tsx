@@ -701,10 +701,11 @@ export function ProductsGrid() {
     hasDiscount?: boolean;
   }) {
     const [isHovered, setIsHovered] = useState(false);
+    const isComingSoon = product.breedSize === "Small" || product.breedSize === "Giant";
 
     return (
       <Card
-        className="cursor-pointer bg-white border border-gray-200 rounded-xl md:rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 group transform hover:-translate-y-2 hover:scale-[1.02]"
+        className={`cursor-pointer bg-white border border-gray-200 rounded-xl md:rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 group transform hover:-translate-y-2 hover:scale-[1.02] ${isComingSoon ? 'opacity-75' : ''}`}
         onClick={onClick}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -718,9 +719,18 @@ export function ProductsGrid() {
               className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
             />
 
+            {/* Coming Soon Badge */}
+            {isComingSoon && (
+              <div className="absolute top-3 right-3">
+                <Badge className="bg-orange-500 text-white font-semibold shadow-lg">
+                  Coming Soon
+                </Badge>
+              </div>
+            )}
+            
             {/* Discount Badge */}
             {hasDiscount && (
-              <div className="absolute top-3 right-3 transform transition-all duration-300 group-hover:scale-110">
+              <div className="absolute top-3 right-3">
                 <Badge
                   className="text-white font-semibold shadow-lg"
                   style={{ backgroundColor: "#BA643B" }}
@@ -740,19 +750,24 @@ export function ProductsGrid() {
               {product.name}
             </h3>
 
-            <div className="flex items-center gap-2 mb-3 text-sm text-gray-600">
+            <div className="flex flex-wrap items-center gap-2 mb-3 text-sm text-gray-600">
               <Badge
                 variant="outline"
-                className="text-[#2d5a3d] border-[#2d5a3d] text-xs font-medium"
+                className="text-[#2d5a3d] border-[#2d5a3d] text-xs font-medium flex-shrink-0"
               >
                 {product.product}
               </Badge>
-              <span className="text-gray-400">•</span>
               <Badge
                 variant="outline"
-                className="text-[#2d5a3d] border-[#2d5a3d] text-xs font-medium"
+                className="text-[#2d5a3d] border-[#2d5a3d] text-xs font-medium flex-shrink-0"
               >
                 {product.size}
+              </Badge>
+              <Badge
+                variant="outline"
+                className="text-[#2d5a3d] border-[#2d5a3d] text-xs font-medium flex-shrink-0"
+              >
+                1-7 Years
               </Badge>
             </div>
 
