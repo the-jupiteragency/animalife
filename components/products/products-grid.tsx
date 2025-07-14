@@ -16,6 +16,83 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
+const newIngredients = [
+  {
+    name: "Real Chicken Meat (Main Protein Source)",
+    keyNutrients: "Essential amino acids, protein",
+    healthBenefits: [
+      "Supplies essential amino acids for muscle development and overall growth",
+      "Easily digestible protein promotes gut health",
+      "Supports metabolic and physical activity needs",
+      "Aligns with veterinary recommendations for adult dogs maintenance",
+    ],
+  },
+  {
+    name: "Rice",
+    keyNutrients: "Carbohydrates",
+    healthBenefits: [
+      "Gentle on the stomach, promotes easy digestion",
+      "Fast-release energy source for active dogs",
+    ],
+  },
+  {
+    name: "Nutrient-Rich Grains",
+    keyNutrients: "Omega 6, plant protein, antioxidants, micronutrients",
+    healthBenefits: [
+      "Omega 6 supports skin elasticity and coat shine",
+      "Adds plant protein to diversify amino acid profile",
+      "Contains antioxidants and micronutrients for immune support",
+    ],
+  },
+  {
+    name: "Chicken Fat",
+    keyNutrients: "Fatty acids",
+    healthBenefits: [
+      "Promotes healthy, glossy fur",
+      "Concentrated energy source",
+      "Enhances palatability and encourages consumption",
+    ],
+  },
+  {
+    name: "Beetroot",
+    keyNutrients: "Fiber",
+    healthBenefits: [
+      "Promotes gut flora balance and stool quality, helping digest better",
+      "Aids in fullness satisfaction without adding excess calories",
+    ],
+  },
+  {
+    name: "Carrots",
+    keyNutrients: "Vitamins A, C, K, beta-carotene",
+    healthBenefits: [
+      "Better immune support",
+      "Healthy skin and coat",
+      "Improved eyesight",
+    ],
+  },
+  {
+    name: "Green Peas",
+    keyNutrients: "Vitamins, fiber, protein",
+    healthBenefits: [
+      "Supports and maintains healthy digestion",
+      "Healthy skin and heart function",
+      "Contributes to a healthier immune system",
+    ],
+  },
+  {
+    name: "Additional Vitamins and Minerals (A, D3, E, B1, B2, B6, B12, Zinc, Copper, Calcium, Phosphorus)",
+    keyNutrients: "Vitamins and minerals",
+    healthBenefits: [
+      "Vitamin E for radiant skin and coat",
+      "Vitamin A and antioxidant vitamins for natural defenses",
+      "B Vitamins for nervous system health",
+      "Provides essential micronutrients for muscular and nerve function",
+      "Scientifically formulated micro-premix",
+      "Essential for skeletal strength and growth",
+    ],
+  },
+];
+
 const allProducts = [
   // Small Breed Products
   {
@@ -34,38 +111,7 @@ const allProducts = [
       { weight: "5-8 kg", daily: "116-163g", meals: "2" },
       { weight: "8-10 kg", daily: "163-195g", meals: "2" },
     ],
-    ingredients: [
-      "Dried chicken proteins",
-      "Rice",
-      "Complex carbohydrate sources",
-      "High quality fibers Maize",
-      "Beet Pulp",
-      "Brewers yeast",
-      "Mannan Oligo-sacharides sources",
-      "Animal fats",
-      "Amino acids",
-      "Antioxidants",
-      "Natural flavors",
-      "Vitamin A",
-      "Vitamin D3",
-      "Vitamin E",
-      "Vitamin B1",
-      "Vitamin B2",
-      "Vitamin B6",
-      "Vitamin B12",
-      "Pantothenic acid",
-      "Niacin",
-      "Folic acid",
-      "Blotin",
-      "Calclum",
-      "Phosphorus",
-      "Magnesium",
-      "Iron",
-      "Copper",
-      "Manganese",
-      "Zinc",
-      "lodine & Selenium",
-    ],
+    ingredients: newIngredients,
     keyBenefits: [
       "Perfect for toy breeds and small dogs",
       "Easy to chew without choking",
@@ -89,38 +135,7 @@ const allProducts = [
       { weight: "5-8 kg", daily: "116-163g", meals: "2" },
       { weight: "8-10 kg", daily: "163-195g", meals: "2" },
     ],
-    ingredients: [
-      "Dried chicken proteins",
-      "Rice",
-      "Complex carbohydrate sources",
-      "High quality fibers Maize",
-      "Beet Pulp",
-      "Brewers yeast",
-      "Mannan Oligo-sacharides sources",
-      "Animal fats",
-      "Amino acids",
-      "Antioxidants",
-      "Natural flavors",
-      "Vitamin A",
-      "Vitamin D3",
-      "Vitamin E",
-      "Vitamin B1",
-      "Vitamin B2",
-      "Vitamin B6",
-      "Vitamin B12",
-      "Pantothenic acid",
-      "Niacin",
-      "Folic acid",
-      "Blotin",
-      "Calclum",
-      "Phosphorus",
-      "Magnesium",
-      "Iron",
-      "Copper",
-      "Manganese",
-      "Zinc",
-      "lodine & Selenium",
-    ],
+    ingredients: newIngredients,
     keyBenefits: [
       "Perfect for toy breeds and small dogs",
       "Easy to chew without choking",
@@ -144,38 +159,7 @@ const allProducts = [
       { weight: "5-8 kg", daily: "116-163g", meals: "2" },
       { weight: "8-10 kg", daily: "163-195g", meals: "2" },
     ],
-    ingredients: [
-      "Dried chicken proteins",
-      "Rice",
-      "Complex carbohydrate sources",
-      "High quality fibers Maize",
-      "Beet Pulp",
-      "Brewers yeast",
-      "Mannan Oligo-sacharides sources",
-      "Animal fats",
-      "Amino acids",
-      "Antioxidants",
-      "Natural flavors",
-      "Vitamin A",
-      "Vitamin D3",
-      "Vitamin E",
-      "Vitamin B1",
-      "Vitamin B2",
-      "Vitamin B6",
-      "Vitamin B12",
-      "Pantothenic acid",
-      "Niacin",
-      "Folic acid",
-      "Blotin",
-      "Calclum",
-      "Phosphorus",
-      "Magnesium",
-      "Iron",
-      "Copper",
-      "Manganese",
-      "Zinc",
-      "lodine & Selenium",
-    ],
+    ingredients: newIngredients,
     keyBenefits: [
       "Perfect for toy breeds and small dogs",
       "Easy to chew without choking",
@@ -204,38 +188,7 @@ const allProducts = [
       { weight: "35-40 kg", daily: "590-670g", meals: "2" },
       { weight: "40-45 kg", daily: "670-748g", meals: "2" },
     ],
-    ingredients: [
-      "Dried chicken proteins",
-      "Rice",
-      "Complex carbohydrate sources",
-      "High quality fibers Maize",
-      "Beet Pulp",
-      "Brewers yeast",
-      "Mannan Oligo-sacharides sources",
-      "Animal fats",
-      "Amino acids",
-      "Antioxidants",
-      "Natural flavors",
-      "Vitamin A",
-      "Vitamin D3",
-      "Vitamin E",
-      "Vitamin B1",
-      "Vitamin B2",
-      "Vitamin B6",
-      "Vitamin B12",
-      "Pantothenic acid",
-      "Niacin",
-      "Folic acid",
-      "Blotin",
-      "Calclum",
-      "Phosphorus",
-      "Magnesium",
-      "Iron",
-      "Copper",
-      "Manganese",
-      "Zinc",
-      "lodine & Selenium",
-    ],
+    ingredients: newIngredients,
     keyBenefits: [
       "Suitable for many breeds",
       "Promotes well-chewed bites with less mess and fewer crumbs",
@@ -264,38 +217,7 @@ const allProducts = [
       { weight: "35-40 kg", daily: "590-670g", meals: "2" },
       { weight: "40-45 kg", daily: "670-748g", meals: "2" },
     ],
-    ingredients: [
-      "Dried chicken proteins",
-      "Rice",
-      "Complex carbohydrate sources",
-      "High quality fibers Maize",
-      "Beet Pulp",
-      "Brewers yeast",
-      "Mannan Oligo-sacharides sources",
-      "Animal fats",
-      "Amino acids",
-      "Antioxidants",
-      "Natural flavors",
-      "Vitamin A",
-      "Vitamin D3",
-      "Vitamin E",
-      "Vitamin B1",
-      "Vitamin B2",
-      "Vitamin B6",
-      "Vitamin B12",
-      "Pantothenic acid",
-      "Niacin",
-      "Folic acid",
-      "Blotin",
-      "Calclum",
-      "Phosphorus",
-      "Magnesium",
-      "Iron",
-      "Copper",
-      "Manganese",
-      "Zinc",
-      "lodine & Selenium",
-    ],
+    ingredients: newIngredients,
     keyBenefits: [
       "Suitable for many breeds",
       "Promotes well-chewed bites with less mess and fewer crumbs",
@@ -324,38 +246,7 @@ const allProducts = [
       { weight: "35-40 kg", daily: "590-670g", meals: "2" },
       { weight: "40-45 kg", daily: "670-748g", meals: "2" },
     ],
-    ingredients: [
-      "Dried chicken proteins",
-      "Rice",
-      "Complex carbohydrate sources",
-      "High quality fibers Maize",
-      "Beet Pulp",
-      "Brewers yeast",
-      "Mannan Oligo-sacharides sources",
-      "Animal fats",
-      "Amino acids",
-      "Antioxidants",
-      "Natural flavors",
-      "Vitamin A",
-      "Vitamin D3",
-      "Vitamin E",
-      "Vitamin B1",
-      "Vitamin B2",
-      "Vitamin B6",
-      "Vitamin B12",
-      "Pantothenic acid",
-      "Niacin",
-      "Folic acid",
-      "Blotin",
-      "Calclum",
-      "Phosphorus",
-      "Magnesium",
-      "Iron",
-      "Copper",
-      "Manganese",
-      "Zinc",
-      "lodine & Selenium",
-    ],
+    ingredients: newIngredients,
     keyBenefits: [
       "Suitable for many breeds",
       "Promotes well-chewed bites with less mess and fewer crumbs",
@@ -384,38 +275,7 @@ const allProducts = [
       { weight: "35-40 kg", daily: "590-670g", meals: "2" },
       { weight: "40-45 kg", daily: "670-748g", meals: "2" },
     ],
-    ingredients: [
-      "Dried chicken proteins",
-      "Rice",
-      "Complex carbohydrate sources",
-      "High quality fibers Maize",
-      "Beet Pulp",
-      "Brewers yeast",
-      "Mannan Oligo-sacharides sources",
-      "Animal fats",
-      "Amino acids",
-      "Antioxidants",
-      "Natural flavors",
-      "Vitamin A",
-      "Vitamin D3",
-      "Vitamin E",
-      "Vitamin B1",
-      "Vitamin B2",
-      "Vitamin B6",
-      "Vitamin B12",
-      "Pantothenic acid",
-      "Niacin",
-      "Folic acid",
-      "Blotin",
-      "Calclum",
-      "Phosphorus",
-      "Magnesium",
-      "Iron",
-      "Copper",
-      "Manganese",
-      "Zinc",
-      "lodine & Selenium",
-    ],
+    ingredients: newIngredients,
     keyBenefits: [
       "Suitable for many breeds",
       "Promotes well-chewed bites with less mess and fewer crumbs",
@@ -444,38 +304,7 @@ const allProducts = [
       { weight: "50-55 kg", daily: "828-968g", meals: "2" },
       { weight: "55-60 kg", daily: "968-1144g", meals: "2" },
     ],
-    ingredients: [
-      "Dried chicken proteins",
-      "Rice",
-      "Complex carbohydrate sources",
-      "High quality fibers Maize",
-      "Beet Pulp",
-      "Brewers yeast",
-      "Mannan Oligo-sacharides sources",
-      "Animal fats",
-      "Amino acids",
-      "Antioxidants",
-      "Natural flavors",
-      "Vitamin A",
-      "Vitamin D3",
-      "Vitamin E",
-      "Vitamin B1",
-      "Vitamin B2",
-      "Vitamin B6",
-      "Vitamin B12",
-      "Pantothenic acid",
-      "Niacin",
-      "Folic acid",
-      "Blotin",
-      "Calclum",
-      "Phosphorus",
-      "Magnesium",
-      "Iron",
-      "Copper",
-      "Manganese",
-      "Zinc",
-      "lodine & Selenium",
-    ],
+    ingredients: newIngredients,
     keyBenefits: [
       "Supports dental health by reducing tartar",
       "Controls fast eating & helps reduce bloating",
@@ -603,47 +432,6 @@ export function ProductsGrid() {
         </Button>
       </div>
 
-      {/* Price Range */}
-      {/* <div className="space-y-3">
-        <h4 className="font-medium text-gray-800">Price Range</h4>
-        <div className="px-2">
-          <Slider
-            value={priceRange}
-            onValueChange={setPriceRange}
-            max={2000}
-            min={0}
-            step={50}
-            className="w-full"
-          />
-          <div className="flex justify-between text-sm text-gray-600 mt-2">
-            <span>{priceRange[0]} EGP</span>
-            <span>{priceRange[1]} EGP</span>
-          </div>
-        </div>
-      </div> */}
-
-      {/* Age Group Filter */}
-      {/* <div className="space-y-3">
-        <h4 className="font-medium text-gray-800">Age Group</h4>
-        {filterOptions.ageGroup.map((option) => (
-          <div key={option} className="flex items-center space-x-2">
-            <Checkbox
-              id={`age-${option}`}
-              checked={filters.ageGroup.includes(option)}
-              onCheckedChange={(checked) =>
-                handleFilterChange("ageGroup", option, checked as boolean)
-              }
-            />
-            <label
-              htmlFor={`age-${option}`}
-              className="text-sm text-gray-700 cursor-pointer"
-            >
-              {option}
-            </label>
-          </div>
-        ))}
-      </div> */}
-
       {/* Breed Size Filter */}
       <div className="space-y-3">
         <h4 className="font-medium text-gray-800">Breed Size</h4>
@@ -701,11 +489,12 @@ export function ProductsGrid() {
     hasDiscount?: boolean;
   }) {
     const [isHovered, setIsHovered] = useState(false);
-    const isComingSoon = product.breedSize === "Small" || product.breedSize === "Giant";
+    const isComingSoon =
+      product.breedSize === "Small" || product.breedSize === "Giant";
 
     return (
       <Card
-        className={`cursor-pointer bg-white border border-gray-200 rounded-xl md:rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 group transform hover:-translate-y-2 hover:scale-[1.02] ${isComingSoon ? 'opacity-75' : ''}`}
+        className={`cursor-pointer bg-white border border-gray-200 rounded-xl md:rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 group transform hover:-translate-y-2 hover:scale-[1.02] ${isComingSoon ? "opacity-75" : ""}`}
         onClick={onClick}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -727,7 +516,7 @@ export function ProductsGrid() {
                 </Badge>
               </div>
             )}
-            
+
             {/* Discount Badge */}
             {hasDiscount && (
               <div className="absolute top-3 right-3">
@@ -790,11 +579,6 @@ export function ProductsGrid() {
               <span className="text-xl font-bold text-[#2d5a3d] group-hover:text-[#1e3a2a] transition-colors duration-300">
                 {product.price}
               </span>
-              {/* {hasDiscount && (
-                <span className="text-sm text-gray-500 line-through">
-                  {product.originalPrice}
-                </span>
-              )} */}
             </div>
           </div>
         </CardContent>
