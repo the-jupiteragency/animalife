@@ -16,83 +16,92 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-const newIngredients = [
-  {
-    name: "Real Chicken Meat (Main Protein Source)",
-    keyNutrients: "Essential amino acids, protein",
-    healthBenefits: [
-      "Supplies essential amino acids for muscle development and overall growth",
-      "Easily digestible protein promotes gut health",
-      "Supports metabolic and physical activity needs",
-      "Aligns with veterinary recommendations for adult dogs maintenance",
-    ],
-  },
-  {
-    name: "Rice",
-    keyNutrients: "Carbohydrates",
-    healthBenefits: [
-      "Gentle on the stomach, promotes easy digestion",
-      "Fast-release energy source for active dogs",
-    ],
-  },
-  {
-    name: "Nutrient-Rich Grains",
-    keyNutrients: "Omega 6, plant protein, antioxidants, micronutrients",
-    healthBenefits: [
-      "Omega 6 supports skin elasticity and coat shine",
-      "Adds plant protein to diversify amino acid profile",
-      "Contains antioxidants and micronutrients for immune support",
-    ],
-  },
-  {
-    name: "Chicken Fat",
-    keyNutrients: "Fatty acids",
-    healthBenefits: [
-      "Promotes healthy, glossy fur",
-      "Concentrated energy source",
-      "Enhances palatability and encourages consumption",
-    ],
-  },
-  {
-    name: "Beetroot",
-    keyNutrients: "Fiber",
-    healthBenefits: [
-      "Promotes gut flora balance and stool quality, helping digest better",
-      "Aids in fullness satisfaction without adding excess calories",
-    ],
-  },
-  {
-    name: "Carrots",
-    keyNutrients: "Vitamins A, C, K, beta-carotene",
-    healthBenefits: [
-      "Better immune support",
-      "Healthy skin and coat",
-      "Improved eyesight",
-    ],
-  },
-  {
-    name: "Green Peas",
-    keyNutrients: "Vitamins, fiber, protein",
-    healthBenefits: [
-      "Supports and maintains healthy digestion",
-      "Healthy skin and heart function",
-      "Contributes to a healthier immune system",
-    ],
-  },
-  {
-    name: "Additional Vitamins and Minerals (A, D3, E, B1, B2, B6, B12, Zinc, Copper, Calcium, Phosphorus)",
-    keyNutrients: "Vitamins and minerals",
-    healthBenefits: [
-      "Vitamin E for radiant skin and coat",
-      "Vitamin A and antioxidant vitamins for natural defenses",
-      "B Vitamins for nervous system health",
-      "Provides essential micronutrients for muscular and nerve function",
-      "Scientifically formulated micro-premix",
-      "Essential for skeletal strength and growth",
-    ],
-  },
+// const newIngredients = [
+//   {
+//     name: "Real Chicken Meat (Main Protein Source)",
+//     keyNutrients: "Essential amino acids, protein",
+//     healthBenefits: [
+//       "Supplies essential amino acids for muscle development and overall growth",
+//       "Easily digestible protein promotes gut health",
+//       "Supports metabolic and physical activity needs",
+//       "Aligns with veterinary recommendations for adult dogs maintenance",
+//     ],
+//   },
+//   {
+//     name: "Rice",
+//     keyNutrients: "Carbohydrates",
+//     healthBenefits: [
+//       "Gentle on the stomach, promotes easy digestion",
+//       "Fast-release energy source for active dogs",
+//     ],
+//   },
+//   {
+//     name: "Nutrient-Rich Grains",
+//     keyNutrients: "Omega 6, plant protein, antioxidants, micronutrients",
+//     healthBenefits: [
+//       "Omega 6 supports skin elasticity and coat shine",
+//       "Adds plant protein to diversify amino acid profile",
+//       "Contains antioxidants and micronutrients for immune support",
+//     ],
+//   },
+//   {
+//     name: "Chicken Fat",
+//     keyNutrients: "Fatty acids",
+//     healthBenefits: [
+//       "Promotes healthy, glossy fur",
+//       "Concentrated energy source",
+//       "Enhances palatability and encourages consumption",
+//     ],
+//   },
+//   {
+//     name: "Beetroot",
+//     keyNutrients: "Fiber",
+//     healthBenefits: [
+//       "Promotes gut flora balance and stool quality, helping digest better",
+//       "Aids in fullness satisfaction without adding excess calories",
+//     ],
+//   },
+//   {
+//     name: "Carrots",
+//     keyNutrients: "Vitamins A, C, K, beta-carotene",
+//     healthBenefits: [
+//       "Better immune support",
+//       "Healthy skin and coat",
+//       "Improved eyesight",
+//     ],
+//   },
+//   {
+//     name: "Green Peas",
+//     keyNutrients: "Vitamins, fiber, protein",
+//     healthBenefits: [
+//       "Supports and maintains healthy digestion",
+//       "Healthy skin and heart function",
+//       "Contributes to a healthier immune system",
+//     ],
+//   },
+//   {
+//     name: "Additional Vitamins and Minerals (A, D3, E, B1, B2, B6, B12, Zinc, Copper, Calcium, Phosphorus)",
+//     keyNutrients: "Vitamins and minerals",
+//     healthBenefits: [
+//       "Vitamin E for radiant skin and coat",
+//       "Vitamin A and antioxidant vitamins for natural defenses",
+//       "B Vitamins for nervous system health",
+//       "Provides essential micronutrients for muscular and nerve function",
+//       "Scientifically formulated micro-premix",
+//       "Essential for skeletal strength and growth",
+//     ],
+//   },
+// ];
+const ingredient = [
+  "Real Chicken Meat (Main Protein Source)",
+  "Rice",
+  "Nutrient-Rich Grains",
+  "Chicken Fat",
+  "Beetroot",
+  "Carrots",
+  "Green Peas",
+  "Additional Vitamins and Minerals (A, D3, E, B1, B2, B6, B12, Zinc, Copper, Calcium, Phosphorus)",
 ];
-
 const allProducts = [
   // Small Breed Products
   {
@@ -111,7 +120,7 @@ const allProducts = [
       { weight: "5-8 kg", daily: "116-163g", meals: "2" },
       { weight: "8-10 kg", daily: "163-195g", meals: "2" },
     ],
-    ingredients: newIngredients,
+    ingredients: ingredient,
     keyBenefits: [
       "Perfect for toy breeds and small dogs",
       "Easy to chew without choking",
@@ -135,7 +144,7 @@ const allProducts = [
       { weight: "5-8 kg", daily: "116-163g", meals: "2" },
       { weight: "8-10 kg", daily: "163-195g", meals: "2" },
     ],
-    ingredients: newIngredients,
+    ingredients: ingredient,
     keyBenefits: [
       "Perfect for toy breeds and small dogs",
       "Easy to chew without choking",
@@ -159,7 +168,7 @@ const allProducts = [
       { weight: "5-8 kg", daily: "116-163g", meals: "2" },
       { weight: "8-10 kg", daily: "163-195g", meals: "2" },
     ],
-    ingredients: newIngredients,
+    ingredients: ingredient,
     keyBenefits: [
       "Perfect for toy breeds and small dogs",
       "Easy to chew without choking",
@@ -188,7 +197,7 @@ const allProducts = [
       { weight: "35-40 kg", daily: "590-670g", meals: "2" },
       { weight: "40-45 kg", daily: "670-748g", meals: "2" },
     ],
-    ingredients: newIngredients,
+    ingredients: ingredient,
     keyBenefits: [
       "Suitable for many breeds",
       "Promotes well-chewed bites with less mess and fewer crumbs",
@@ -217,7 +226,7 @@ const allProducts = [
       { weight: "35-40 kg", daily: "590-670g", meals: "2" },
       { weight: "40-45 kg", daily: "670-748g", meals: "2" },
     ],
-    ingredients: newIngredients,
+    ingredients: ingredient,
     keyBenefits: [
       "Suitable for many breeds",
       "Promotes well-chewed bites with less mess and fewer crumbs",
@@ -246,7 +255,7 @@ const allProducts = [
       { weight: "35-40 kg", daily: "590-670g", meals: "2" },
       { weight: "40-45 kg", daily: "670-748g", meals: "2" },
     ],
-    ingredients: newIngredients,
+    ingredients: ingredient,
     keyBenefits: [
       "Suitable for many breeds",
       "Promotes well-chewed bites with less mess and fewer crumbs",
@@ -275,7 +284,7 @@ const allProducts = [
       { weight: "35-40 kg", daily: "590-670g", meals: "2" },
       { weight: "40-45 kg", daily: "670-748g", meals: "2" },
     ],
-    ingredients: newIngredients,
+    ingredients: ingredient,
     keyBenefits: [
       "Suitable for many breeds",
       "Promotes well-chewed bites with less mess and fewer crumbs",
@@ -304,7 +313,7 @@ const allProducts = [
       { weight: "50-55 kg", daily: "828-968g", meals: "2" },
       { weight: "55-60 kg", daily: "968-1144g", meals: "2" },
     ],
-    ingredients: newIngredients,
+    ingredients: ingredient,
     keyBenefits: [
       "Supports dental health by reducing tartar",
       "Controls fast eating & helps reduce bloating",

@@ -11,15 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import {
-  Truck,
-  Shield,
-  RotateCcw,
-  Check,
-  ShieldCheck,
-  Microscope,
-  Handshake,
-} from "lucide-react";
+import { Check, ShieldCheck, Microscope, Handshake } from "lucide-react";
 import Image from "next/image";
 
 interface Product {
@@ -39,11 +31,8 @@ interface Product {
     daily: string;
     meals: string;
   }>;
-  ingredients: Array<{
-    name: string;
-    keyNutrients: string;
-    healthBenefits: string[];
-  }>;
+  ingredient?: string[];
+  ingredients?: string[];
   keyBenefits?: string[];
 }
 
@@ -294,50 +283,51 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
                       </h4>
                     </div>
                     <div className="max-h-96 overflow-y-auto pr-2 space-y-6 custom-scrollbar">
-                      {product.ingredients?.map((ingredient, index) => (
-                        <div key={index} className="bg-gradient-to-r from-gray-50 to-white rounded-xl p-4 border border-gray-100 shadow-sm hover:shadow-md transition-all duration-200">
-                          <div className="flex items-start gap-3">
-                            <div className="flex-shrink-0 w-8 h-8 bg-[#2d5a3d] text-white rounded-full flex items-center justify-center font-bold text-sm">
-                              {index + 1}
-                            </div>
-                            <div className="flex-1 space-y-3">
-                              <h5 className="font-bold text-[#2d5a3d] text-sm leading-tight">
-                                {ingredient.name}
-                              </h5>
-                              <div className="bg-blue-50 rounded-lg p-3 border-l-4 border-blue-400">
-                                <div className="flex items-center gap-2 mb-1">
-                                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                                  <span className="text-xs font-semibold text-blue-800 uppercase tracking-wide">Key Nutrients</span>
-                                </div>
-                                <p className="text-sm text-blue-700 font-medium">{ingredient.keyNutrients}</p>
-                              </div>
-                              <div className="bg-green-50 rounded-lg p-3 border-l-4 border-green-400">
-                                <div className="flex items-center gap-2 mb-2">
-                                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                                  <span className="text-xs font-semibold text-green-800 uppercase tracking-wide">Health Benefits</span>
-                                </div>
-                                <div className="space-y-2">
-                                  {ingredient.healthBenefits?.map((benefit, benefitIndex) => (
-                                    <div key={benefitIndex} className="flex items-start gap-2">
-                                      <div className="flex-shrink-0 w-5 h-5 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xs font-bold mt-0.5">
-                                        {benefitIndex + 1}
-                                      </div>
-                                      <p className="text-sm text-green-700 leading-relaxed">{benefit}</p>
-                                    </div>
-                                  )) || <p className="text-sm text-gray-500 italic">No benefits available</p>}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                      {(product.ingredients &&
+                        Array.isArray(product.ingredients) &&
+                        product.ingredients.length > 0) ||
+                      (product.ingredient &&
+                        Array.isArray(product.ingredient) &&
+                        product.ingredient.length > 0) ? (
+                        <div className="bg-gradient-to-r from-gray-50 to-white rounded-xl p-4 border border-gray-100 shadow-sm">
+                          <ul className="space-y-2">
+                            {(
+                              product.ingredients ??
+                              product.ingredient ??
+                              []
+                            ).map((ingredientItem, index) => (
+                              <li
+                                key={index}
+                                className="flex items-center gap-2"
+                              >
+                                <div className="w-2 h-2 bg-[#2d5a3d] rounded-full flex-shrink-0"></div>
+                                <span className="text-sm text-gray-700">
+                                  {ingredientItem}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
-                      )) || (
+                      ) : (
                         <div className="text-center py-8">
                           <div className="text-gray-400 mb-2">
-                            <svg className="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            <svg
+                              className="w-12 h-12 mx-auto"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                              />
                             </svg>
                           </div>
-                          <p className="text-gray-500 font-medium">No ingredients data available</p>
+                          <p className="text-gray-500 font-medium">
+                            No ingredients data available
+                          </p>
                         </div>
                       )}
                     </div>
