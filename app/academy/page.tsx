@@ -18,7 +18,7 @@ export default function AcademyPage() {
       {/* Add top padding to account for fixed header */}
       <div className="pt-20">
         {/* Hero Banner Section */}
-        <section className="relative h-[400px] bg-[#2d5a3d] overflow-hidden">
+        <section className="relative h-[530px] bg-[#2d5a3d] overflow-hidden">
           <div className="absolute inset-0">
             <Image
               src="/academy-banner.webp"
@@ -29,16 +29,22 @@ export default function AcademyPage() {
             />
           </div>
           <div className="relative z-10 container mx-auto px-4 h-full flex items-center">
-            <div className="max-w-2xl">
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Animalife Academy:
-                <br />
-                Learn & Grow with Your Pet
+            <div className="max-w-3xl">
+              <h1 className="text-4xl md:text-5xl lg:text-4xl font-bold text-white mb-8 leading-tight">
+                Welcome to AnimaLife Academy!
               </h1>
-              <p className="text-lg text-white/90 leading-relaxed">
-                Explore our blog for expert advice and heartwarming stories from
-                our trusted vets! Whether you're looking for tips on pet care,
-                nutrition, or just want to learn more about your furry friend.
+              <p className="max-w-[650px] w-full text-base sm:text-lg md:text-lg lg:text-xl xl:text-lg 2xl:text-xl text-white/90 leading-relaxed">
+                Because a healthier pet starts with a better-informed you. At
+                AnimaLife, we know that being a great pet parent goes beyond
+                just feeding right. It’s about truly understanding your dog and
+                cat’s needs at every stage. That’s why we created AnimaLife
+                Academy: a trusted space where science meets everyday care.
+                Here, you’ll find expert-backed articles that simplify
+                nutrition, strengthen the human–pet bond, and guide you through
+                safer, more mindful pet parenting. Whether you're raising a
+                playful kitten, navigating puppyhood, or supporting your senior
+                fur baby, this is your go-to guide for building a happier and
+                healthier life together.
               </p>
             </div>
           </div>
@@ -49,7 +55,7 @@ export default function AcademyPage() {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {blogPosts.map((post) => (
-                <Link key={post.id} href={`/academy/${post.id}`}>
+                <Link key={post.id} href={`/academy/${post.slug}`}>
                   <Card className="cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl bg-white border-0 rounded-2xl overflow-hidden group">
                     <CardContent className="p-0">
                       <div className="aspect-video relative overflow-hidden">

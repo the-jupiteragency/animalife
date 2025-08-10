@@ -4,16 +4,18 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Header } from "@/components/header";
 import { Button } from "@/components/ui/button";
 import { AcademyPosts } from "@/app/data/academy-posts";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 // Remove the hardcoded blogPosts array and use:
 const blogPosts = AcademyPosts;
 
 export default function PostDetailPage({ params }: { params: { id: string } }) {
-  const postId = Number.parseInt(params.id);
-  const post = blogPosts.find((p) => p.id === postId) || blogPosts[0];
+  const post = blogPosts.find((p) => p.slug === params.id || p.id.toString() === params.id) || blogPosts[0];
 
   // Get next post for "read more" functionality
-  const nextPost = blogPosts.find((p) => p.id === postId + 1) || blogPosts[0];
+  const currentIndex = blogPosts.findIndex((p) => p.slug === params.id || p.id.toString() === params.id);
+  const nextPost = currentIndex < blogPosts.length - 1 ? blogPosts[currentIndex + 1] : blogPosts[0];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -40,7 +42,7 @@ export default function PostDetailPage({ params }: { params: { id: string } }) {
           {/* Hero Image */}
           <div className="aspect-video relative overflow-hidden rounded-2xl mb-8">
             <Image
-              src="/post-banner.png"
+              src={post.image}
               alt={post.title}
               fill
               className="object-cover w-full h-full"
@@ -49,44 +51,22 @@ export default function PostDetailPage({ params }: { params: { id: string } }) {
           </div>
 
           {/* Article Header */}
-          <div className="bg-white rounded-2xl p-8 mb-8">
+          <div className="bg-white rounded-2xl p-6 md:p-8 mb-8">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#2d5a3d] mb-6">
-              Finibus Bonorum et Malorum
+              {post.title}
             </h1>
 
             <div className="flex items-center text-gray-600 mb-8">
-              <span className="mr-4">Written by {post.author}</span>
-              <span>{post.date}</span>
+              <span>Written by {post.author}</span>
             </div>
 
             {/* Article Content */}
-            <div className="prose prose-lg max-w-none">
-              <p className="text-gray-700 leading-relaxed mb-6">
-                Section 1.10.32 of "de Finibus Bonorum et Malorum", written by
-                Cicero in 45 BC "Sed ut perspiciatis unde omnis iste natus error
-                sit voluptatem accusantium doloremque laudantium, totam rem
-                aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
-                voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
-                quia consequuntur magni dolores eos qui ratione voluptatem sequi
-                nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor
-                sit amet, consectetur, adipisci velit, sed quia non numquam eius
-                modi tempora incidunt ut labore et dolore magnam aliquam quaerat
-                voluptatem. Ut enim ad minima veniam, quis nostrum
-                exercitationem ullam corporis suscipit laboriosam, nisi ut
-                aliquid ex ea commodi consequatur? Quis autem vel eum iure
-                reprehenderit qui in ea voluptate velit esse quam nihil
-                molestiae consequatur, vel illum qui dolorem eum fugiat quo
-                voluptas nulla pariatur?"
-              </p>
-
-              <p className="text-gray-700 leading-relaxed">
-                Section 1.10.32 of "de Finibus Bonorum et Malorum", written by
-                Cicero in 45 BC "Sed ut perspiciatis unde omnis iste natus error
-                sit voluptatem accusantium doloremque laudantium, totam rem
-                aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                architecto beatae vitae dicta sunt explicabo.
-              </p>
+            <div className="max-w-none [&_p]:text-gray-700 [&_p]:leading-relaxed [&_p]:mb-6 [&_p]:text-base [&_h1]:text-3xl md:[&_h1]:text-4xl [&_h1]:font-bold [&_h1]:text-[#2d5a3d] [&_h1]:mb-6 [&_h2]:text-xl md:[&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-[#2d5a3d] [&_h2]:mb-4 [&_h2]:mt-8 [&_h3]:text-lg md:[&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-[#2d5a3d] [&_h3]:mb-3 [&_h3]:mt-6 [&_strong]:text-[#2d5a3d] [&_strong]:font-semibold [&_em]:text-[#2d5a3d] [&_em]:italic [&_ul]:mb-6 [&_li]:mb-2 [&_li]:text-gray-700 [&_table]:w-full [&_table]:border-collapse [&_table]:my-8 [&_table]:shadow-lg [&_table]:rounded-lg [&_table]:overflow-hidden [&_table]:bg-white [&_thead]:bg-[#2d5a3d] [&_th]:text-white [&_th]:font-semibold [&_th]:p-3 md:[&_th]:p-4 [&_th]:text-left [&_th]:border-0 [&_tbody]:bg-white [&_tr]:border-b [&_tr]:border-gray-200 [&_tr:nth-child(even)]:bg-gray-50 [&_td]:p-3 md:[&_td]:p-4 [&_td]:text-gray-700 [&_td]:border-0 [&_td]:font-medium [&_table_tbody_tr:first-child_td:first-child]:font-bold [&_table_tbody_tr:first-child_td:first-child]:text-[#2d5a3d] [&_table_tbody_tr:nth-child(7)_td:first-child]:font-bold [&_table_tbody_tr:nth-child(7)_td:first-child]:text-[#2d5a3d] [&_table_tbody_tr:nth-child(14)_td:first-child]:font-bold [&_table_tbody_tr:nth-child(14)_td:first-child]:text-[#2d5a3d]">
+              <div className="[&_table]:overflow-x-auto [&_table]:rounded-lg">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {post.content}
+                </ReactMarkdown>
+              </div>
             </div>
 
             {/* Read More Section */}
@@ -109,7 +89,7 @@ export default function PostDetailPage({ params }: { params: { id: string } }) {
                       All Articles
                     </Button>
                   </Link>
-                  <Link href={`/academy/${nextPost.id}`}>
+                  <Link href={`/academy/${nextPost.slug}`}>
                     <Button className="bg-[#2d5a3d] text-white hover:bg-[#1e3a2a]">
                       Next Article
                       <ArrowRight className="w-4 h-4 ml-2" />

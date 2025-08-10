@@ -92,13 +92,13 @@ export function Header() {
               >
                 Discover AnimaLife
               </Link>
-              {/* <Link
+              <Link
                 href="/academy"
                 className="block text-white text-xl md:text-2xl font-medium hover:text-green-200 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 AnimaLife Academy
-              </Link> */}
+              </Link>
             </nav>
           </div>
         </div>

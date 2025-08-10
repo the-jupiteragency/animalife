@@ -4,7 +4,7 @@ import { ProductsSection } from "@/components/products-section";
 import { DogMatchSection } from "@/components/dog-match-section";
 // import { CompleteDietSection } from "@/components/complete-diet-section";
 // import { PartnersSection } from "@/components/partners-section";
-// import { AcademySection } from "@/components/academy-section";
+import { AcademySection } from "@/components/academy-section";
 import { AboutSection } from "@/components/about-section";
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
       <DogMatchSection />
       {/* <CompleteDietSection /> */}
       {/* <PartnersSection /> */}
-      {/* <AcademySection /> */}
+      <AcademySection />
     </main>
   );
 }

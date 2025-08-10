@@ -127,7 +127,7 @@ export function AcademySection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {blogPosts.map((post) => (
-            <Link key={post.id} href={`/academy/${post.id}`}>
+            <Link key={post.id} href={`/academy/${post.slug}`}>
               <Card className="cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl bg-white border-0 rounded-2xl overflow-hidden group">
                 <CardContent className="p-0">
                   <div className="aspect-video relative overflow-hidden">
