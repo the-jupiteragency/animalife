@@ -71,24 +71,7 @@ Our larger kibble helps prevent gulping and supports joint health.
 
 We've formulated our feeding recommendations based on real nutritional science. You'll find these clearly printed on every AnimaLife pack.
 
-| Breed Category | Dog Weight | Daily Amount |
-|----------------|------------|-------------|
-| **Giant Breed** | 30-35 KG | 511-590 g |
-| | 35-40 KG | 590-670 g |
-| | 40-45 KG | 670-748 g |
-| | 45-50 KG | 748-828 g |
-| | 50-55 KG | 828-968 g |
-| | 55-60 KG | 968-1144 g |
-| **Medium & Large Breed** | 10-15 KG | 195-274 g |
-| | 15-20 KG | 274-353 g |
-| | 20-25 KG | 353-432 g |
-| | 25-30 KG | 432-577 g |
-| | 30-35 KG | 577-590 g |
-| | 35-40 KG | 590-670 g |
-| | 40-45 KG | 670-748 g |
-| **Small Breed** | 3-5 KG | 84-116 g |
-| | 5-8 KG | 116-163 g |
-| | 8-10 KG | 163-195 g |
+![AnimaLife Feeding Guide Table](/articles/articale-table.png)
 
 ## Final Note
 
