@@ -5,7 +5,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoIosArrowDropright } from "react-icons/io";
 import Link from "next/link";
-import BackgroundVideo from "next-video/background-video";
+import Video from "next-video";
 
 // Import videos directly
 import video1 from "@/videos/1.1.mp4";
@@ -20,7 +20,7 @@ const heroSlides = [
   },
   {
     video: video2,
-    heading: "Care You Give.\nScience We Perfect",
+    heading: "Care You Give. Science We Perfect",
   },
   {
     video: video3,
@@ -50,19 +50,16 @@ export function HeroSection() {
   }, [currentSlideIndex]);
 
   // Handle manual slide change
-  const handleSlideChange = useCallback(
-    (index: number) => {
-      if (index === currentSlideIndex) return;
-      setIsTransitioning(true);
-      setNextSlideIndex(index);
-      setTimeout(() => {
-        setCurrentSlideIndex(index);
-        setIsTransitioning(false);
-        setNextSlideIndex(null);
-      }, 400);
-    },
-    [currentSlideIndex]
-  );
+  const handleSlideChange = useCallback((index: number) => {
+    if (index === currentSlideIndex) return;
+    setIsTransitioning(true);
+    setNextSlideIndex(index);
+    setTimeout(() => {
+      setCurrentSlideIndex(index);
+      setIsTransitioning(false);
+      setNextSlideIndex(null);
+    }, 400);
+  }, [currentSlideIndex]);
 
   // Touch handlers for mobile
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
@@ -106,7 +103,7 @@ export function HeroSection() {
           className="absolute inset-0 w-screen h-screen"
           style={{ zIndex: 1 }}
         >
-          <BackgroundVideo
+          <Video
             src={heroSlides[currentSlideIndex].video}
             className="w-screen h-screen"
             style={{
@@ -118,10 +115,9 @@ export function HeroSection() {
             onEnded={handleVideoEnd}
             autoPlay
             loop={false}
+            controls={false}
             muted
-          >
-            {/* Overlay content will be rendered outside */}
-          </BackgroundVideo>
+          />
         </motion.div>
         {/* Next video for crossfade */}
         {isTransitioning && nextSlideIndex !== null && (
@@ -133,7 +129,7 @@ export function HeroSection() {
             className="absolute inset-0 w-screen h-screen"
             style={{ zIndex: 2 }}
           >
-            <BackgroundVideo
+            <Video
               src={heroSlides[nextSlideIndex].video}
               className="w-screen h-screen"
               style={{
@@ -144,10 +140,9 @@ export function HeroSection() {
               }}
               autoPlay
               loop={false}
+              controls={false}
               muted
-            >
-              {/* Overlay content will be rendered outside */}
-            </BackgroundVideo>
+            />
           </motion.div>
         )}
         {/* Content Overlay */}
@@ -168,16 +163,10 @@ export function HeroSection() {
                 className="space-y-8"
               >
                 <h1
-                  className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white leading-tight whitespace-pre-line"
+                  className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white leading-tight"
                   style={{ fontFamily: "Poppins" }}
                 >
-                  {
-                    heroSlides[
-                      isTransitioning && nextSlideIndex !== null
-                        ? nextSlideIndex
-                        : currentSlideIndex
-                    ].heading
-                  }
+                  {heroSlides[isTransitioning && nextSlideIndex !== null ? nextSlideIndex : currentSlideIndex].heading}
                 </h1>
               </motion.div>
             </AnimatePresence>
@@ -194,7 +183,23 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* ...no indicators... */}
+        {/* Slide Indicators */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+          <div className="flex space-x-3">
+            {heroSlides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => handleSlideChange(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  index === currentSlideIndex
+                    ? "bg-white w-8"
+                    : "bg-white/40 w-2 hover:bg-white/60"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

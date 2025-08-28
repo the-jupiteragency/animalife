@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "next dev",
+    "dev": "next dev & npx next-video sync -w",
     "lint": "next lint",
     "start": "next start"
   },
@@ -50,6 +50,7 @@
     "motion": "^12.18.1",
     "next": "14.2.16",
     "next-themes": "^0.4.4",
+    "next-video": "^2.2.3",
     "react": "^18",
     "react-day-picker": "8.10.1",
     "react-dom": "^18",

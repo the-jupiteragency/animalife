@@ -20,7 +20,7 @@ const heroSlides = [
   },
   {
     video: video2,
-    heading: "Care You Give.\nScience We Perfect",
+    heading: "Care You Give. Science We Perfect",
   },
   {
     video: video3,
@@ -168,7 +168,7 @@ export function HeroSection() {
                 className="space-y-8"
               >
                 <h1
-                  className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white leading-tight whitespace-pre-line"
+                  className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white leading-tight"
                   style={{ fontFamily: "Poppins" }}
                 >
                   {

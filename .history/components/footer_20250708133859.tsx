@@ -325,10 +325,10 @@ export function Footer() {
                     <div className="flex flex-row items-start gap-3">
                       <p className="text-white font-medium">Email Us</p>
                       <a
-                        href="mailto:Info@myanimalife.com"
+                        href="mailto:info@animalife-mena.com"
                         className="text-[#F9F4DF] hover:text-white transition-colors duration-300"
                       >
-                        Info@myanimalife.com
+                        info@animalife-mena.com
                       </a>
                     </div>
                   </div>
