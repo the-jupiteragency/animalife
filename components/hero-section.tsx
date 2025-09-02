@@ -8,13 +8,13 @@ import Link from "next/link";
 import BackgroundVideo from "next-video/background-video";
 
 // Import single combined video
-import dogsVideo from "@/videos/dogs.mp4";
+import heroVideo from "@/videos/hero-section-video.mp4";
 
 const textSlides = [
   { start: 0, end: 5, heading: "Because Every Bond Deserves the Best" },
-  { start: 5, end: 10, heading: "Care You Give.\nScience We Perfect" },
-  { start: 10, end: 14, heading: "Energy You Can See" },
-  { start: 14, end: 19, heading: "Because Every Moment is Everything" },
+  { start: 5, end: 11, heading: "Care You Give.\nScience We Perfect" },
+  { start: 11, end: 15, heading: "Energy You Can See" },
+  { start: 15, end: 19, heading: "Because Every Moment is Everything" },
 ];
 
 export function HeroSection() {
@@ -54,7 +54,7 @@ export function HeroSection() {
     <section id="home" className="relative h-screen w-screen overflow-hidden">
       <BackgroundVideo
         ref={videoRef}
-        src={dogsVideo}
+        src={heroVideo}
         onTimeUpdate={handleTimeUpdate}
         style={{
           width: "100%",
