@@ -51,48 +51,66 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section id="home" className="relative h-screen w-screen overflow-hidden">
-      <BackgroundVideo
-        ref={videoRef}
-        src={heroVideo}
-        onTimeUpdate={handleTimeUpdate}
-        style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-        }}
-      >
-        {/* Dark overlay for text visibility */}
-        <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+    <section
+      id="home"
+      className="relative md:h-screen w-screen overflow-hidden"
+    >
+      <div className="hidden md:block h-full">
+        <BackgroundVideo
+          ref={videoRef}
+          src={heroVideo}
+          onTimeUpdate={handleTimeUpdate}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
+      </div>
 
-        {/* Content */}
-        <div className="relative z-10 h-full flex items-center justify-center">
-          <div className="text-center px-4 max-w-4xl mx-auto">
-            <AnimatePresence mode="wait">
-              <motion.h1
-                key={`heading-${currentTextIndex}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4 }}
-                className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white leading-tight whitespace-pre-line"
-              >
-                {textSlides[currentTextIndex].heading}
-              </motion.h1>
-            </AnimatePresence>
+      <div className="md:hidden w-full aspect-video">
+        <BackgroundVideo
+          ref={videoRef}
+          src={heroVideo}
+          onTimeUpdate={handleTimeUpdate}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "contain",
+          }}
+        />
+      </div>
 
-            <div className="mt-12">
-              <Link
-                href="/products"
-                className="inline-flex items-center justify-center font-bold rounded-full px-8 py-4 text-lg shadow-lg gap-2 transform transition-all hover:scale-105 bg-white text-[#13513D] hover:bg-[#F9F4DF]"
-              >
-                View Products
-                <IoIosArrowDropright className="h-5 w-5" />
-              </Link>
-            </div>
+      {/* Dark overlay for text visibility */}
+      <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+
+      {/* Content */}
+      <div className="absolute inset-0 z-10 flex items-center justify-center">
+        <div className="text-center px-4 max-w-4xl mx-auto">
+          <AnimatePresence mode="wait">
+            <motion.h1
+              key={`heading-${currentTextIndex}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-white leading-tight whitespace-pre-line"
+            >
+              {textSlides[currentTextIndex].heading}
+            </motion.h1>
+          </AnimatePresence>
+
+          <div className="mt-8 md:mt-12">
+            <Link
+              href="/products"
+              className="inline-flex items-center justify-center font-bold rounded-full px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 text-sm sm:text-base md:text-lg shadow-lg gap-1 sm:gap-2 transform transition-all hover:scale-105 bg-white text-[#13513D] hover:bg-[#F9F4DF]"
+            >
+              View Products
+              <IoIosArrowDropright className="h-4 w-4 md:h-5 md:w-5" />
+            </Link>
           </div>
         </div>
-      </BackgroundVideo>
+      </div>
     </section>
   );
 }

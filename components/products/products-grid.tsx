@@ -510,7 +510,7 @@ export function ProductsGrid() {
       >
         <CardContent className="p-0">
           {/* Image Banner */}
-          <div className="relative w-full h-64 overflow-hidden bg-gray-50">
+          <div className="relative w-full h-64 sm:h-72 overflow-hidden bg-gray-50">
             <img
               src={product.frontImage || "/placeholder.svg"}
               alt={product.name}
@@ -544,7 +544,7 @@ export function ProductsGrid() {
 
           {/* Content Section */}
           <div className="p-4 transition-all duration-300 group-hover:bg-gray-50/50">
-            <h3 className="font-bold text-[#2d5a3d] mb-3 line-clamp-2 text-lg leading-tight group-hover:text-[#1e3a2a] transition-colors duration-300">
+            <h3 className="font-bold text-[#2d5a3d] mb-3 line-clamp-2 text-sm sm:text-lg leading-tight group-hover:text-[#1e3a2a] transition-colors duration-300">
               {product.name}
             </h3>
 
@@ -569,7 +569,7 @@ export function ProductsGrid() {
               </Badge>
             </div>
 
-            <div className="flex items-center gap-2 mb-2">
+            <div className="flex flex-wrap items-center gap-2 mb-2">
               <Badge
                 variant="outline"
                 className="text-gray-600 border-gray-300 text-xs"
@@ -660,7 +660,7 @@ export function ProductsGrid() {
             </div>
 
             {/* Products Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3">
               {filteredProducts.map((product, index) => (
                 <ProductCard
                   key={product.id}

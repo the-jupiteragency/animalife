@@ -22,14 +22,14 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        scrolled ? "bg-[#0A3D2C]" : "bg-transparent"
+      className={`${scrolled ? "fixed" : "relative"} md:fixed md:top-0 md:left-0 md:right-0 ${scrolled ? "top-0 left-0 right-0" : ""} z-50 transition-colors duration-300 ${
+        scrolled ? "bg-[#0A3D2C]" : "bg-[#F5F1E8] md:bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4 py-4 md:py-6 flex items-center justify-between font-mono font-normal text-base bg-transparent text-[rgba(249,244,223,1)] flex-row">
+      <div className="container mx-auto px-3 md:px-1 py-4 md:py-6 flex items-center justify-between font-mono font-normal text-base bg-transparent text-[rgba(249,244,223,1)] md:text-[rgba(249,244,223,1)] flex-row pb-7">
         <Link
           href="/"
-          className="text-white text-xl md:text-2xl font-bold hover:text-green-200 transition-colors"
+          className="text-[#0A3D2C] md:text-white text-xl md:text-2xl font-bold hover:text-green-200 transition-colors"
         >
           <Image
             src="/logo.svg"
@@ -51,7 +51,7 @@ export function Header() {
             />
           ) : (
             <GiHamburgerMenu
-              className={`h-10 w-10 ${scrolled ? "text-white" : "md:text-[#BA643B]"}`}
+              className={`h-10 w-10 ${scrolled ? "text-white" : "text-[#BA643B] md:text-[#BA643B]"}`}
             />
           )}
         </div>
