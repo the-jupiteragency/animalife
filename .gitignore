@@ -6,8 +6,7 @@
 # next.js
 /.next/
 /out/
-/.history/
-/.amazonq/
+
 # production
 /build
 
@@ -26,6 +25,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# IDE and history
+.amazonq/
+.history/
 # next-video
 videos/*
 !videos/*.json
