@@ -57,33 +57,56 @@ export function AboutUsPage() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section - Content moved left with smaller text */}
-      <section className="relative min-h-screen overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/about-hero-image.webp"
-            alt="Behind the Bowl Hero"
-            fill
-            className="object-cover object-center"
-            priority
-            sizes="100vw"
+      {/* Hero Section */}
+      <section className="relative md:min-h-[50vh] overflow-hidden flex items-center">
+        {/* Desktop Background Image */}
+        <div className="hidden md:block absolute inset-0">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: "url('/about-hero-image.webp')",
+            }}
           />
-          <div className="absolute inset-0 bg-black/20 sm:bg-black/10 md:bg-transparent" />
         </div>
 
-        <div className="relative z-10 min-h-screen flex items-center">
-          <div className="container mx-auto px-2 sm:px-4 lg:px-6">
-            <div className="max-w-full ml-2 sm:ml-4 md:ml-8 lg:ml-12">
-              {/* Smaller text sizes */}
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 md:mb-6 lg:mb-8 text-[#F9F4DF] leading-[1.1] tracking-tight">
+        {/* Mobile Background Image */}
+        <div className="md:hidden w-full relative">
+          <img
+            src="/about-hero-image.webp"
+            alt="Behind the Bowl Hero"
+            className="w-full h-auto object-cover"
+            style={{ backgroundColor: "#FFFCEF" }}
+          />
+
+          {/* Mobile Title Overlay */}
+          <div className="absolute top-14 left-4">
+            <h1 className="text-xl font-bold text-white leading-tight">
+              Behind the Bowl:
+              <br />
+              Science You Can Trust
+            </h1>
+          </div>
+
+          {/* Mobile Content Below Image */}
+          <div className="px-4 py-6 text-center">
+            <p className="text-sm text-[#2d5a3d] leading-relaxed max-w-sm mx-auto">
+              Born from a love of pets and a passion for science, AnimaLife
+              crafts nutrition that's as smart as it is delicious.
+            </p>
+          </div>
+        </div>
+
+        {/* Desktop Content Overlay */}
+        <div className="hidden md:block absolute inset-0 z-10 container mx-auto px-4 py-24  items-center">
+          <div className="max-w-2xl">
+            <div className="text-[#F9F4DF] animate-fade-in-up">
+              <h1 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight">
                 Behind the Bowl:
                 <br />
-                <span className="block mt-1 sm:mt-2">
-                  Science You Can Trust
-                </span>
+                Science You Can Trust
               </h1>
 
-              <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-[#F9F4DF] leading-relaxed font-light max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
+              <p className="text-lg lg:text-xl mb-8 text-[#ebe7d9] leading-relaxed">
                 Born from a love of pets and a passion for science, AnimaLife
                 crafts nutrition that's as smart as it is delicious.
               </p>
@@ -92,29 +115,26 @@ export function AboutUsPage() {
         </div>
       </section>
 
-      {/* Mission Section - New layout for mobile with full image visibility */}
+      {/* Mission Section */}
       <section className="relative overflow-hidden">
         {/* Mobile Layout */}
-        <div className="block md:hidden">
-          {/* Full image section */}
-          <div className="relative h-[50vh] min-h-[400px]">
-            <Image
-              src="/about-mission-sec.webp"
-              alt="AnimaLife Mission"
-              fill
-              className="object-cover object-center"
-              sizes="100vw"
-            />
-          </div>
+        <div className="block md:hidden relative h-[50vh] min-h-[400px]">
+          <Image
+            src="/about-mission-sec.webp"
+            alt="AnimaLife Mission"
+            fill
+            className="object-cover object-center"
+            sizes="100vw"
+          />
 
-          {/* Content section below image */}
-          <div className="bg-white py-8 px-4">
-            <div className="max-w-md mx-auto text-center">
-              <h2 className="text-xl sm:text-2xl font-bold mb-4 text-[#134635] leading-tight">
+          {/* Mobile Content Overlay - Right Side */}
+          <div className="absolute inset-0 flex items-center justify-end">
+            <div className="w-1/2 p-4  rounded-l-2xl mr-4">
+              <h2 className="text-lg font-bold mb-3 text-[#134635] leading-tight">
                 AnimaLife Mission
               </h2>
-              <div className="w-16 h-1 bg-[#d4704a] mb-4 rounded-full mx-auto"></div>
-              <p className="text-sm text-[#134635]/90 leading-relaxed font-light">
+              <div className="w-12 h-1 bg-[#d4704a] mb-3 rounded-full"></div>
+              <p className="text-xs text-[#134635]/90 leading-relaxed font-light">
                 To revolutionize pet wellness through research-backed food,
                 because 'good enough' isn't enough.
               </p>

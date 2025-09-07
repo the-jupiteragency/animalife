@@ -607,13 +607,13 @@ export function ProductsGrid() {
             <FilterSidebar />
           </div>
 
-          {/* Mobile Filter Button */}
-          <div className="lg:hidden">
+          {/* Mobile Filter and Sort */}
+          <div className="lg:hidden flex gap-3 mb-4">
             <Sheet>
               <SheetTrigger asChild>
                 <Button
                   variant="outline"
-                  className="mb-4 border-[#2d5a3d] text-[#2d5a3d] hover:bg-[#2d5a3d] hover:text-white"
+                  className="flex-1 border-[#2d5a3d] text-[#2d5a3d] hover:bg-[#2d5a3d] hover:text-white"
                 >
                   <SlidersHorizontal className="w-4 h-4 mr-2" />
                   Filters
@@ -630,12 +630,38 @@ export function ProductsGrid() {
                 </div>
               </SheetContent>
             </Sheet>
+            
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              className="flex-1 border border-[#2d5a3d] text-[#2d5a3d] rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2d5a3d] focus:border-[#2d5a3d] bg-white"
+            >
+              <option value="name">Sort by Name</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Highest Rated</option>
+            </select>
+          </div>
+          
+          {/* Mobile Product Count */}
+          <div className="lg:hidden mb-4">
+            <p className="text-gray-700 font-medium text-sm">
+              Showing{" "}
+              <span className="text-[#2d5a3d] font-bold">
+                {filteredProducts.length}
+              </span>{" "}
+              of{" "}
+              <span className="text-[#2d5a3d] font-bold">
+                {allProducts.length}
+              </span>{" "}
+              products
+            </p>
           </div>
 
           {/* Products Grid */}
           <div className="flex-1">
-            {/* Sort and Results */}
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+            {/* Desktop Sort and Results */}
+            <div className="hidden lg:flex justify-between items-center mb-8">
               <p className="text-gray-700 font-medium">
                 Showing{" "}
                 <span className="text-[#2d5a3d] font-bold">
@@ -650,7 +676,7 @@ export function ProductsGrid() {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="border border-gray-300 rounded-lg p-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2d5a3d] focus:border-[#2d5a3d] bg-white shadow-sm"
+                className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2d5a3d] focus:border-[#2d5a3d] bg-white shadow-sm"
               >
                 <option value="name">Sort by Name</option>
                 <option value="price-low">Price: Low to High</option>

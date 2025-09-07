@@ -125,39 +125,77 @@ export function AcademySection() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {blogPosts.map((post) => (
-            <Link key={post.id} href={`/academy/${post.slug}`}>
-              <Card className="cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl bg-white border-0 rounded-2xl overflow-hidden group">
-                <CardContent className="p-0">
-                  <div className="aspect-video relative overflow-hidden">
-                    <Image
-                      src={post.image || "/placeholder.svg"}
-                      alt={post.title}
-                      fill
-                      className="object-cover w-full h-full group-hover:scale-105 transition-all duration-500"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                    <div className="absolute top-4 left-4">
-                      <Badge className="bg-[#4ade80] text-white hover:bg-[#22c55e] group-hover:scale-110 transition-transform duration-300">
-                        {post.category}
-                      </Badge>
-                    </div>
-                  </div>
+          {/* Mobile Horizontal Scroll */}
+          <div className="md:hidden overflow-x-auto pb-4">
+            <div className="flex gap-4 w-max">
+              {blogPosts.map((post) => (
+                <Link key={post.id} href={`/academy/${post.slug}`}>
+                  <Card className="w-80 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl bg-white border-0 rounded-2xl overflow-hidden group">
+                    <CardContent className="p-0">
+                      <div className="aspect-video relative overflow-hidden">
+                        <Image
+                          src={post.image || "/placeholder.svg"}
+                          alt={post.title}
+                          fill
+                          className="object-cover w-full h-full group-hover:scale-105 transition-all duration-500"
+                          sizes="320px"
+                        />
+                        <div className="absolute top-4 left-4">
+                          <Badge className="bg-[#4ade80] text-white hover:bg-[#22c55e] group-hover:scale-110 transition-transform duration-300">
+                            {post.category}
+                          </Badge>
+                        </div>
+                      </div>
 
-                  <div className="p-4 md:p-6">
-                    <h3 className="text-lg md:text-xl font-bold text-[#2d5a3d] mb-3 line-clamp-2 group-hover:text-[#1e3a2a] transition-colors duration-300">
-                      {post.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 group-hover:text-gray-700 transition-colors duration-300">
-                      {post.excerpt}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
-        </div>
+                      <div className="p-4">
+                        <h3 className="text-lg font-bold text-[#2d5a3d] mb-3 line-clamp-2 group-hover:text-[#1e3a2a] transition-colors duration-300">
+                          {post.title}
+                        </h3>
+                        <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 group-hover:text-gray-700 transition-colors duration-300">
+                          {post.excerpt}
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop Grid */}
+          <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {blogPosts.map((post) => (
+              <Link key={post.id} href={`/academy/${post.slug}`}>
+                <Card className="cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl bg-white border-0 rounded-2xl overflow-hidden group">
+                  <CardContent className="p-0">
+                    <div className="aspect-video relative overflow-hidden">
+                      <Image
+                        src={post.image || "/placeholder.svg"}
+                        alt={post.title}
+                        fill
+                        className="object-cover w-full h-full group-hover:scale-105 transition-all duration-500"
+                        sizes="(max-width: 1200px) 50vw, 33vw"
+                      />
+                      <div className="absolute top-4 left-4">
+                        <Badge className="bg-[#4ade80] text-white hover:bg-[#22c55e] group-hover:scale-110 transition-transform duration-300">
+                          {post.category}
+                        </Badge>
+                      </div>
+                    </div>
+
+                    <div className="p-4 md:p-6">
+                      <h3 className="text-lg md:text-xl font-bold text-[#2d5a3d] mb-3 line-clamp-2 group-hover:text-[#1e3a2a] transition-colors duration-300">
+                        {post.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 group-hover:text-gray-700 transition-colors duration-300">
+                        {post.excerpt}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
       </div>
     </section>
   );

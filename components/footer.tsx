@@ -164,28 +164,50 @@ export function Footer() {
               )}
 
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-semibold mb-3 text-white">
-                      Name *
-                    </label>
-                    <Input
-                      name="name"
-                      placeholder="Your name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60 focus:border-[#F9F4DF] focus:ring-[#F9F4DF] rounded-xl h-12 transition-all duration-300 hover:bg-white/15"
-                      disabled={isPending}
-                    />
-                    {getFieldError("name") && (
-                      <p className="mt-2 text-sm text-red-300">
-                        {getFieldError("name")}
-                      </p>
-                    )}
+                {/* Mobile Layout */}
+                <div className="sm:hidden space-y-4">
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-xs font-semibold mb-2 text-white">
+                        Name *
+                      </label>
+                      <Input
+                        name="name"
+                        placeholder="Your name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        className="bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60 focus:border-[#F9F4DF] focus:ring-[#F9F4DF] rounded-xl h-10 text-sm transition-all duration-300 hover:bg-white/15"
+                        disabled={isPending}
+                      />
+                      {getFieldError("name") && (
+                        <p className="mt-1 text-xs text-red-300">
+                          {getFieldError("name")}
+                        </p>
+                      )}
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold mb-2 text-white">
+                        Phone
+                      </label>
+                      <Input
+                        name="phone"
+                        placeholder="Your phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className="bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60 focus:border-[#F9F4DF] focus:ring-[#F9F4DF] rounded-xl h-10 text-sm transition-all duration-300 hover:bg-white/15"
+                        disabled={isPending}
+                      />
+                      {getFieldError("phone") && (
+                        <p className="mt-1 text-xs text-red-300">
+                          {getFieldError("phone")}
+                        </p>
+                      )}
+                    </div>
                   </div>
+                  
                   <div>
-                    <label className="block text-sm font-semibold mb-3 text-white">
+                    <label className="block text-xs font-semibold mb-2 text-white">
                       Email *
                     </label>
                     <Input
@@ -195,63 +217,129 @@ export function Footer() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60 focus:border-[#F9F4DF] focus:ring-[#F9F4DF] rounded-xl h-12 transition-all duration-300 hover:bg-white/15"
+                      className="bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60 focus:border-[#F9F4DF] focus:ring-[#F9F4DF] rounded-xl h-10 text-sm transition-all duration-300 hover:bg-white/15"
                       disabled={isPending}
                     />
                     {getFieldError("email") && (
-                      <p className="mt-2 text-sm text-red-300">
+                      <p className="mt-1 text-xs text-red-300">
                         {getFieldError("email")}
+                      </p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold mb-2 text-white">
+                      Message *
+                    </label>
+                    <Textarea
+                      name="message"
+                      placeholder="Tell us how we can help you and your pet..."
+                      rows={4}
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      className="bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60 focus:border-[#F9F4DF] focus:ring-[#F9F4DF] resize-none rounded-xl text-sm transition-all duration-300 hover:bg-white/15"
+                      disabled={isPending}
+                    />
+                    {getFieldError("message") && (
+                      <p className="mt-1 text-xs text-red-300">
+                        {getFieldError("message")}
                       </p>
                     )}
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-semibold mb-3 text-white">
-                    Phone Number
-                  </label>
-                  <Input
-                    name="phone"
-                    placeholder="Your phone number"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60 focus:border-[#F9F4DF] focus:ring-[#F9F4DF] rounded-xl h-12 transition-all duration-300 hover:bg-white/15"
-                    disabled={isPending}
-                  />
-                  {getFieldError("phone") && (
-                    <p className="mt-2 text-sm text-red-300">
-                      {getFieldError("phone")}
-                    </p>
-                  )}
-                </div>
+                {/* Desktop Layout */}
+                <div className="hidden sm:block space-y-6">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-semibold mb-3 text-white">
+                        Name *
+                      </label>
+                      <Input
+                        name="name"
+                        placeholder="Your name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        className="bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60 focus:border-[#F9F4DF] focus:ring-[#F9F4DF] rounded-xl h-12 transition-all duration-300 hover:bg-white/15"
+                        disabled={isPending}
+                      />
+                      {getFieldError("name") && (
+                        <p className="mt-2 text-sm text-red-300">
+                          {getFieldError("name")}
+                        </p>
+                      )}
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold mb-3 text-white">
+                        Email *
+                      </label>
+                      <Input
+                        name="email"
+                        type="email"
+                        placeholder="Your email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        className="bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60 focus:border-[#F9F4DF] focus:ring-[#F9F4DF] rounded-xl h-12 transition-all duration-300 hover:bg-white/15"
+                        disabled={isPending}
+                      />
+                      {getFieldError("email") && (
+                        <p className="mt-2 text-sm text-red-300">
+                          {getFieldError("email")}
+                        </p>
+                      )}
+                    </div>
+                  </div>
 
-                <div>
-                  <label className="block text-sm font-semibold mb-3 text-white">
-                    Message *
-                  </label>
-                  <Textarea
-                    name="message"
-                    placeholder="Tell us how we can help you and your pet..."
-                    rows={5}
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    className="bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60 focus:border-[#F9F4DF] focus:ring-[#F9F4DF] resize-none rounded-xl transition-all duration-300 hover:bg-white/15"
-                    disabled={isPending}
-                  />
-                  {getFieldError("message") && (
-                    <p className="mt-2 text-sm text-red-300">
-                      {getFieldError("message")}
-                    </p>
-                  )}
+                  <div>
+                    <label className="block text-sm font-semibold mb-3 text-white">
+                      Phone Number
+                    </label>
+                    <Input
+                      name="phone"
+                      placeholder="Your phone number"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60 focus:border-[#F9F4DF] focus:ring-[#F9F4DF] rounded-xl h-12 transition-all duration-300 hover:bg-white/15"
+                      disabled={isPending}
+                    />
+                    {getFieldError("phone") && (
+                      <p className="mt-2 text-sm text-red-300">
+                        {getFieldError("phone")}
+                      </p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold mb-3 text-white">
+                      Message *
+                    </label>
+                    <Textarea
+                      name="message"
+                      placeholder="Tell us how we can help you and your pet..."
+                      rows={5}
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      className="bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60 focus:border-[#F9F4DF] focus:ring-[#F9F4DF] resize-none rounded-xl transition-all duration-300 hover:bg-white/15"
+                      disabled={isPending}
+                    />
+                    {getFieldError("message") && (
+                      <p className="mt-2 text-sm text-red-300">
+                        {getFieldError("message")}
+                      </p>
+                    )}
+                  </div>
                 </div>
 
                 <Button
                   type="submit"
-                  size="lg"
+                  size="sm"
                   variant="hover"
                   disabled={isPending}
-                  className="w-full sm:w-auto transition-all duration-300 transform  rounded-full px-8 py-4 font-bold text-lg shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none group"
+                  className="w-full sm:w-auto transition-all duration-300 transform rounded-full px-6 py-3 sm:px-8 sm:py-4 font-bold text-sm sm:text-lg shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none group"
                 >
                   {isPending ? (
                     <>
@@ -281,68 +369,59 @@ export function Footer() {
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <div className="flex flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
                 <Button
                   asChild
-                  size="lg"
-                  className="bg-[#F9F4DF] text-[#0A3024] hover:bg-[#A7552E] hover:text-white transition-all duration-300 transform hover:scale-105 rounded-full px-8 py-4 font-bold text-lg shadow-xl group"
+                  size="sm"
+                  className="flex-1 sm:flex-none bg-[#F9F4DF] text-[#0A3024] hover:bg-[#A7552E] hover:text-white transition-all duration-300 transform hover:scale-105 rounded-full px-4 sm:px-8 py-2 sm:py-4 font-bold text-sm sm:text-lg shadow-xl group"
                 >
                   <a href="/products">
                     View Products
-                    <IoIosArrowDropright className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    <IoIosArrowDropright className="ml-1 sm:ml-2 h-4 sm:h-5 w-4 sm:w-5 transition-transform group-hover:translate-x-1" />
                   </a>
                 </Button>
                 <Button
                   asChild
-                  size="lg"
+                  size="sm"
                   variant="outline"
-                  className="border-[#F9F4DF] text-[#0A3024] hover:bg-[#F9F4DF] hover:text-[#0A3024] transition-all duration-300 transform hover:scale-105 rounded-full px-8 py-4 font-bold text-lg shadow-xl group"
+                  className="flex-1 sm:flex-none bg-[#F9F4DF] text-[#0A3024] hover:bg-[#A7552E] hover:text-white transition-all duration-300 transform hover:scale-105 rounded-full px-4 sm:px-8 py-2 sm:py-4 font-bold text-sm sm:text-lg shadow-xl group"
                 >
                   <a href="/about">
                     Learn More
-                    <IoIosArrowDropright className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    <IoIosArrowDropright className="ml-1 sm:ml-2 h-4 sm:h-5 w-4 sm:w-5 transition-transform group-hover:translate-x-1" />
                   </a>
                 </Button>
               </div>
 
-              {/* Contact Info - Simplified */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 mt-8">
-                <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
-                  <div className="flex items-start gap-3">
-                    <MapPin className="w-5 h-5 text-[#F9F4DF]" />
-                    <div className="flex flex-row items-start gap-3">
-                      <p className="text-white font-medium">Address</p>
-                      <a
-                        href="https://maps.app.goo.gl/r6jFjGYrDzwUVGxB8"
-                        className="text-[#F9F4DF] hover:text-white transition-colors duration-300"
-                      >
-                        32H Mourad Street, Giza Governorate, Egypt. PO 12511
-                      </a>
-                    </div>
+              {/* Contact Info */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-white/20 mt-8">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <MapPin className="w-5 h-5 text-[#F9F4DF] flex-shrink-0" />
+                    <a
+                      href="https://maps.app.goo.gl/r6jFjGYrDzwUVGxB8"
+                      className="text-white hover:text-[#F9F4DF] transition-colors duration-300 text-sm sm:text-base"
+                    >
+                      32H Mourad Street, Giza Governorate, Egypt. PO 12511
+                    </a>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <Mail className="w-5 h-5 text-[#F9F4DF]" />
-                    <div className="flex flex-row items-start gap-3">
-                      <p className="text-white font-medium">Email Us</p>
-                      <a
-                        href="mailto:Info@myanimalife.com"
-                        className="text-[#F9F4DF] hover:text-white transition-colors duration-300"
-                      >
-                        Info@myanimalife.com
-                      </a>
-                    </div>
+                  <div className="flex items-center gap-3">
+                    <Mail className="w-5 h-5 text-[#F9F4DF] flex-shrink-0" />
+                    <a
+                      href="mailto:Info@myanimalife.com"
+                      className="text-white hover:text-[#F9F4DF] transition-colors duration-300 text-sm sm:text-base"
+                    >
+                      Info@myanimalife.com
+                    </a>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <Phone className="w-5 h-5 text-[#F9F4DF]" />
-                    <div className="flex flex-row items-start gap-3">
-                      <p className="text-white font-medium">Call Us</p>
-                      <a
-                        href="tel:+201222294101"
-                        className="text-[#F9F4DF] hover:text-white transition-colors duration-300"
-                      >
-                        +20 (122) 229-4101
-                      </a>
-                    </div>
+                  <div className="flex items-center gap-3">
+                    <Phone className="w-5 h-5 text-[#F9F4DF] flex-shrink-0" />
+                    <a
+                      href="tel:+201222294101"
+                      className="text-white hover:text-[#F9F4DF] transition-colors duration-300 text-sm sm:text-base"
+                    >
+                      +20 (122) 229-4101
+                    </a>
                   </div>
                 </div>
               </div>

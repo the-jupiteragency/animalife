@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { Header } from "@/components/header";
 import { Button } from "@/components/ui/button";
 import { AcademyPosts } from "@/app/data/academy-posts";
 import ReactMarkdown from "react-markdown";
@@ -11,19 +10,24 @@ import remarkGfm from "remark-gfm";
 const blogPosts = AcademyPosts;
 
 export default function PostDetailPage({ params }: { params: { id: string } }) {
-  const post = blogPosts.find((p) => p.slug === params.id || p.id.toString() === params.id) || blogPosts[0];
+  const post =
+    blogPosts.find(
+      (p) => p.slug === params.id || p.id.toString() === params.id
+    ) || blogPosts[0];
 
   // Get next post for "read more" functionality
-  const currentIndex = blogPosts.findIndex((p) => p.slug === params.id || p.id.toString() === params.id);
-  const nextPost = currentIndex < blogPosts.length - 1 ? blogPosts[currentIndex + 1] : blogPosts[0];
+  const currentIndex = blogPosts.findIndex(
+    (p) => p.slug === params.id || p.id.toString() === params.id
+  );
+  const nextPost =
+    currentIndex < blogPosts.length - 1
+      ? blogPosts[currentIndex + 1]
+      : blogPosts[0];
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <Header />
-
       {/* Add top padding to account for fixed header */}
-      <div className="pt-24">
+      <div className="pt-1 md:pt-16">
         {/* Navigation */}
         <div className="bg-white border-b">
           <div className="container mx-auto px-4 py-4">
