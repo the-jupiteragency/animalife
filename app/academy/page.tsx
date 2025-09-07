@@ -33,8 +33,8 @@ export default function AcademyPage() {
           />
 
           {/* Mobile Title Overlay */}
-          <div className="absolute top-4 left-4 w-3/4">
-            <h1 className="text-xl font-bold text-white leading-tight">
+          <div className="absolute top-6 left-4 w-3/4">
+            <h1 className="text-2xl font-bold text-white leading-tight">
               Welcome to AnimaLife Academy!
             </h1>
           </div>

@@ -22,13 +22,7 @@ const productCards = [
     image: "/aboutcard1.webp",
     comingSoon: true,
   },
-  {
-    id: "canned-food",
-    title: "Canned Food",
-    subtitle: "High-moisture, premium wet food options.",
-    image: "/aboutcard2.webp",
-    comingSoon: true,
-  },
+
   {
     id: "fresh-food",
     title: "Fresh Food",
@@ -79,8 +73,8 @@ export function AboutUsPage() {
           />
 
           {/* Mobile Title Overlay */}
-          <div className="absolute top-14 left-4">
-            <h1 className="text-xl font-bold text-white leading-tight">
+          <div className="absolute top-7 left-4">
+            <h1 className="text-2xl font-bold text-white leading-tight">
               Behind the Bowl:
               <br />
               Science You Can Trust
@@ -702,11 +696,11 @@ export function AboutUsPage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 xl:gap-8">
+          <div className="flex justify-center gap-8 max-w-2xl mx-auto">
             {productCards.map((card) => (
               <Card
                 key={card.id}
-                className="relative overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 group rounded-xl sm:rounded-2xl"
+                className="relative overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 group rounded-xl sm:rounded-2xl w-44 sm:w-56 lg:w-64 flex-shrink-0"
                 onMouseEnter={() => setHoveredCard(card.id)}
                 onMouseLeave={() => setHoveredCard(null)}
               >
@@ -725,7 +719,7 @@ export function AboutUsPage() {
 
                     <div className="relative z-10 h-full flex flex-col">
                       {/* Minimal text content */}
-                      <div className="p-2 sm:p-3 md:p-4 lg:p-6 flex-shrink-0">
+                      <div className="p-4 sm:p-3 md:p-4 lg:p-6 flex-shrink-0">
                         <h3 className="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-white mb-1 leading-tight">
                           {card.title}
                         </h3>
@@ -746,7 +740,7 @@ export function AboutUsPage() {
                       <div className="relative flex-1 flex items-end justify-center pb-1 sm:pb-2 overflow-hidden">
                         <div
                           className={`
-              relative w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 lg:w-52 lg:h-52 xl:w-60 xl:h-60
+              relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36
               transition-all duration-700 ease-out
               ${
                 hoveredCard === card.id

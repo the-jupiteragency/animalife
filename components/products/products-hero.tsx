@@ -23,8 +23,8 @@ export function ProductsHero() {
         />
 
         {/* Mobile Title Overlay */}
-        <div className="absolute top-10 left-4">
-          <h1 className="text-xl font-bold text-white leading-tight">
+        <div className="absolute top-14 left-4">
+          <h1 className="text-2xl font-bold text-white leading-tight">
             Our Products
           </h1>
         </div>

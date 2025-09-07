@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
+import { PiTiktokLogo } from "react-icons/pi";
 import {
   Facebook,
   Twitter,
@@ -205,7 +206,7 @@ export function Footer() {
                       )}
                     </div>
                   </div>
-                  
+
                   <div>
                     <label className="block text-xs font-semibold mb-2 text-white">
                       Email *
@@ -458,23 +459,18 @@ export function Footer() {
                 {[
                   {
                     Icon: Facebook,
-                    href: "https://facebook.com/animalife",
+                    href: "https://web.facebook.com/AnimaLife.PetFood/",
                     label: "Facebook",
                   },
                   {
-                    Icon: Twitter,
-                    href: "https://twitter.com/animalife",
-                    label: "Twitter",
+                    Icon: PiTiktokLogo,
+                    href: "https://www.tiktok.com/@animalife.petfood/",
+                    label: "TikTok",
                   },
                   {
                     Icon: Instagram,
-                    href: "https://instagram.com/animalife",
+                    href: "https://www.instagram.com/animalife.petfood/",
                     label: "Instagram",
-                  },
-                  {
-                    Icon: Youtube,
-                    href: "https://youtube.com/animalife",
-                    label: "YouTube",
                   },
                 ].map(({ Icon, href, label }) => (
                   <a

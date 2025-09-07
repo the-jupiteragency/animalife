@@ -29,15 +29,15 @@ import {
 } from "lucide-react";
 
 const dogCategories = [
-  {
-    id: "puppy",
-    title: "Puppy",
-    dogImage: "/dog-1.webp",
-    cardBg: "/card1-bg.webp",
-    hoverColor: "from-[#E8DCC0] to-[#D4C4A8]",
-    defaultColor: "from-[#F5F1E8] to-[#E8DCC0]",
-    description: "Coming Soon",
-  },
+  // {
+  //   id: "puppy",
+  //   title: "Puppy",
+  //   dogImage: "/dog-1.webp",
+  //   cardBg: "/card1-bg.webp",
+  //   hoverColor: "from-[#E8DCC0] to-[#D4C4A8]",
+  //   defaultColor: "from-[#F5F1E8] to-[#E8DCC0]",
+  //   description: "Coming Soon",
+  // },
   {
     id: "small-adult",
     title: "Small Breed Adult",
@@ -136,7 +136,7 @@ export function DogMatchSection() {
             {/* Mobile: Horizontal Slider */}
             <div className="block lg:hidden">
               <div
-                className="flex gap-3 overflow-x-auto scrollbar-hide pb-4"
+                className="flex gap-3 justify-start overflow-x-auto scrollbar-hide pb-4 px-3"
                 style={{
                   scrollbarWidth: "none",
                   msOverflowStyle: "none",
@@ -156,10 +156,10 @@ export function DogMatchSection() {
             </div>
 
             {/* Desktop: Auto-sliding + Manual scroll */}
-            <div className="hidden lg:block w-screen max-w-none relative left-1/2 right-1/2 -mx-[50vw] px-0">
+            <div className="hidden lg:block">
               <div
                 ref={scrollContainerRef}
-                className="flex gap-6 overflow-x-auto scrollbar-hide pb-4 px-12"
+                className="flex gap-6 justify-center overflow-x-auto scrollbar-hide pb-4 px-12"
                 style={{
                   scrollbarWidth: "none",
                   msOverflowStyle: "none",
