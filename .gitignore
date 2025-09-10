@@ -27,8 +27,8 @@ yarn-error.log*
 next-env.d.ts
 
 # IDE and history
-.amazonq/
-.history/
+/.amazonq
+/.history
 # next-video
 videos/*
 !videos/*.json
