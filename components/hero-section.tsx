@@ -14,7 +14,7 @@ const textSlides = [
   { start: 0, end: 5, heading: "Because Every Bond Deserves the Best" },
   { start: 5, end: 11, heading: "Care You Give.\nScience We Perfect" },
   { start: 11, end: 15, heading: "Energy You Can See" },
-  { start: 15, end: 19, heading: "Because Every Moment is Everything" },
+  { start: 15, end: 19, heading: "Because Every Moment Counts" },
 ];
 
 export function HeroSection() {
