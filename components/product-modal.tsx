@@ -13,6 +13,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Check, ShieldCheck, Microscope, Handshake } from "lucide-react";
 import Image from "next/image";
+import { Locale } from "@/lib/i18n/config";
+import {
+  t,
+  translateSize,
+  translateWeight,
+  getProductName,
+  getProductBenefits,
+} from "@/lib/i18n/translations";
 
 interface Product {
   id: number;
@@ -40,9 +48,15 @@ interface ProductModalProps {
   product: Product | null;
   isOpen: boolean;
   onClose: () => void;
+  locale?: Locale;
 }
 
-export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
+export function ProductModal({
+  product,
+  isOpen,
+  onClose,
+  locale = "en",
+}: ProductModalProps) {
   const [currentImage, setCurrentImage] = useState("");
   const [showMagnify, setShowMagnify] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -116,7 +130,7 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
             {/* Front/Back Image Toggle */}
             <div className="flex gap-2 overflow-x-auto pb-2">
               <div
-                className={`flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 bg-white rounded border-2 cursor-pointer overflow-hidden transition-all ${
+                className={`flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 bg-white rounded border-2  overflow-hidden transition-all ${
                   currentImage === product.frontImage
                     ? "border-[#2d5a3d]"
                     : "border-transparent hover:border-gray-300"
@@ -134,7 +148,7 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
                 </div>
               </div>
               <div
-                className={`flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 bg-white rounded border-2 cursor-pointer overflow-hidden transition-all ${
+                className={`flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 bg-white rounded border-2  overflow-hidden transition-all ${
                   currentImage === product.backImage
                     ? "border-[#2d5a3d]"
                     : "border-transparent hover:border-gray-300"
@@ -156,31 +170,34 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
 
           {/* Product Details */}
           <div className="flex-1 overflow-y-auto">
-            <div className="p-3 sm:p-4 lg:p-6">
+            <div
+              className={`p-3 sm:p-4 lg:p-6 ${locale === "ar" ? "text-right" : "text-left"}`}
+              dir={locale === "ar" ? "rtl" : "ltr"}
+            >
               <DialogHeader className="mb-3 sm:mb-4">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <DialogTitle className="text-lg sm:text-xl lg:text-2xl font-bold text-[#2d5a3d] mb-2 leading-tight">
-                      {product.name}
+                      {getProductName(product.name, locale)}
                     </DialogTitle>
                     <div className="flex flex-wrap items-center gap-2 mb-3 sm:mb-4">
                       <Badge
                         variant="outline"
                         className="text-[#2d5a3d] border-[#2d5a3d] text-xs sm:text-sm"
                       >
-                        {product.product}
+                        {t(locale, "products.productType")}
                       </Badge>
                       <Badge
                         variant="outline"
                         className="text-[#2d5a3d] border-[#2d5a3d] text-xs sm:text-sm"
                       >
-                        {product.category}
+                        {getProductName(product.category, locale)}
                       </Badge>
                       <Badge
                         variant="outline"
                         className="text-[#2d5a3d] border-[#2d5a3d] text-xs sm:text-sm"
                       >
-                        1-7 Years
+                        {t(locale, "products.ageRange")}
                       </Badge>
                     </div>
                   </div>
@@ -199,12 +216,12 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
               {/* Product Size Display */}
               <div className="mb-4 sm:mb-6 w-1/3">
                 <h4 className="font-semibold mb-3 text-[#2d5a3d] text-sm sm:text-base">
-                  Package Size:
+                  {t(locale, "products.modal.packageSize")}
                 </h4>
                 <Card className="border-[#2d5a3d] bg-[#2d5a3d]/5 shadow-md">
                   <CardContent className="p-2 sm:p-4 text-center">
                     <div className="font-semibold text-[#2d5a3d] text-sm sm:text-base">
-                      {product.size}
+                      {translateSize(product.size, locale)}
                     </div>
                     <div className="text-xs sm:text-sm text-[#2d5a3d] font-medium">
                       {product.price}
@@ -217,21 +234,15 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
               <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
                 <div className="flex items-center gap-2 text-xs sm:text-sm">
                   <Microscope className="w-3 h-3 sm:w-4 sm:h-4 text-[#2d5a3d] flex-shrink-0" />
-                  <span>
-                    Carefully developed by certified pet nutrition experts.
-                  </span>
+                  <span>{t(locale, "products.modal.expertDeveloped")}</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs sm:text-sm">
                   <ShieldCheck className="w-3 h-3 sm:w-4 sm:h-4 text-[#2d5a3d] flex-shrink-0" />
-                  <span>
-                    Tested for safety, quality, and nutritional accuracy.
-                  </span>
+                  <span>{t(locale, "products.modal.tested")}</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs sm:text-sm">
                   <Handshake className="w-3 h-3 sm:w-4 sm:h-4 text-[#2d5a3d] flex-shrink-0" />
-                  <span>
-                    Trusted ingredients, proven to nourish and protect.
-                  </span>
+                  <span>{t(locale, "products.modal.trustedIngredients")}</span>
                 </div>
               </div>
 
@@ -241,48 +252,69 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
               <Tabs defaultValue="details" className="w-full">
                 <TabsList className="grid w-full grid-cols-3 h-8 sm:h-10">
                   <TabsTrigger value="details" className="text-xs sm:text-sm">
-                    Details
+                    {t(locale, "products.modal.tabs.details")}
                   </TabsTrigger>
                   <TabsTrigger
                     value="ingredients"
                     className="text-xs sm:text-sm"
                   >
-                    Ingredients
+                    {t(locale, "products.modal.tabs.ingredients")}
                   </TabsTrigger>
                   <TabsTrigger value="feeding" className="text-xs sm:text-sm">
-                    Feeding
+                    {t(locale, "products.modal.tabs.feeding")}
                   </TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="details" className="mt-3 sm:mt-4">
-                  <div className="space-y-3 sm:space-y-4">
+                  <div
+                    className={`space-y-3 sm:space-y-4 ${locale === "ar" ? "text-right" : "text-left"}`}
+                    dir={locale === "ar" ? "rtl" : "ltr"}
+                  >
                     <h4 className="font-semibold text-[#2d5a3d] text-sm sm:text-base">
-                      Key Benefits:
+                      {t(locale, "products.modal.keyBenefits")}
                     </h4>
                     <div className="grid grid-cols-1 gap-2">
-                      {product.keyBenefits?.map((benefit, index) => (
-                        <div key={index} className="flex items-center gap-2">
-                          <Check className="w-3 h-3 sm:w-4 sm:h-4 text-[#2d5a3d] flex-shrink-0" />
-                          <span className="text-xs sm:text-sm">{benefit}</span>
-                        </div>
-                      )) || (
-                        <div className="text-xs sm:text-sm">
-                          No benefits data available
-                        </div>
-                      )}
+                      {(() => {
+                        const benefits = getProductBenefits(
+                          product.category,
+                          locale
+                        );
+                        return benefits.length > 0 ? (
+                          benefits.map((benefit, index) => (
+                            <div
+                              key={index}
+                              className={`flex items-center gap-2`}
+                            >
+                              <Check className="w-3 h-3 sm:w-4 sm:h-4 text-[#2d5a3d] flex-shrink-0" />
+                              <span className="text-xs sm:text-sm">
+                                {benefit}
+                              </span>
+                            </div>
+                          ))
+                        ) : (
+                          <div className="text-xs sm:text-sm">
+                            {t(locale, "products.modal.noBenefits")}
+                          </div>
+                        );
+                      })()}
                     </div>
                   </div>
                 </TabsContent>
 
                 <TabsContent value="ingredients" className="mt-4">
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-2 mb-4">
+                  <div
+                    className={`space-y-3 sm:space-y-4 ${locale === "ar" ? "text-right" : "text-left"}`}
+                    dir={locale === "ar" ? "rtl" : "ltr"}
+                  >
+                    <div className={`flex items-center gap-2 mb-4 `}>
                       <div className="w-1 h-6 bg-[#2d5a3d] rounded-full"></div>
                       <h4 className="font-bold text-[#2d5a3d] text-base">
-                        Premium Ingredients
+                        {t(locale, "products.modal.premiumIngredients")}
                       </h4>
                     </div>
-                    <div className="max-h-96 overflow-y-auto pr-2 space-y-6 custom-scrollbar">
+                    <div
+                      className={`max-h-96 overflow-y-auto space-y-6 custom-scrollbar ${locale === "ar" ? "pl-2" : "pr-2"}`}
+                    >
                       {(product.ingredients &&
                         Array.isArray(product.ingredients) &&
                         product.ingredients.length > 0) ||
@@ -291,21 +323,19 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
                         product.ingredient.length > 0) ? (
                         <div className="bg-gradient-to-r from-gray-50 to-white rounded-xl p-4 border border-gray-100 shadow-sm">
                           <ul className="space-y-2">
-                            {(
-                              product.ingredients ??
-                              product.ingredient ??
-                              []
-                            ).map((ingredientItem, index) => (
-                              <li
-                                key={index}
-                                className="flex items-center gap-2"
-                              >
-                                <div className="w-2 h-2 bg-[#2d5a3d] rounded-full flex-shrink-0"></div>
-                                <span className="text-sm text-gray-700">
-                                  {ingredientItem}
-                                </span>
-                              </li>
-                            ))}
+                            {t(locale, "products.ingredients").map(
+                              (ingredientItem: string, index: number) => (
+                                <li
+                                  key={index}
+                                  className={`flex items-center gap-2 `}
+                                >
+                                  <div className="w-2 h-2 bg-[#2d5a3d] rounded-full flex-shrink-0"></div>
+                                  <span className="text-sm text-gray-700">
+                                    {ingredientItem}
+                                  </span>
+                                </li>
+                              )
+                            )}
                           </ul>
                         </div>
                       ) : (
@@ -326,7 +356,7 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
                             </svg>
                           </div>
                           <p className="text-gray-500 font-medium">
-                            No ingredients data available
+                            {t(locale, "products.modal.noIngredients")}
                           </p>
                         </div>
                       )}
@@ -351,9 +381,12 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
                 </TabsContent>
 
                 <TabsContent value="feeding" className="mt-3 sm:mt-4">
-                  <div className="space-y-3 sm:space-y-4">
+                  <div
+                    className={`space-y-3 sm:space-y-4 ${locale === "ar" ? "text-right" : "text-left"}`}
+                    dir={locale === "ar" ? "rtl" : "ltr"}
+                  >
                     <h4 className="font-semibold text-[#2d5a3d] text-sm sm:text-base">
-                      Daily Feeding Guide:
+                      {t(locale, "products.modal.dailyFeedingGuide")}
                     </h4>
                     <div className="space-y-2">
                       {product.feeding?.map((guide, index) => (
@@ -361,14 +394,18 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
                           key={index}
                           className="flex justify-between items-center py-2 border-b border-gray-100 text-xs sm:text-sm"
                         >
-                          <span className="font-medium">{guide.weight}</span>
+                          <span className="font-medium">
+                            {translateWeight(guide.weight, locale)}
+                          </span>
                           <span className="text-[#2d5a3d] font-medium">
-                            {guide.daily}
+                            {translateWeight(guide.daily, locale)}{" "}
+                            {t(locale, "products.units.daily")}, {guide.meals}{" "}
+                            {t(locale, "products.units.meals")}
                           </span>
                         </div>
                       )) || (
                         <div className="text-xs sm:text-sm">
-                          No feeding guide available
+                          {t(locale, "products.modal.noFeeding")}
                         </div>
                       )}
                     </div>

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -60,6 +61,27 @@
     --chart-5: 340 75% 55%;
   }
 }
+@layer base {
+  /* Default cursor for the whole site */
+  html,
+  body {
+    @apply cursor-[url('/cursor/cursor1.png')_16_16,auto];
+  }
+
+  /* Cursor when hovering clickable things */
+  a,
+  button,
+  [role="button"],
+  input[type="button"],
+  input[type="submit"] {
+    @apply cursor-[url('/cursor/cursor2.png')_16_16,pointer];
+  }
+
+  /* Cursor when dragging (mouse active state) */
+  :active {
+    @apply cursor-[url('/cursor/cursor2.png')_16_16,grabbing];
+  }
+}
 
 @layer base {
   * {
@@ -67,10 +89,39 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-family:
+      "Poppins",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      "Roboto",
+      "Oxygen",
+      "Ubuntu",
+      "Cantarell",
+      "Fira Sans",
+      "Droid Sans",
+      "Helvetica Neue",
+      sans-serif;
     font-feature-settings:
       "rlig" 1,
       "calt" 1;
+  }
+
+  [dir="rtl"] body {
+    font-family:
+      "Cairo",
+      "Poppins",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      "Roboto",
+      "Oxygen",
+      "Ubuntu",
+      "Cantarell",
+      "Fira Sans",
+      "Droid Sans",
+      "Helvetica Neue",
+      sans-serif;
   }
 }
 
@@ -180,6 +231,47 @@
   input,
   textarea,
   select {
-    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-family:
+      "Poppins",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      "Roboto",
+      "Oxygen",
+      "Ubuntu",
+      "Cantarell",
+      "Fira Sans",
+      "Droid Sans",
+      "Helvetica Neue",
+      sans-serif;
+  }
+
+  [dir="rtl"] h1,
+  [dir="rtl"] h2,
+  [dir="rtl"] h3,
+  [dir="rtl"] h4,
+  [dir="rtl"] h5,
+  [dir="rtl"] h6,
+  [dir="rtl"] p,
+  [dir="rtl"] span,
+  [dir="rtl"] div,
+  [dir="rtl"] button,
+  [dir="rtl"] input,
+  [dir="rtl"] textarea,
+  [dir="rtl"] select {
+    font-family:
+      "Cairo",
+      "Poppins",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      "Roboto",
+      "Oxygen",
+      "Ubuntu",
+      "Cantarell",
+      "Fira Sans",
+      "Droid Sans",
+      "Helvetica Neue",
+      sans-serif;
   }
 }

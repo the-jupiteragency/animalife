@@ -3,18 +3,17 @@
 import { useState, useRef, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { IoIosArrowForward } from "react-icons/io";
 
 import { ProductModal } from "./product-modal";
 import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "./ui/badge";
 
-const productCategories = [
-  "All Products",
-  "Small Breed Adult",
-  "Medium & Large Breed Adult",
-  "Giant Breed Adult",
+const getProductCategories = (locale: Locale) => [
+  t(locale, "products.categories.all"),
+  t(locale, "products.categories.small"),
+  t(locale, "products.categories.medium"),
+  t(locale, "products.categories.giant"),
 ];
 
 // const ingredient = [
@@ -101,8 +100,8 @@ const products = [
   // Medium & Large Breed Products
   {
     id: 1,
-    name: "Medium & Large Breed Adult",
-    category: "Medium & Large Breed Adult",
+    name: "Medium & Large Breed Adults",
+    category: "Medium & Large Breed Adults",
     product: "Dog Food",
     size: "1kg",
     price: "",
@@ -122,43 +121,15 @@ const products = [
     keyBenefits: [
       "Suitable for many breeds",
       "Promotes well-chewed bites with less mess and fewer crumbs",
-      "Ideal for adult medium and large dogs",
-      "Supports strong bones and healthy joints",
-      "Aids digestion and overall wellbeing",
-    ],
-  },
-  {
-    id: 2,
-    name: "Medium & Large Breed Adult",
-    category: "Medium & Large Breed Adult",
-    product: "Dog Food",
-    size: "3kg",
-    price: "",
-    frontImage: "/dog-packages/medium-f-3kg.webp",
-    backImage: "/dog-packages/medium-b-3kg.webp",
-    hoverImage: "/medium&larg.webp",
-    feeding: [
-      { weight: "10-15 kg", daily: "195-274g", meals: "2" },
-      { weight: "15-20 kg", daily: "274-353g", meals: "2" },
-      { weight: "20-25 kg", daily: "353-432g", meals: "2" },
-      { weight: "25-30 kg", daily: "432-577g", meals: "2" },
-      { weight: "30-35 kg", daily: "577-590g", meals: "2" },
-      { weight: "35-40 kg", daily: "590-670g", meals: "2" },
-      { weight: "40-45 kg", daily: "670-748g", meals: "2" },
-    ],
-    ingredients: ingredient,
-    keyBenefits: [
-      "Suitable for many breeds",
-      "Promotes well-chewed bites with less mess and fewer crumbs",
-      "Ideal for adult medium and large dogs",
+      "Ideal for adults medium and large dogs",
       "Supports strong bones and healthy joints",
       "Aids digestion and overall wellbeing",
     ],
   },
   {
     id: 3,
-    name: "Medium & Large Breed Adult",
-    category: "Medium & Large Breed Adult",
+    name: "Medium & Large Breed Adults",
+    category: "Medium & Large Breed Adults",
     product: "Dog Food",
     size: "5kg",
     price: "",
@@ -178,15 +149,15 @@ const products = [
     keyBenefits: [
       "Suitable for many breeds",
       "Promotes well-chewed bites with less mess and fewer crumbs",
-      "Ideal for adult medium and large dogs",
+      "Ideal for adults medium and large dogs",
       "Supports strong bones and healthy joints",
       "Aids digestion and overall wellbeing",
     ],
   },
   {
     id: 4,
-    name: "Medium & Large Breed Adult",
-    category: "Medium & Large Breed Adult",
+    name: "Medium & Large Breed Adults",
+    category: "Medium & Large Breed Adults",
     product: "Dog Food",
     size: "10kg",
     price: "",
@@ -206,19 +177,49 @@ const products = [
     keyBenefits: [
       "Suitable for many breeds",
       "Promotes well-chewed bites with less mess and fewer crumbs",
-      "Ideal for adult medium and large dogs",
+      "Ideal for adults medium and large dogs",
       "Supports strong bones and healthy joints",
       "Aids digestion and overall wellbeing",
     ],
   },
-  // Small Breed Products
+  // Coming Soon Products
+  {
+    id: 2,
+    name: "Medium & Large Breed Adults",
+    category: "Medium & Large Breed Adults",
+    product: "Dog Food",
+    size: "3kg",
+    price: "",
+    comingSoon: true,
+    frontImage: "/dog-packages/medium-f-3kg.webp",
+    backImage: "/dog-packages/medium-b-3kg.webp",
+    hoverImage: "/medium&larg.webp",
+    feeding: [
+      { weight: "10-15 kg", daily: "195-274g", meals: "2" },
+      { weight: "15-20 kg", daily: "274-353g", meals: "2" },
+      { weight: "20-25 kg", daily: "353-432g", meals: "2" },
+      { weight: "25-30 kg", daily: "432-577g", meals: "2" },
+      { weight: "30-35 kg", daily: "577-590g", meals: "2" },
+      { weight: "35-40 kg", daily: "590-670g", meals: "2" },
+      { weight: "40-45 kg", daily: "670-748g", meals: "2" },
+    ],
+    ingredients: ingredient,
+    keyBenefits: [
+      "Suitable for many breeds",
+      "Promotes well-chewed bites with less mess and fewer crumbs",
+      "Ideal for adults medium and large dogs",
+      "Supports strong bones and healthy joints",
+      "Aids digestion and overall wellbeing",
+    ],
+  },
   {
     id: 5,
-    name: "Small Breed Adult",
-    category: "Small Breed Adult",
+    name: "Small Breed Adults",
+    category: "Small Breed Adults",
     product: "Dog Food",
     size: "1kg",
     price: "",
+    comingSoon: true,
     frontImage: "/dog-packages/small-f-1kg.webp",
     backImage: "/dog-packages/small-b-1kg.webp",
     hoverImage: "/small.webp",
@@ -237,11 +238,12 @@ const products = [
   },
   {
     id: 6,
-    name: "Small Breed Adult",
-    category: "Small Breed Adult",
+    name: "Small Breed Adults",
+    category: "Small Breed Adults",
     product: "Dog Food",
     size: "3kg",
     price: "",
+    comingSoon: true,
     frontImage: "/dog-packages/small-f-3kg.webp",
     backImage: "/dog-packages/small-b-3kg.webp",
     hoverImage: "/small.webp",
@@ -260,11 +262,12 @@ const products = [
   },
   {
     id: 7,
-    name: "Small Breed Adult",
-    category: "Small Breed Adult",
+    name: "Small Breed Adults",
+    category: "Small Breed Adults",
     product: "Dog Food",
     size: "5kg",
     price: "",
+    comingSoon: true,
     frontImage: "/dog-packages/small-f-5kg.webp",
     backImage: "/dog-packages/small-b-5kg.webp",
     hoverImage: "/small.webp",
@@ -281,15 +284,14 @@ const products = [
       "Crunchy texture supports dental health via plaque & tartar control",
     ],
   },
-
-  // Giant Breed Products
   {
     id: 8,
-    name: "Giant Breed Adult",
-    category: "Giant Breed Adult",
+    name: "Giant Breed Adults",
+    category: "Giant Breed Adults",
     product: "Dog Food",
     size: "10kg",
     price: "",
+    comingSoon: true,
     frontImage: "/dog-packages/gaint-f-10kg.webp",
     backImage: "/dog-packages/gaint-b-10kg.webp",
     hoverImage: "/gaint.webp",
@@ -310,8 +312,13 @@ const products = [
   },
 ];
 
-export function ProductsSection() {
-  const [activeCategory, setActiveCategory] = useState("All Products");
+import { Locale } from "@/lib/i18n/config";
+import { t, translateSize, getProductName, getProductBenefits } from "@/lib/i18n/translations";
+import { ChevronRight } from "lucide-react";
+
+export function ProductsSection({ locale }: { locale: Locale }) {
+  const productCategories = getProductCategories(locale);
+  const [activeCategory, setActiveCategory] = useState(productCategories[0]);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -322,9 +329,19 @@ export function ProductsSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const filteredProducts =
-    activeCategory === "All Products"
+    activeCategory === t(locale, "products.categories.all")
       ? products
-      : products.filter((product) => product.category === activeCategory);
+      : products.filter((product) => {
+          const translatedCategory =
+            product.category === "Small Breed Adults"
+              ? t(locale, "products.categories.small")
+              : product.category === "Medium & Large Breed Adults"
+                ? t(locale, "products.categories.medium")
+                : product.category === "Giant Breed Adults"
+                  ? t(locale, "products.categories.giant")
+                  : product.category;
+          return translatedCategory === activeCategory;
+        });
 
   // Auto-slide functionality
   useEffect(() => {
@@ -366,19 +383,18 @@ export function ProductsSection() {
         {/* Header - Mobile responsive with smaller font and justified layout */}
         <div className="flex flex-row items-center justify-between mb-6 md:mb-12 gap-2">
           <h2 className="text-xs sm:text-sm md:text-2xl lg:text-3xl font-bold text-[#0A3024] leading-tight flex-1">
-            Our Products{" "}
-            <span className="text-gray-600 font-light hidden sm:inline">
-              - Find Your Pet's Perfect Match
-            </span>
+            {t(locale, "products.title")}
           </h2>
           <Button
             asChild
             variant="ghost"
             className="text-[#2d5a3d] hover:text-[#1e3a2a] font-medium p-1 sm:p-2 text-xs sm:text-sm"
           >
-            <Link href="/products" className="flex items-center">
-              <span className="whitespace-nowrap">View more</span>
-              <IoIosArrowForward className="ml-1 sm:ml-2 h-3 w-3 sm:h-4 sm:w-4" />
+            <Link href={`/${locale}/products`} className="flex items-center">
+              <span className="whitespace-nowrap">
+                {t(locale, "products.viewMore")}
+              </span>
+              <ChevronRight className={`h-3 w-3 sm:h-4 sm:w-4 ${locale === 'ar' ? 'mr-1 sm:mr-2 rotate-180' : 'ml-1 sm:ml-2'}`} />
             </Link>
           </Button>
         </div>
@@ -434,6 +450,7 @@ export function ProductsSection() {
                   product={product}
                   onClick={() => openProductModal(product)}
                   isMobile={true}
+                  locale={locale}
                 />
               ))}
             </div>
@@ -455,6 +472,7 @@ export function ProductsSection() {
                   product={product}
                   onClick={() => openProductModal(product)}
                   isMobile={false}
+                  locale={locale}
                 />
               ))}
             </div>
@@ -466,6 +484,7 @@ export function ProductsSection() {
         product={selectedProduct}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        locale={locale}
       />
     </section>
   );
@@ -476,19 +495,19 @@ function ProductCard({
   product,
   onClick,
   isMobile = false,
+  locale,
 }: {
   product: (typeof products)[0];
   onClick: () => void;
   isMobile?: boolean;
+  locale: Locale;
 }) {
   const [isHovered, setIsHovered] = useState(false);
-  const isComingSoon =
-    product.category === "Small Breed Adult" ||
-    product.category === "Giant Breed Adult";
+  const isComingSoon = product.comingSoon;
 
   return (
     <Card
-      className={`flex-shrink-0 cursor-pointer bg-white border border-gray-200 rounded-xl md:rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group ${
+      className={`flex-shrink-0  bg-white border border-gray-200 rounded-xl md:rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group ${
         isMobile ? "w-48 sm:w-56" : "w-full sm:w-80"
       } ${isComingSoon ? "opacity-75" : ""}`}
       onClick={onClick}
@@ -513,13 +532,12 @@ function ProductCard({
           />
 
           {/* Coming Soon Badge */}
-          {(product.category === "Small Breed Adult" ||
-            product.category === "Giant Breed Adult") && (
+          {product.comingSoon && (
             <div
               className={`absolute top-2 right-2 ${isMobile ? "scale-75" : ""}`}
             >
               <Badge className="bg-orange-500 text-white font-semibold shadow-lg text-xs">
-                Coming Soon
+                {t(locale, "products.comingSoon")}
               </Badge>
             </div>
           )}
@@ -530,24 +548,24 @@ function ProductCard({
           <h3
             className={`font-semibold text-gray-900 mb-2 line-clamp-2 ${isMobile ? "text-sm" : "text-lg"}`}
           >
-            {product.name}
+            {getProductName(product.name, locale)}
           </h3>
 
           <div
             className={`space-y-1 mb-2 sm:mb-3 ${isMobile ? "text-xs" : "text-sm"}`}
           >
             <div className="flex flex-wrap items-center gap-1 text-gray-600">
-              <span>Product:</span>
+              <span>{t(locale, 'products.labels.product')}:</span>
               <span className="font-medium text-gray-900">
-                {product.product}
+                {t(locale, 'products.productType')}
               </span>
             </div>
             <div className="flex flex-wrap items-center gap-1 text-gray-600">
-              <span>Size:</span>
-              <span className="font-medium text-gray-900">{product.size}</span>
+              <span>{t(locale, 'products.labels.size')}:</span>
+              <span className="font-medium text-gray-900">{translateSize(product.size, locale)}</span>
               <span>•</span>
-              <span>Age:</span>
-              <span className="font-medium text-gray-900">1-7 Years</span>
+              <span>{t(locale, 'products.labels.age')}:</span>
+              <span className="font-medium text-gray-900">{t(locale, 'products.ageRange')}</span>
             </div>
           </div>
 
@@ -561,7 +579,7 @@ function ProductCard({
           <div
             className={`text-xs text-gray-500 mt-1 ${isMobile ? "hidden" : ""}`}
           >
-            Hover to see back • Click for details
+            {t(locale, "products.hoverText")}
           </div>
         </div>
       </CardContent>

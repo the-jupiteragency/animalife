@@ -71,7 +71,7 @@ Our larger kibble helps prevent gulping and supports joint health.
 
 We've formulated our feeding recommendations based on real nutritional science. You'll find these clearly printed on every AnimaLife pack.
 
-![AnimaLife Feeding Guide Table](/articles/articale-table.png)
+![AnimaLife Feeding Guide Table](/articles/articale-table-en.png)
 
 ## Final Note
 

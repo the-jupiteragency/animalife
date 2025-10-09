@@ -5,10 +5,18 @@ import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import Link from "next/link";
 import { AcademyPosts } from "@/app/data/academy-posts";
+import { AcademyPostsAr } from "@/app/data/academy-posts-ar";
 
-const blogPosts = AcademyPosts;
+import { Locale } from "@/lib/i18n/config";
+import { t } from "@/lib/i18n/translations";
 
-export default function AcademyPage() {
+export default function AcademyPage({
+  params: { locale },
+}: {
+  params: { locale: Locale };
+}) {
+  const blogPosts = locale === "ar" ? AcademyPostsAr : AcademyPosts;
+
   return (
     <div className="min-h-full bg-white">
       {/* Hero Section */}
@@ -16,7 +24,7 @@ export default function AcademyPage() {
         {/* Desktop Background Image */}
         <div className="hidden md:block absolute inset-0">
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            className={`absolute inset-0 bg-cover bg-center bg-no-repeat transform ${locale === "ar" ? "scale-x-[-1]" : ""}`}
             style={{
               backgroundImage: "url('/academy-banner.webp')",
             }}
@@ -28,21 +36,25 @@ export default function AcademyPage() {
           <img
             src="/academy-banner.webp"
             alt="Academy Banner"
-            className="w-full h-auto object-cover"
+            className={`w-full h-auto object-cover transform ${locale === "ar" ? "" : "scale-x-[-1]"}`}
             style={{ backgroundColor: "#FFFCEF" }}
           />
 
           {/* Mobile Title Overlay */}
-          <div className="absolute top-6 left-4 w-3/4">
+          <div
+            className={`absolute top-6 w-3/4 ${locale === "ar" ? "left-4 text-left" : "right-4 text-right"}`}
+          >
             <h1 className="text-2xl font-bold text-white leading-tight">
-              Welcome to AnimaLife Academy!
+              {t(locale, "academy.page.title")}
             </h1>
           </div>
 
           {/* Mobile Content Below Image */}
           <div className="px-4 py-6 text-center">
             <p className="text-sm text-[#2d5a3d] leading-relaxed max-w-sm mx-auto">
-              Your trusted space where science meets everyday pet care.
+              {locale === "ar"
+                ? "منصة موثوقة تجمع بين المعرفة العلمية والعناية اليومية"
+                : "Your trusted space where science meets everyday pet care."}
             </p>
           </div>
         </div>
@@ -52,21 +64,11 @@ export default function AcademyPage() {
           <div className="max-w-3xl">
             <div className="text-white animate-fade-in-up">
               <h1 className="text-4xl md:text-5xl lg:text-4xl font-bold mb-8 leading-tight">
-                Welcome to AnimaLife Academy!
+                {t(locale, "academy.page.title")}
               </h1>
 
-              <p className="max-w-[650px] w-full text-base sm:text-lg md:text-lg lg:text-xl xl:text-lg 2xl:text-xl text-white/90 leading-relaxed">
-                Because a healthier pet starts with a better-informed you. At
-                AnimaLife, we know that being a great pet parent goes beyond
-                just feeding right. It's about truly understanding your dog and
-                cat's needs at every stage. That's why we created AnimaLife
-                Academy: a trusted space where science meets everyday care.
-                Here, you'll find expert-backed articles that simplify
-                nutrition, strengthen the human–pet bond, and guide you through
-                safer, more mindful pet parenting. Whether you're raising a
-                playful kitten, navigating puppyhood, or supporting your senior
-                fur baby, this is your go-to guide for building a happier and
-                healthier life together.
+              <p className="max-w-[600px] w-full text-sm md:text-base tracking-tight text-white/90 leading-relaxed whitespace-pre-line">
+                {t(locale, "academy.page.description")}
               </p>
             </div>
           </div>
@@ -80,8 +82,8 @@ export default function AcademyPage() {
           <div className="md:hidden overflow-x-auto pb-4">
             <div className="flex gap-4 w-max">
               {blogPosts.map((post) => (
-                <Link key={post.id} href={`/academy/${post.slug}`}>
-                  <Card className="w-80 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl bg-white border-0 rounded-2xl overflow-hidden group">
+                <Link key={post.id} href={`/${locale}/academy/${post.slug}`}>
+                  <Card className="w-80 transform transition-all duration-300 hover:scale-105 hover:shadow-xl bg-white border-0 rounded-2xl overflow-hidden group">
                     <CardContent className="p-0">
                       <div className="aspect-video relative overflow-hidden">
                         <Image
@@ -116,8 +118,8 @@ export default function AcademyPage() {
           {/* Desktop Grid */}
           <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {blogPosts.map((post) => (
-              <Link key={post.id} href={`/academy/${post.slug}`}>
-                <Card className="cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl bg-white border-0 rounded-2xl overflow-hidden group">
+              <Link key={post.id} href={`/${locale}/academy/${post.slug}`}>
+                <Card className=" transform transition-all duration-300 hover:scale-105 hover:shadow-xl bg-white border-0 rounded-2xl overflow-hidden group">
                   <CardContent className="p-0">
                     <div className="aspect-video relative overflow-hidden">
                       <Image

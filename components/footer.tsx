@@ -21,8 +21,14 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { IoIosArrowDropright } from "react-icons/io";
+import { Locale } from "@/lib/i18n/config";
+import { t } from "@/lib/i18n/translations";
 
-export function Footer() {
+interface FooterProps {
+  locale: Locale;
+}
+
+export function Footer({ locale }: FooterProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -123,18 +129,26 @@ export function Footer() {
         />
       </div>
 
-      <div className="relative z-10 text-white">
-        <div className="container mx-auto px-4 py-16 md:py-20 lg:py-24">
+      <div
+        className={`relative z-10 text-white ${locale === "ar" ? "text-right" : "text-left"}`}
+        dir={locale === "ar" ? "rtl" : "ltr"}
+      >
+        <div className="container mx-auto px-3 py-16 md:py-20 lg:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-20 mb-12 lg:mb-16">
             {/* Enhanced Contact Form */}
             <div className="space-y-8">
-              <div className="text-center lg:text-left">
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white drop-shadow-lg">
-                  Contact Us
+              <div
+                className={`${locale === "ar" ? "text-right" : "text-center lg:text-left"}`}
+              >
+                <h2
+                  className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white drop-shadow-lg ${locale === "ar" ? "text-right" : "text-center lg:text-left"}`}
+                >
+                  {t(locale, "footer.contact.title")}
                 </h2>
-                <p className="text-lg md:text-xl text-white/90 leading-relaxed max-w-lg mx-auto lg:mx-0">
-                  Get in touch with us for any questions about our products or
-                  services. We're here to help your pets live their best life.
+                <p
+                  className={`text-lg md:text-xl text-white/90 leading-relaxed max-w-xl ${locale === "ar" ? "mx-0 text-right" : "mx-auto lg:mx-0"}`}
+                >
+                  {t(locale, "footer.contact.description")}
                 </p>
               </div>
 
@@ -170,11 +184,14 @@ export function Footer() {
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="block text-xs font-semibold mb-2 text-white">
-                        Name *
+                        {t(locale, "footer.contact.name")}
                       </label>
                       <Input
                         name="name"
-                        placeholder="Your name"
+                        placeholder={t(
+                          locale,
+                          "footer.contact.namePlaceholder"
+                        )}
                         value={formData.name}
                         onChange={handleChange}
                         required
@@ -189,11 +206,14 @@ export function Footer() {
                     </div>
                     <div>
                       <label className="block text-xs font-semibold mb-2 text-white">
-                        Phone
+                        {t(locale, "footer.contact.phone")}
                       </label>
                       <Input
                         name="phone"
-                        placeholder="Your phone"
+                        placeholder={t(
+                          locale,
+                          "footer.contact.phonePlaceholder"
+                        )}
                         value={formData.phone}
                         onChange={handleChange}
                         className="bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60 focus:border-[#F9F4DF] focus:ring-[#F9F4DF] rounded-xl h-10 text-sm transition-all duration-300 hover:bg-white/15"
@@ -209,12 +229,12 @@ export function Footer() {
 
                   <div>
                     <label className="block text-xs font-semibold mb-2 text-white">
-                      Email *
+                      {t(locale, "footer.contact.email")}
                     </label>
                     <Input
                       name="email"
                       type="email"
-                      placeholder="Your email"
+                      placeholder={t(locale, "footer.contact.emailPlaceholder")}
                       value={formData.email}
                       onChange={handleChange}
                       required
@@ -230,11 +250,11 @@ export function Footer() {
 
                   <div>
                     <label className="block text-xs font-semibold mb-2 text-white">
-                      Message *
+                      {t(locale, "footer.contact.message")}
                     </label>
                     <Textarea
                       name="message"
-                      placeholder="Tell us how we can help you and your pet..."
+                      placeholder={t(locale, "footer.contact.placeholder")}
                       rows={4}
                       value={formData.message}
                       onChange={handleChange}
@@ -255,11 +275,14 @@ export function Footer() {
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-semibold mb-3 text-white">
-                        Name *
+                        {t(locale, "footer.contact.name")}
                       </label>
                       <Input
                         name="name"
-                        placeholder="Your name"
+                        placeholder={t(
+                          locale,
+                          "footer.contact.namePlaceholder"
+                        )}
                         value={formData.name}
                         onChange={handleChange}
                         required
@@ -274,12 +297,15 @@ export function Footer() {
                     </div>
                     <div>
                       <label className="block text-sm font-semibold mb-3 text-white">
-                        Email *
+                        {t(locale, "footer.contact.email")}
                       </label>
                       <Input
                         name="email"
                         type="email"
-                        placeholder="Your email"
+                        placeholder={t(
+                          locale,
+                          "footer.contact.emailPlaceholder"
+                        )}
                         value={formData.email}
                         onChange={handleChange}
                         required
@@ -296,11 +322,11 @@ export function Footer() {
 
                   <div>
                     <label className="block text-sm font-semibold mb-3 text-white">
-                      Phone Number
+                      {t(locale, "footer.contact.phone")}
                     </label>
                     <Input
                       name="phone"
-                      placeholder="Your phone number"
+                      placeholder={t(locale, "footer.contact.phonePlaceholder")}
                       value={formData.phone}
                       onChange={handleChange}
                       className="bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60 focus:border-[#F9F4DF] focus:ring-[#F9F4DF] rounded-xl h-12 transition-all duration-300 hover:bg-white/15"
@@ -315,11 +341,11 @@ export function Footer() {
 
                   <div>
                     <label className="block text-sm font-semibold mb-3 text-white">
-                      Message *
+                      {t(locale, "footer.contact.message")}
                     </label>
                     <Textarea
                       name="message"
-                      placeholder="Tell us how we can help you and your pet..."
+                      placeholder={t(locale, "footer.contact.placeholder")}
                       rows={5}
                       value={formData.message}
                       onChange={handleChange}
@@ -340,17 +366,19 @@ export function Footer() {
                   size="sm"
                   variant="hover"
                   disabled={isPending}
-                  className="w-full sm:w-auto transition-all duration-300 transform rounded-full px-6 py-3 sm:px-8 sm:py-4 font-bold text-sm sm:text-lg shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none group"
+                  className="w-full sm:w-auto transition-all duration-300 transform rounded-full px-6 py-3 sm:px-8 sm:py-4 font-bold text-sm sm:text-lg shadow-xl disabled:opacity-50  disabled:transform-none group"
                 >
                   {isPending ? (
                     <>
                       <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                      Sending...
+                      {t(locale, "footer.contact.sending")}
                     </>
                   ) : (
                     <>
-                      Send Message
-                      <IoIosArrowDropright className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                      {t(locale, "footer.contact.send")}
+                      <IoIosArrowDropright
+                        className={`h-5 w-5 transition-transform ${locale === "ar" ? "mr-2 rotate-180 group-hover:-translate-x-1" : "ml-2 group-hover:translate-x-1"}`}
+                      />
                     </>
                   )}
                 </Button>
@@ -359,26 +387,35 @@ export function Footer() {
 
             {/* CTA Section */}
             <div className="space-y-8">
-              <div className="text-center lg:text-left">
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white drop-shadow-lg">
-                  Ready to Give Your Pet the Best?
+              <div
+                className={`${locale === "ar" ? "text-right" : "text-center lg:text-left"}`}
+              >
+                <h2
+                  className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white drop-shadow-lg ${locale === "ar" ? "text-right" : "text-center lg:text-left"}`}
+                >
+                  {t(locale, "footer.cta.title")}
                 </h2>
-                <p className="text-lg md:text-xl text-white/90 leading-relaxed max-w-lg mx-auto lg:mx-0 mb-8">
-                  Join thousands of pet parents who trust AnimaLife for their
-                  furry friends' nutrition needs.
+                <p
+                  className={`text-lg md:text-xl text-white/90 leading-relaxed max-w-xl mb-8 ${locale === "ar" ? "mx-0 text-right" : "mx-auto lg:mx-0"}`}
+                >
+                  {t(locale, "footer.cta.subtitle")}
                 </p>
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+              <div
+                className={`flex flex-row gap-3 sm:gap-4 ${locale === "ar" ? "justify-start" : ""}`}
+              >
                 <Button
                   asChild
                   size="sm"
                   className="flex-1 sm:flex-none bg-[#F9F4DF] text-[#0A3024] hover:bg-[#A7552E] hover:text-white transition-all duration-300 transform hover:scale-105 rounded-full px-4 sm:px-8 py-2 sm:py-4 font-bold text-sm sm:text-lg shadow-xl group"
                 >
-                  <a href="/products">
-                    View Products
-                    <IoIosArrowDropright className="ml-1 sm:ml-2 h-4 sm:h-5 w-4 sm:w-5 transition-transform group-hover:translate-x-1" />
+                  <a href={`/${locale}/products`}>
+                    {t(locale, "footer.cta.button")}
+                    <IoIosArrowDropright
+                      className={`h-4 sm:h-5 w-4 sm:w-5 transition-transform ${locale === "ar" ? "mr-1 sm:mr-2 rotate-180 group-hover:-translate-x-1" : "ml-1 sm:ml-2 group-hover:translate-x-1"}`}
+                    />
                   </a>
                 </Button>
                 <Button
@@ -387,9 +424,11 @@ export function Footer() {
                   variant="outline"
                   className="flex-1 sm:flex-none bg-[#F9F4DF] text-[#0A3024] hover:bg-[#A7552E] hover:text-white transition-all duration-300 transform hover:scale-105 rounded-full px-4 sm:px-8 py-2 sm:py-4 font-bold text-sm sm:text-lg shadow-xl group"
                 >
-                  <a href="/about">
-                    Learn More
-                    <IoIosArrowDropright className="ml-1 sm:ml-2 h-4 sm:h-5 w-4 sm:w-5 transition-transform group-hover:translate-x-1" />
+                  <a href={`/${locale}/about`}>
+                    {t(locale, "common.learnMore")}
+                    <IoIosArrowDropright
+                      className={`h-4 sm:h-5 w-4 sm:w-5 transition-transform ${locale === "ar" ? "mr-1 sm:mr-2 rotate-180 group-hover:-translate-x-1" : "ml-1 sm:ml-2 group-hover:translate-x-1"}`}
+                    />
                   </a>
                 </Button>
               </div>
@@ -397,31 +436,31 @@ export function Footer() {
               {/* Contact Info */}
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-white/20 mt-8">
                 <div className="space-y-4">
-                  <div className="flex items-center gap-3">
+                  <div className={`flex items-center gap-3 `}>
                     <MapPin className="w-5 h-5 text-[#F9F4DF] flex-shrink-0" />
                     <a
                       href="https://maps.app.goo.gl/r6jFjGYrDzwUVGxB8"
                       className="text-white hover:text-[#F9F4DF] transition-colors duration-300 text-sm sm:text-base"
                     >
-                      32H Mourad Street, Giza Governorate, Egypt. PO 12511
+                      {t(locale, "footer.info.address")}
                     </a>
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className={`flex items-center gap-3 `}>
                     <Mail className="w-5 h-5 text-[#F9F4DF] flex-shrink-0" />
                     <a
                       href="mailto:Info@myanimalife.com"
                       className="text-white hover:text-[#F9F4DF] transition-colors duration-300 text-sm sm:text-base"
                     >
-                      Info@myanimalife.com
+                      {t(locale, "footer.info.email")}
                     </a>
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className={`flex items-center gap-3 `}>
                     <Phone className="w-5 h-5 text-[#F9F4DF] flex-shrink-0" />
                     <a
                       href="tel:+201222294101"
                       className="text-white hover:text-[#F9F4DF] transition-colors duration-300 text-sm sm:text-base"
                     >
-                      +20 (122) 229-4101
+                      {t(locale, "footer.info.phone")}
                     </a>
                   </div>
                 </div>
@@ -435,16 +474,16 @@ export function Footer() {
               {/* Navigation Links */}
               <nav className="flex flex-wrap gap-8 justify-center md:justify-start">
                 <a
-                  href="/products"
+                  href={`/${locale}/products`}
                   className="text-white hover:text-[#F9F4DF] transition-colors duration-300 font-semibold text-lg"
                 >
-                  Shop
+                  {t(locale, "footer.nav.shop")}
                 </a>
                 <a
-                  href="/about"
+                  href={`/${locale}/about`}
                   className="text-white hover:text-[#F9F4DF] transition-colors duration-300 font-semibold text-lg"
                 >
-                  About
+                  {t(locale, "footer.nav.about")}
                 </a>
                 {/* <a
                   href="#contact"
@@ -488,21 +527,23 @@ export function Footer() {
             </div>
 
             <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/20 gap-4">
-              <p className="text-white/80 text-center md:text-left font-medium">
-                © 2025 AnimaLife. All rights reserved.
+              <p
+                className={`text-white/80 font-medium ${locale === "ar" ? "text-center md:text-right" : "text-center md:text-left"}`}
+              >
+                {t(locale, "footer.legal.copyright")}
               </p>
               <div className="flex gap-8">
                 <a
                   href="#"
                   className="text-white/80 hover:text-white transition-colors duration-300 font-medium"
                 >
-                  Terms of Service
+                  {t(locale, "footer.legal.terms")}
                 </a>
                 <a
                   href="#"
                   className="text-white/80 hover:text-white transition-colors duration-300 font-medium"
                 >
-                  Privacy Policy
+                  {t(locale, "footer.legal.privacy")}
                 </a>
               </div>
             </div>

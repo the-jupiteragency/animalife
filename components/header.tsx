@@ -7,8 +7,15 @@ import { IoMdCloseCircle } from "react-icons/io";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
+import { Locale } from "@/lib/i18n/config";
+import { t } from "@/lib/i18n/translations";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
-export function Header() {
+interface HeaderProps {
+  locale: Locale;
+}
+
+export function Header({ locale }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -28,7 +35,7 @@ export function Header() {
     >
       <div className="container mx-auto px-3 md:px-1 py-4 md:py-6 flex items-center justify-between font-mono font-normal text-base bg-transparent text-[rgba(249,244,223,1)] md:text-[rgba(249,244,223,1)] flex-row pb-7">
         <Link
-          href="/"
+          href={`/${locale}`}
           className="text-[#0A3D2C] md:text-white text-xl md:text-2xl font-bold hover:text-green-200 transition-colors"
         >
           <Image
@@ -41,19 +48,22 @@ export function Header() {
           />
         </Link>
 
-        <div
-          className="transition-all duration-300 hover:scale-110"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? (
-            <IoMdCloseCircle
-              className={`h-10 w-10 ${scrolled ? "text-white" : "text-[#1B4838]"}`}
-            />
-          ) : (
-            <GiHamburgerMenu
-              className={`h-10 w-10 ${scrolled ? "text-white" : "text-[#BA643B] md:text-[#BA643B]"}`}
-            />
-          )}
+        <div className="flex items-center gap-3">
+          <LanguageSwitcher currentLocale={locale} scrolled={scrolled} />
+          <div
+            className="transition-all duration-300 hover:scale-110"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? (
+              <IoMdCloseCircle
+                className={`h-10 w-10 ${scrolled ? "text-white" : "text-[#1B4838]"}`}
+              />
+            ) : (
+              <GiHamburgerMenu
+                className={`h-10 w-10 ${scrolled ? "text-white" : "text-[#BA643B] md:text-[#BA643B]"}`}
+              />
+            )}
+          </div>
         </div>
       </div>
 
@@ -72,32 +82,32 @@ export function Header() {
           <div className="flex items-center justify-center min-h-screen">
             <nav className="text-center space-y-8 md:space-y-12">
               <Link
-                href="/"
+                href={`/${locale}`}
                 className="block text-white text-xl md:text-2xl font-medium hover:text-green-200 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Home
+                {t(locale, 'nav.home')}
               </Link>
               <Link
-                href="/products"
+                href={`/${locale}/products`}
                 className="block text-white text-xl md:text-2xl font-medium hover:text-green-200 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Our Products
+                {t(locale, 'nav.products')}
               </Link>
               <Link
-                href="/about"
+                href={`/${locale}/about`}
                 className="block text-white text-xl md:text-2xl font-medium hover:text-green-200 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Discover AnimaLife
+                {t(locale, 'nav.about')}
               </Link>
               <Link
-                href="/academy"
+                href={`/${locale}/academy`}
                 className="block text-white text-xl md:text-2xl font-medium hover:text-green-200 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                AnimaLife Academy
+                {t(locale, 'nav.academy')}
               </Link>
             </nav>
           </div>

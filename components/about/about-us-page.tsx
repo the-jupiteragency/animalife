@@ -33,21 +33,24 @@ const productCards = [
   },
 ];
 
-export function AboutUsPage() {
-  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+import { Locale } from "@/lib/i18n/config";
+import { t } from "@/lib/i18n/translations";
 
-  const getPlateImage = (cardId: string) => {
-    switch (cardId) {
-      case "dry-food":
-        return "/aboutcard3.webp";
-      case "canned-food":
-        return "/aboutcard2.webp";
-      case "fresh-food":
-        return "/aboutcard1.webp";
-      default:
-        return "/placeholder.svg";
-    }
+interface AboutUsPageProps {
+  locale: Locale;
+}
+
+const getPlateImage = (cardId: string): string => {
+  const images: Record<string, string> = {
+    "dry-food": "/aboutcard3.webp",
+    "canned-food": "/aboutcard2.webp",
+    "fresh-food": "/aboutcard1.webp",
   };
+  return images[cardId] || "/placeholder.svg";
+};
+export function AboutUsPage({ locale }: AboutUsPageProps) {
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+  const isArabic = locale === "ar";
 
   return (
     <div className="min-h-screen">
@@ -56,7 +59,7 @@ export function AboutUsPage() {
         {/* Desktop Background Image */}
         <div className="hidden md:block absolute inset-0">
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            className={`absolute inset-0 bg-cover bg-center bg-no-repeat ${isArabic ? "transform scale-x-[-1]" : ""}`}
             style={{
               backgroundImage: "url('/about-hero-image.webp')",
             }}
@@ -67,25 +70,29 @@ export function AboutUsPage() {
         <div className="md:hidden w-full relative">
           <img
             src="/about-hero-image.webp"
-            alt="Behind the Bowl Hero"
-            className="w-full h-auto object-cover"
+            alt={t(locale, "about.hero.title")}
+            className={`w-full h-auto object-cover ${isArabic ? "transform scale-x-[-1]" : ""}`}
             style={{ backgroundColor: "#FFFCEF" }}
           />
 
           {/* Mobile Title Overlay */}
-          <div className="absolute top-7 left-4">
+          <div className={`absolute top-7 ${isArabic ? "right-4" : "left-4"}`}>
             <h1 className="text-2xl font-bold text-white leading-tight">
-              Behind the Bowl:
-              <br />
-              Science You Can Trust
+              {t(locale, "about.hero.title")
+                .split("\n")
+                .map((line: string, i: number) => (
+                  <span key={i}>
+                    {line}
+                    {i === 0 && <br />}
+                  </span>
+                ))}
             </h1>
           </div>
 
           {/* Mobile Content Below Image */}
           <div className="px-4 py-6 text-center">
             <p className="text-sm text-[#2d5a3d] leading-relaxed max-w-sm mx-auto">
-              Born from a love of pets and a passion for science, AnimaLife
-              crafts nutrition that's as smart as it is delicious.
+              {t(locale, "about.hero.description")}
             </p>
           </div>
         </div>
@@ -95,14 +102,18 @@ export function AboutUsPage() {
           <div className="max-w-2xl">
             <div className="text-[#F9F4DF] animate-fade-in-up">
               <h1 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight">
-                Behind the Bowl:
-                <br />
-                Science You Can Trust
+                {t(locale, "about.hero.title")
+                  .split("\n")
+                  .map((line: string, i: number) => (
+                    <span key={i}>
+                      {line}
+                      {i === 0 && <br />}
+                    </span>
+                  ))}
               </h1>
 
               <p className="text-lg lg:text-xl mb-8 text-[#ebe7d9] leading-relaxed">
-                Born from a love of pets and a passion for science, AnimaLife
-                crafts nutrition that's as smart as it is delicious.
+                {t(locale, "about.hero.description")}
               </p>
             </div>
           </div>
@@ -115,22 +126,23 @@ export function AboutUsPage() {
         <div className="block md:hidden relative h-[50vh] min-h-[400px]">
           <Image
             src="/about-mission-sec.webp"
-            alt="AnimaLife Mission"
+            alt={t(locale, "about.mission.title")}
             fill
-            className="object-cover object-center"
+            className={`object-cover object-center ${isArabic ? "transform scale-x-[-1]" : ""}`}
             sizes="100vw"
           />
 
           {/* Mobile Content Overlay - Right Side */}
-          <div className="absolute inset-0 flex items-center justify-end">
-            <div className="w-1/2 p-4  rounded-l-2xl mr-4">
+          <div className={`absolute inset-0 flex items-center justify-end `}>
+            <div
+              className={`w-1/2 p-4 rounded-l-2xl ${isArabic ? "mr-10" : "ml-4"}`}
+            >
               <h2 className="text-lg font-bold mb-3 text-[#134635] leading-tight">
-                AnimaLife Mission
+                {t(locale, "about.mission.title")}
               </h2>
               <div className="w-12 h-1 bg-[#d4704a] mb-3 rounded-full"></div>
               <p className="text-xs text-[#134635]/90 leading-relaxed font-light">
-                To revolutionize pet wellness through research-backed food,
-                because 'good enough' isn't enough.
+                {t(locale, "about.mission.description")}
               </p>
             </div>
           </div>
@@ -141,9 +153,9 @@ export function AboutUsPage() {
           <div className="absolute inset-0">
             <Image
               src="/about-mission-sec.webp"
-              alt="AnimaLife Mission"
+              alt={t(locale, "about.mission.title")}
               fill
-              className="object-cover object-center"
+              className={`object-cover object-center ${isArabic ? "transform scale-x-[-1]" : ""}`}
               sizes="100vw"
             />
           </div>
@@ -157,14 +169,13 @@ export function AboutUsPage() {
                   <div className="bg-white/95 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 md:p-8 lg:p-3 shadow-xl lg:bg-transparent lg:backdrop-blur-none lg:shadow-none">
                     {/* Single line heading with smaller text */}
                     <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 lg:mb-6 text-[#134635] leading-tight tracking-tight whitespace-nowrap">
-                      AnimaLife Mission
+                      {t(locale, "about.mission.title")}
                     </h2>
 
                     <div className="w-16 md:w-20 lg:w-24 xl:w-32 h-1 md:h-1.5 bg-[#d4704a] mb-4 md:mb-6 lg:mb-8 rounded-full"></div>
 
                     <p className="text-sm md:text-base lg:text-lg xl:text-xl text-[#134635]/90 leading-relaxed font-light">
-                      To revolutionize pet wellness through research-backed
-                      food, because 'good enough' isn't enough.
+                      {t(locale, "about.mission.description")}
                     </p>
                   </div>
                 </div>
@@ -179,9 +190,9 @@ export function AboutUsPage() {
         <div className="absolute inset-0">
           <Image
             src="/about-why-bg.webp"
-            alt="Why AnimaLife Background"
+            alt={t(locale, "about.whyAnimaLife.title")}
             fill
-            className="object-cover object-center"
+            className={`object-cover object-center ${isArabic ? "transform scale-x-[-1]" : ""}`}
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-white/5" />
@@ -189,15 +200,19 @@ export function AboutUsPage() {
 
         <div className="relative z-10">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="mb-8 sm:mb-12 md:mb-16 lg:mb-20 xl:mb-24 text-center lg:text-left">
+            <div
+              className={`mb-8 sm:mb-12 md:mb-16 lg:mb-20 xl:mb-24 text-center ${isArabic ? "lg:text-right" : "lg:text-left"}`}
+            >
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-[#2d5a3d] leading-tight tracking-tight">
-                Why AnimaLife?
+                {t(locale, "about.whyAnimaLife.title")}
               </h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 xl:gap-16">
               {/* R&D Focused */}
-              <div className="space-y-4 sm:space-y-6 lg:space-y-8 text-center md:text-left">
+              <div
+                className={`space-y-4 sm:space-y-6 lg:space-y-8 text-center ${isArabic ? "md:text-right" : "md:text-left"}`}
+              >
                 <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 mx-auto md:mx-0">
                   <Image
                     src="/mission-icon1.svg"
@@ -210,17 +225,18 @@ export function AboutUsPage() {
 
                 <div>
                   <h3 className="text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-3xl font-bold text-[#2d5a3d] mb-2 sm:mb-3 md:mb-4 lg:mb-6">
-                    R&D Focused
+                    {t(locale, "about.whyAnimaLife.rdFocused.title")}
                   </h3>
                   <p className="text-sm sm:text-base md:text-base lg:text-lg xl:text-xl text-[#2d5a3d]/80 leading-relaxed">
-                    We test kibble size, digestion, and stool quality (yes,
-                    really!) before launch
+                    {t(locale, "about.whyAnimaLife.rdFocused.description")}
                   </p>
                 </div>
               </div>
 
               {/* Nutritional Philosophy */}
-              <div className="space-y-4 sm:space-y-6 lg:space-y-8 text-center md:text-left">
+              <div
+                className={`space-y-4 sm:space-y-6 lg:space-y-8 text-center ${isArabic ? "md:text-right" : "md:text-left"}`}
+              >
                 <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 mx-auto md:mx-0">
                   <Image
                     src="/mission-icon2.svg"
@@ -233,18 +249,24 @@ export function AboutUsPage() {
 
                 <div>
                   <h3 className="text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-3xl font-bold text-[#2d5a3d] mb-2 sm:mb-3 md:mb-4 lg:mb-6">
-                    Nutritional Philosophy
+                    {t(
+                      locale,
+                      "about.whyAnimaLife.nutritionalPhilosophy.title"
+                    )}
                   </h3>
                   <p className="text-sm sm:text-base md:text-base lg:text-lg xl:text-xl text-[#2d5a3d]/80 leading-relaxed">
-                    High-quality animal protein, essential amino acids, and
-                    balanced nutrition, formulated to support digestion,
-                    vitality, and everyday wellbeing.
+                    {t(
+                      locale,
+                      "about.whyAnimaLife.nutritionalPhilosophy.description"
+                    )}
                   </p>
                 </div>
               </div>
 
               {/* Vision */}
-              <div className="space-y-4 sm:space-y-6 lg:space-y-8 text-center md:text-left">
+              <div
+                className={`space-y-4 sm:space-y-6 lg:space-y-8 text-center ${isArabic ? "md:text-right" : "md:text-left"}`}
+              >
                 <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 mx-auto md:mx-0">
                   <Image
                     src="/mission-icon3.svg"
@@ -257,11 +279,10 @@ export function AboutUsPage() {
 
                 <div>
                   <h3 className="text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-3xl font-bold text-[#2d5a3d] mb-2 sm:mb-3 md:mb-4 lg:mb-6">
-                    Vision
+                    {t(locale, "about.whyAnimaLife.vision.title")}
                   </h3>
                   <p className="text-sm sm:text-base md:text-base lg:text-lg xl:text-xl text-[#2d5a3d]/80 leading-relaxed">
-                    AnimaLife is the foundation of a comprehensive pet nutrition
-                    brand.
+                    {t(locale, "about.whyAnimaLife.vision.description")}
                   </p>
                 </div>
               </div>
@@ -276,18 +297,11 @@ export function AboutUsPage() {
           {/* Section Header */}
           <div className="text-center mb-8 sm:mb-12 md:mb-16 lg:mb-20">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#134635] mb-4 sm:mb-6 leading-tight">
-              Wellness in Every Bite
+              {t(locale, "about.wellness.title")}
             </h2>
             <div className="w-20 h-1 bg-[#d4704a] mx-auto mb-6 sm:mb-8 rounded-full"></div>
             <p className="text-sm sm:text-base md:text-lg text-[#134635]/80 max-w-4xl mx-auto leading-relaxed">
-              We pack every bowl with purposeful ingredients, starting with real
-              chicken for lean muscles and lasting energy. Gentle carbs like
-              rice fuel playtime without upsetting sensitive tummies, while
-              chicken fat and nutrient-rich grains keep coats shiny and tails
-              wagging. Add in digestion loving beetroot, eye healthy carrots,
-              and immune boosting peas, and top it off with a vet approved blend
-              of vitamins and minerals, it's a full-on wellness plan for your
-              best friend, made with love.
+              {t(locale, "about.wellness.description")}
             </p>
           </div>
 
@@ -302,19 +316,26 @@ export function AboutUsPage() {
                       <Drumstick color="#e6e6e6" />
                     </div>
                     <h3 className="text-xl sm:text-2xl font-bold text-[#134635] mb-2 group-hover:text-[#d4704a] transition-colors duration-300">
-                      Real Chicken Meat
+                      {t(locale, "about.wellness.ingredients.chicken.title")}
                     </h3>
                     <p className="text-sm text-[#134635]/60 font-medium mb-2">
-                      (Main Protein Source)
+                      {t(locale, "about.wellness.ingredients.chicken.subtitle")}
                     </p>
                     <p className="text-sm text-[#d4704a] font-semibold mb-4">
-                      <span className="text-[#134635]/80">Key Nutrients:</span>{" "}
-                      High-quality animal protein
+                      <span className="text-[#134635]/80">
+                        {isArabic
+                          ? "العناصر الغذائية الرئيسية:"
+                          : "Key Nutrients:"}
+                      </span>{" "}
+                      {t(
+                        locale,
+                        "about.wellness.ingredients.chicken.keyNutrients"
+                      )}
                     </p>
                   </div>
                   <div className="flex-1">
                     <h4 className="font-semibold text-[#134635] mb-3">
-                      Health Benefits:
+                      {t(locale, "about.wellness.ingredients.healthBenefits")}
                     </h4>
                     <ul className="space-y-2 text-sm text-[#134635]/80">
                       <li className="flex items-start gap-2  transition-transform duration-300 delay-75">
@@ -322,9 +343,14 @@ export function AboutUsPage() {
                           1.
                         </span>
                         <span>
-                          <strong>Complete Nutrient Balance:</strong> Supplies
-                          essential amino acids for muscle development and
-                          overall growth
+                          <strong>
+                            {isArabic
+                              ? "تغذية متكاملة:"
+                              : "Complete Nutrient Balance:"}
+                          </strong>{" "}
+                          {isArabic
+                            ? "مكوَّنة من كل العناصر الغذائية الَّذي يحتاجها جسم الكلب لتساعد على بناء العضلات ونمو صحي."
+                            : "Supplies essential amino acids for muscle development and overall growth"}
                         </span>
                       </li>
                       <li className="flex items-start gap-2  transition-transform duration-300 delay-100">
@@ -332,8 +358,14 @@ export function AboutUsPage() {
                           2.
                         </span>
                         <span>
-                          <strong>Enhanced Digestive Health:</strong> Easily
-                          digestible protein promotes gut health
+                          <strong>
+                            {isArabic
+                              ? "يساعد على الهضم:"
+                              : "Enhanced Digestive Health:"}
+                          </strong>{" "}
+                          {isArabic
+                            ? "البروتين الخفيف على المعدة بيدعم صحة الجهاز الهضمي."
+                            : "Easily digestible protein promotes gut health"}
                         </span>
                       </li>
                       <li className="flex items-start gap-2  transition-transform duration-300 delay-150">
@@ -341,8 +373,14 @@ export function AboutUsPage() {
                           3.
                         </span>
                         <span>
-                          <strong>Energy for an Active Life:</strong> Supports
-                          metabolic and physical activity needs
+                          <strong>
+                            {isArabic
+                              ? "طاقة لحياة نشيطة:"
+                              : "Energy for an Active Life:"}
+                          </strong>{" "}
+                          {isArabic
+                            ? "بيدعم احتياجات جسم الكلب ليزداد نشاط وحيوية"
+                            : "Supports metabolic and physical activity needs"}
                         </span>
                       </li>
                       <li className="flex items-start gap-2  transition-transform duration-300 delay-200">
@@ -350,9 +388,14 @@ export function AboutUsPage() {
                           4.
                         </span>
                         <span>
-                          <strong>Veterinary-Informed Nutrition:</strong> Aligns
-                          with veterinary recommendations for adult dogs
-                          maintenance
+                          <strong>
+                            {isArabic
+                              ? "تغذية معتمدة على نصايح دكاترة البيطري:"
+                              : "Veterinary-Informed Nutrition:"}
+                          </strong>{" "}
+                          {isArabic
+                            ? "متوافقة مع توصياتهم لتحافظ على صحة الكلاب الأكبر سنًا"
+                            : "Aligns with veterinary recommendations for adult dogs maintenance"}
                         </span>
                       </li>
                     </ul>
@@ -369,28 +412,38 @@ export function AboutUsPage() {
                     <Sprout color="#e6e6e6" />
                   </div>
                   <h3 className="text-lg font-bold text-[#134635] mb-2 group-hover:text-[#f4a261] transition-colors duration-300">
-                    Rice
+                    {isArabic ? "أرز" : "Rice"}
                   </h3>
                   <p className="text-xs text-[#f4a261] font-semibold mb-3">
-                    <span className="text-[#134635]/80">Key Nutrients:</span>{" "}
-                    Easily digestible carbohydrate
+                    <span className="text-[#134635]/80">
+                      {isArabic ? "العناصر الغذائية:" : "Key Nutrients:"}
+                    </span>{" "}
+                    {isArabic
+                      ? "كربوهيدرات سهلة الهضم"
+                      : "Easily digestible carbohydrate"}
                   </p>
                   <h4 className="text-xs font-semibold text-[#134635] mb-2">
-                    Health Benefits:
+                    {isArabic ? "الفوائد الصحية:" : "Health Benefits:"}
                   </h4>
                   <ul className="space-y-1 text-xs text-[#134635]/80">
                     <li className="flex items-start gap-1  transition-transform duration-300">
                       <span className="text-[#f4a261] font-bold">1.</span>
                       <span>
-                        <strong>Enhanced Digestive Health:</strong> Gentle on
-                        the stomach, promotes easy digestion
+                        <strong>
+                          {isArabic
+                            ? "يدعّم الجهاز الهضمي وخفيف على المعدة"
+                            : "Enhanced Digestive Health: Gentle on the stomach, promotes easy digestion"}
+                        </strong>
                       </span>
                     </li>
                     <li className="flex items-start gap-1  transition-transform duration-300 delay-75">
                       <span className="text-[#f4a261] font-bold">2.</span>
                       <span>
-                        <strong>Energy for an Active Life:</strong> Fast-release
-                        energy source for active dogs
+                        <strong>
+                          {isArabic
+                            ? "مصدر طاقة سريع لنشاط طول اليوم"
+                            : "Energy for an Active Life: Fast-release energy source for active dogs"}
+                        </strong>
                       </span>
                     </li>
                   </ul>
@@ -406,35 +459,61 @@ export function AboutUsPage() {
                     <Leaf color="#e6e6e6" />
                   </div>
                   <h3 className="text-lg font-bold text-[#134635] mb-2 group-hover:text-[#e76f51] transition-colors duration-300">
-                    Nutrient-Rich Grains
+                    {isArabic
+                      ? "الحبوب الغنية بالعناصر الغذائية"
+                      : "Nutrient-Rich Grains"}
                   </h3>
                   <p className="text-xs text-[#e76f51] font-semibold mb-3">
-                    <span className="text-[#134635]/80">Key Nutrients:</span>{" "}
-                    Plant protein, omega fatty acids
+                    <span className="text-[#134635]/80">
+                      {isArabic
+                        ? "العناصر الغذائية الرئيسية:"
+                        : "Key Nutrients:"}
+                    </span>{" "}
+                    {isArabic
+                      ? "بروتين نباتي، أحماض دهنية أوميغا"
+                      : "Plant protein, omega fatty acids"}
                   </p>
                   <h4 className="text-xs font-semibold text-[#134635] mb-2">
-                    Health Benefits:
+                    {isArabic ? "الفوائد الصحية:" : "Health Benefits:"}
                   </h4>
                   <ul className="space-y-1 text-xs text-[#134635]/80">
                     <li className="flex items-start gap-1  transition-transform duration-300">
                       <span className="text-[#e76f51] font-bold">1.</span>
                       <span>
-                        <strong>Radiant Skin and Coat:</strong> Omega 6 supports
-                        skin elasticity and coat shine
+                        <strong>
+                          {isArabic
+                            ? "بشرة ومعطف مشع:"
+                            : "Radiant Skin and Coat:"}
+                        </strong>{" "}
+                        {isArabic
+                          ? "أوميغا 6 يدعم مرونة الجلد ولمعان المعطف"
+                          : "Omega 6 supports skin elasticity and coat shine"}
                       </span>
                     </li>
                     <li className="flex items-start gap-1  transition-transform duration-300 delay-75">
                       <span className="text-[#e76f51] font-bold">2.</span>
                       <span>
-                        <strong>Complete Nutrient Balance:</strong> Adds plant
-                        protein to diversify amino acid profile
+                        <strong>
+                          {isArabic
+                            ? "توازن غذائي كامل:"
+                            : "Complete Nutrient Balance:"}
+                        </strong>{" "}
+                        {isArabic
+                          ? "يضيف بروتين نباتي لتنويع ملف الأحماض الأمينية"
+                          : "Adds plant protein to diversify amino acid profile"}
                       </span>
                     </li>
                     <li className="flex items-start gap-1  transition-transform duration-300 delay-100">
                       <span className="text-[#e76f51] font-bold">3.</span>
                       <span>
-                        <strong>Boosting Natural Defenses:</strong> Contains
-                        antioxidants and micronutrients for immune support
+                        <strong>
+                          {isArabic
+                            ? "تعزيز الدفاعات الطبيعية:"
+                            : "Boosting Natural Defenses:"}
+                        </strong>{" "}
+                        {isArabic
+                          ? "يحتوي على مضادات الأكسدة والمغذيات الدقيقة لدعم المناعة"
+                          : "Contains antioxidants and micronutrients for immune support"}
                       </span>
                     </li>
                   </ul>
@@ -450,35 +529,57 @@ export function AboutUsPage() {
                     <Droplet color="#e6e6e6" />
                   </div>
                   <h3 className="text-lg font-bold text-[#134635] mb-2 group-hover:text-[#2a9d8f] transition-colors duration-300">
-                    Chicken Fat
+                    {isArabic ? "دهن الدجاج" : "Chicken Fat"}
                   </h3>
                   <p className="text-xs text-[#2a9d8f] font-semibold mb-3">
-                    <span className="text-[#134635]/80">Key Nutrients:</span>{" "}
-                    Energy-dense fats, essential fatty acids
+                    <span className="text-[#134635]/80">
+                      {isArabic ? "العناصر الغذائية:" : "Key Nutrients:"}
+                    </span>{" "}
+                    {isArabic
+                      ? "دهون كمصدر للطاقة وأحماض دهنية أساسية ومهمة للجسم"
+                      : "Energy-dense fats, essential fatty acids"}
                   </p>
                   <h4 className="text-xs font-semibold text-[#134635] mb-2">
-                    Health Benefits:
+                    {isArabic ? "الفوائد الصحية:" : "Health Benefits:"}
                   </h4>
                   <ul className="space-y-1 text-xs text-[#134635]/80">
                     <li className="flex items-start gap-1  transition-transform duration-300">
                       <span className="text-[#2a9d8f] font-bold">1.</span>
                       <span>
-                        <strong>Radiant Skin and Coat:</strong> Promotes
-                        healthy, glossy fur
+                        <strong>
+                          {isArabic
+                            ? "جلد صحي وفرو لامع:"
+                            : "Radiant Skin and Coat:"}
+                        </strong>{" "}
+                        {isArabic
+                          ? "يحافظ على صحة جلد الكلب و لمعان الفرو."
+                          : "Promotes healthy, glossy fur"}
                       </span>
                     </li>
                     <li className="flex items-start gap-1  transition-transform duration-300 delay-75">
                       <span className="text-[#2a9d8f] font-bold">2.</span>
                       <span>
-                        <strong>Energy for an Active Life:</strong> Concentrated
-                        energy source
+                        <strong>
+                          {isArabic
+                            ? "طاقة لحياة نشيطة:"
+                            : "Energy for an Active Life:"}
+                        </strong>{" "}
+                        {isArabic
+                          ? "مصدر قوي للطاقة"
+                          : "Concentrated energy source"}
                       </span>
                     </li>
                     <li className="flex items-start gap-1  transition-transform duration-300 delay-100">
                       <span className="text-[#2a9d8f] font-bold">3.</span>
                       <span>
-                        <strong>Taste That is Tempting:</strong> Enhances
-                        palatability and encourages consumption
+                        <strong>
+                          {isArabic
+                            ? "طعم لا يُقاوَم:"
+                            : "Taste That is Tempting:"}
+                        </strong>{" "}
+                        {isArabic
+                          ? "يفتح الشهية ويحفّز على التناول"
+                          : "Enhances palatability and encourages consumption"}
                       </span>
                     </li>
                   </ul>
@@ -494,28 +595,44 @@ export function AboutUsPage() {
                     <Carrot color="#e6e6e6" />
                   </div>
                   <h3 className="text-lg font-bold text-[#134635] mb-2 group-hover:text-[#8e44ad] transition-colors duration-300">
-                    Beetroot
+                    {isArabic ? "البنجر" : "Beetroot"}
                   </h3>
                   <p className="text-xs text-[#8e44ad] font-semibold mb-3">
-                    <span className="text-[#134635]/80">Key Nutrients:</span>{" "}
-                    Soluble and insoluble fiber
+                    <span className="text-[#134635]/80">
+                      {isArabic ? "العناصر الغذائية:" : "Key Nutrients:"}
+                    </span>{" "}
+                    {isArabic
+                      ? "الألياف القابلة للذوبان والألياف غير القابلة للذوبان"
+                      : "Soluble and insoluble fiber"}
                   </p>
                   <h4 className="text-xs font-semibold text-[#134635] mb-2">
-                    Health Benefits:
+                    {isArabic ? "الفوائد الصحية:" : "Health Benefits:"}
                   </h4>
                   <ul className="space-y-1 text-xs text-[#134635]/80">
                     <li className="flex items-start gap-1  transition-transform duration-300">
                       <span className="text-[#8e44ad] font-bold">1.</span>
                       <span>
-                        <strong>Enhanced Digestive Health:</strong> Promotes gut
-                        flora balance and stool quality, helping digest better
+                        <strong>
+                          {isArabic
+                            ? "يدعّم الجهاز الهضمي:"
+                            : "Enhanced Digestive Health:"}
+                        </strong>{" "}
+                        {isArabic
+                          ? "يعزّز توازن البكتيريا النافعة في الأمعاء ويساعد في دعم وتحسين عملية الهضم"
+                          : "Promotes gut flora balance and stool quality, helping digest better"}
                       </span>
                     </li>
                     <li className="flex items-start gap-1  transition-transform duration-300 delay-75">
                       <span className="text-[#8e44ad] font-bold">2.</span>
                       <span>
-                        <strong>Healthy Weight Control:</strong> Aids in
-                        fullness satisfaction without adding excess calories
+                        <strong>
+                          {isArabic
+                            ? "التحكّم الصحّي في الوزن:"
+                            : "Healthy Weight Control:"}
+                        </strong>{" "}
+                        {isArabic
+                          ? "يساعد على الإحساس بالشبع والامتلاء من غير زيادة في السُّعرات الحرارية."
+                          : "Aids in fullness satisfaction without adding excess calories"}
                       </span>
                     </li>
                   </ul>
@@ -534,29 +651,43 @@ export function AboutUsPage() {
                         <Carrot color="#e6e6e6" />
                       </div>
                       <h3 className="text-base font-bold text-[#134635] mb-2 group-hover:text-[#ff9500] transition-colors duration-300">
-                        Carrots
+                        {isArabic ? "الجزر" : "Carrots"}
                       </h3>
                       <p className="text-xs text-[#ff9500] font-semibold mb-2">
                         <span className="text-[#134635]/80">
-                          Key Nutrients:
+                          {isArabic
+                            ? "العناصر الغذائية الرئيسية:"
+                            : "Key Nutrients:"}
                         </span>{" "}
-                        Fiber and Vitamin A, K
+                        {isArabic
+                          ? "ألياف وفيتامين A، K"
+                          : "Fiber and Vitamin A, K"}
                       </p>
                       <h4 className="text-xs font-semibold text-[#134635] mb-2">
-                        Health Benefits:
+                        {isArabic ? "الفوائد الصحية:" : "Health Benefits:"}
                       </h4>
                       <ul className="space-y-1 text-xs text-[#134635]/80">
                         <li className="flex items-start gap-1  transition-transform duration-300">
                           <span className="text-[#ff9500] font-bold">1.</span>
-                          <span>Better Immune Support</span>
+                          <span>
+                            {isArabic
+                              ? "دعم وتعزيز جهاز المناعة"
+                              : "Better Immune Support"}
+                          </span>
                         </li>
                         <li className="flex items-start gap-1  transition-transform duration-300 delay-75">
                           <span className="text-[#ff9500] font-bold">2.</span>
-                          <span>Healthy Skin and Coat</span>
+                          <span>
+                            {isArabic
+                              ? "جلد صحي وفَرْو لامع"
+                              : "Healthy Skin and Coat"}
+                          </span>
                         </li>
                         <li className="flex items-start gap-1  transition-transform duration-300 delay-100">
                           <span className="text-[#ff9500] font-bold">3.</span>
-                          <span>Improved Eye-sight</span>
+                          <span>
+                            {isArabic ? "تحسن في البصر" : "Improved Eye-sight"}
+                          </span>
                         </li>
                       </ul>
                     </div>
@@ -566,31 +697,44 @@ export function AboutUsPage() {
                         <Bean color="#e6e6e6" />
                       </div>
                       <h3 className="text-base font-bold text-[#134635] mb-2 group-hover:text-[#27ae60] transition-colors duration-300">
-                        Green Peas
+                        {isArabic ? "البازلاء الخضراء" : "Green Peas"}
                       </h3>
                       <p className="text-xs text-[#27ae60] font-semibold mb-2">
                         <span className="text-[#134635]/80">
-                          Key Nutrients:
+                          {isArabic
+                            ? "العناصر الغذائية الرئيسية:"
+                            : "Key Nutrients:"}
                         </span>{" "}
-                        Protein, Fiber and Vitamin A, K, C
+                        {isArabic
+                          ? "بروتين، ألياف وفيتامين A، K، C"
+                          : "Protein, Fiber and Vitamin A, K, C"}
                       </p>
                       <h4 className="text-xs font-semibold text-[#134635] mb-2">
-                        Health Benefits:
+                        {isArabic ? "الفوائد الصحية:" : "Health Benefits:"}
                       </h4>
                       <ul className="space-y-1 text-xs text-[#134635]/80">
                         <li className="flex items-start gap-1  transition-transform duration-300">
                           <span className="text-[#27ae60] font-bold">1.</span>
-                          <span>Supports and maintains Healthy Digestion</span>
+                          <span>
+                            {isArabic
+                              ? "يدعم الهضم الصحي ويُساعد على استمراره."
+                              : "Supports and maintains Healthy Digestion"}
+                          </span>
                         </li>
                         <li className="flex items-start gap-1  transition-transform duration-300 delay-75">
                           <span className="text-[#27ae60] font-bold">2.</span>
-                          <span>Healthy Skin and Heart Function</span>
+                          <span>
+                            {isArabic
+                              ? "جلد صحي وتعزيز ودعم وظائف القلب"
+                              : "Healthy Skin and Heart Function"}
+                          </span>
                         </li>
                         <li className="flex items-start gap-1  transition-transform duration-300 delay-100">
                           <span className="text-[#27ae60] font-bold">3.</span>
                           <span>
-                            Rich in vitamins that contribute to a healthier
-                            immune system
+                            {isArabic
+                              ? "غني بالفيتامينات التي تُسهم في دعم الجهاز المناعي وتعزيز كفاءته"
+                              : "Rich in vitamins that contribute to a healthier immune system"}
                           </span>
                         </li>
                       </ul>
@@ -610,72 +754,130 @@ export function AboutUsPage() {
                     </div>
                     <div>
                       <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 group-hover:text-yellow-200 transition-colors duration-300">
-                        Additional Vitamins and Minerals
+                        {isArabic
+                          ? "الفيتامينات والمعادن الإضافية"
+                          : "Additional Vitamins and Minerals"}
                       </h3>
                       <p className="text-white/80 text-sm mb-4">
-                        <strong>Vitamins:</strong> A, D3, E, B Vitamins (B1, B2,
-                        B6, B12)
+                        <strong>
+                          {isArabic ? "الفيتامينات:" : "Vitamins:"}
+                        </strong>{" "}
+                        A, D3, E,{" "}
+                        {isArabic
+                          ? "فيتامينات B (B1، B2، B6، B12)"
+                          : "B Vitamins (B1, B2, B6, B12)"}
                         <br />
-                        <strong>Minerals:</strong> Zinc, Copper, Calcium,
-                        Phosphorus
+                        <strong>
+                          {isArabic ? "المعادن:" : "Minerals:"}
+                        </strong>{" "}
+                        {isArabic
+                          ? "الزنك، النحاس، الكالسيوم، الفوسفور"
+                          : "Zinc, Copper, Calcium, Phosphorus"}
                       </p>
                     </div>
                   </div>
                   <h4 className="text-white font-semibold text-sm mb-4">
-                    Health Benefits:
+                    {isArabic ? "الفوائد الصحية:" : "Health Benefits:"}
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
                     <div className="space-y-2  transition-transform duration-300">
                       <h4 className="text-white font-semibold text-sm flex items-start gap-2">
                         <span className="text-yellow-300 font-bold">1.</span>
-                        <span>Radiant Skin and Coat:</span>
+                        <span>
+                          {isArabic
+                            ? "جلد صحّي وفَرْو لامع :"
+                            : "Radiant Skin and Coat:"}
+                        </span>
                       </h4>
-                      <p className="text-white/80 text-xs ml-5">Vitamin E</p>
+                      <p
+                        className={`text-white/80 text-xs ${isArabic ? "mr-5" : "ml-5"}`}
+                      >
+                        {isArabic ? "فيتامين E" : "Vitamin E"}
+                      </p>
                     </div>
                     <div className="space-y-2  transition-transform duration-300 delay-75">
                       <h4 className="text-white font-semibold text-sm flex items-start gap-2">
                         <span className="text-yellow-300 font-bold">2.</span>
-                        <span>Boosting Natural Defenses:</span>
+                        <span>
+                          {isArabic
+                            ? "تعزيز المناعة:"
+                            : "Boosting Natural Defenses:"}
+                        </span>
                       </h4>
-                      <p className="text-white/80 text-xs ml-5">
-                        Vitamin A, and antioxidant vitamins
+                      <p
+                        className={`text-white/80 text-xs ${isArabic ? "mr-5" : "ml-5"}`}
+                      >
+                        {isArabic
+                          ? "فيتامين A، والفيتامينات المضادة للأكسدة"
+                          : "Vitamin A, and antioxidant vitamins"}
                       </p>
                     </div>
                     <div className="space-y-2  transition-transform duration-300 delay-100">
                       <h4 className="text-white font-semibold text-sm flex items-start gap-2">
                         <span className="text-yellow-300 font-bold">3.</span>
-                        <span>Targeted Wellness Support:</span>
+                        <span>
+                          {isArabic
+                            ? "دعم صحة الجهاز العصبي:"
+                            : "Targeted Wellness Support:"}
+                        </span>
                       </h4>
-                      <p className="text-white/80 text-xs ml-5">
-                        B Vitamins for nervous system health
+                      <p
+                        className={`text-white/80 text-xs ${isArabic ? "mr-5" : "ml-5"}`}
+                      >
+                        {isArabic
+                          ? "فيتامينات B"
+                          : "B Vitamins for nervous system health"}
                       </p>
                     </div>
                     <div className="space-y-2  transition-transform duration-300 delay-150">
                       <h4 className="text-white font-semibold text-sm flex items-start gap-2">
                         <span className="text-yellow-300 font-bold">4.</span>
-                        <span>Complete Nutrient Balance:</span>
+                        <span>
+                          {isArabic
+                            ? "نظام تغذوي صحي ومتوازن:"
+                            : "Complete Nutrient Balance:"}
+                        </span>
                       </h4>
-                      <p className="text-white/80 text-xs ml-5">
-                        Provides essential micronutrients essential for muscular
-                        and nerve function
+                      <p
+                        className={`text-white/80 text-xs ${isArabic ? "mr-5" : "ml-5"}`}
+                      >
+                        {isArabic
+                          ? "يوفّر المكونات الغذائية الضرورية للحفاظ على كفاءة العضلات والأعصاب"
+                          : "Provides essential micronutrients essential for muscular and nerve function"}
                       </p>
                     </div>
                     <div className="space-y-2  transition-transform duration-300 delay-200">
                       <h4 className="text-white font-semibold text-sm flex items-start gap-2">
                         <span className="text-yellow-300 font-bold">5.</span>
-                        <span>Veterinary-Informed Nutrition:</span>
+                        <span>
+                          {isArabic
+                            ? "تغذية معتمدة من الأطباء البيطريين:"
+                            : "Veterinary-Informed Nutrition:"}
+                        </span>
                       </h4>
-                      <p className="text-white/80 text-xs ml-5">
-                        Scientifically formulated micro-premix
+                      <p
+                        className={`text-white/80 text-xs ${isArabic ? "mr-5" : "ml-5"}`}
+                      >
+                        {isArabic
+                          ? "مُصمَّمة علميًا بعناصر دقيقة عالية الجودة"
+                          : "Scientifically formulated micro-premix"}
                       </p>
                     </div>
                     <div className="space-y-2  transition-transform duration-300 delay-250">
                       <h4 className="text-white font-semibold text-sm flex items-start gap-2">
                         <span className="text-yellow-300 font-bold">6.</span>
-                        <span>Bone Health Support:</span>
+                        <span>
+                          {isArabic
+                            ? "دعم صحة العظام:"
+                            : "Bone Health Support:"}
+                        </span>
                       </h4>
-                      <p className="text-white/80 text-xs ml-5">
-                        Essential for skeletal strength and growth
+                      <p
+                        className={`text-white/80 text-xs ${isArabic ? "mr-5" : "ml-5"}`}
+                      >
+                        {isArabic
+                          ? "ضروري لقوة ونمو الهيكل العظمي"
+                          : "Essential for skeletal strength and growth"}
                       </p>
                     </div>
                   </div>
@@ -692,7 +894,7 @@ export function AboutUsPage() {
           <div className="text-center mb-8 sm:mb-12 md:mb-16 lg:mb-20 xl:mb-24">
             {/* Single line heading with smaller text */}
             <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-[#2d5a3d] leading-tight tracking-tight max-w-4xl mx-auto">
-              Our future product expansion includes:
+              {t(locale, "about.futureProducts.title")}
             </h2>
           </div>
 
@@ -721,16 +923,23 @@ export function AboutUsPage() {
                       {/* Minimal text content */}
                       <div className="p-4 sm:p-3 md:p-4 lg:p-6 flex-shrink-0">
                         <h3 className="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-white mb-1 leading-tight">
-                          {card.title}
+                          {card.id === "dry-food"
+                            ? t(locale, "about.futureProducts.dryFood")
+                            : t(locale, "about.futureProducts.freshFood")}
                         </h3>
                         <p className="text-[10px] sm:text-xs md:text-sm text-white/90 leading-tight line-clamp-2">
-                          {card.subtitle}
+                          {card.id === "dry-food"
+                            ? t(locale, "about.futureProducts.dryFoodSubtitle")
+                            : t(
+                                locale,
+                                "about.futureProducts.freshFoodSubtitle"
+                              )}
                         </p>
 
                         {card.comingSoon && hoveredCard === card.id && (
                           <div className="mt-1 sm:mt-2">
                             <Badge className="bg-[#d4704a] hover:bg-[#b85a3a] text-white px-1.5 py-0.5 sm:px-2 sm:py-1 text-[10px] sm:text-xs font-semibold animate-in fade-in-0 slide-in-from-top-2 duration-300">
-                              Coming Soon!
+                              {t(locale, "about.futureProducts.comingSoon")}
                             </Badge>
                           </div>
                         )}

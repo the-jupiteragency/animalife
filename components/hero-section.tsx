@@ -10,14 +10,17 @@ import BackgroundVideo from "next-video/background-video";
 // Import single combined video
 import heroVideo from "@/videos/hero-section-video.mp4";
 
-const textSlides = [
-  { start: 0, end: 5, heading: "Because Every Bond Deserves the Best" },
-  { start: 5, end: 11, heading: "Care You Give.\nScience We Perfect" },
-  { start: 11, end: 15, heading: "Energy You Can See" },
-  { start: 15, end: 19, heading: "Because Every Moment Counts" },
+import { Locale } from '@/lib/i18n/config';
+import { t } from '@/lib/i18n/translations';
+
+const getTextSlides = (locale: Locale) => [
+  { start: 0, end: 5, heading: t(locale, 'hero.slides.0') },
+  { start: 5, end: 11, heading: t(locale, 'hero.slides.1') },
+  { start: 11, end: 15, heading: t(locale, 'hero.slides.2') },
+  { start: 15, end: 19, heading: t(locale, 'hero.slides.3') },
 ];
 
-export function HeroSection() {
+export function HeroSection({ locale }: { locale: Locale }) {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -26,6 +29,7 @@ export function HeroSection() {
     if (!videoRef.current) return;
 
     const currentTime = videoRef.current.currentTime;
+    const textSlides = getTextSlides(locale);
     const newTextIndex = textSlides.findIndex(
       (slide) => currentTime >= slide.start && currentTime < slide.end
     );
@@ -96,16 +100,16 @@ export function HeroSection() {
               transition={{ duration: 0.4 }}
               className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-white leading-tight whitespace-pre-line"
             >
-              {textSlides[currentTextIndex].heading}
+              {getTextSlides(locale)[currentTextIndex].heading}
             </motion.h1>
           </AnimatePresence>
 
           <div className="mt-8 md:mt-12">
             <Link
-              href="/products"
+              href={`/${locale}/products`}
               className="inline-flex items-center justify-center font-bold rounded-full px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 text-sm sm:text-base md:text-lg shadow-lg gap-1 sm:gap-2 transform transition-all hover:scale-105 bg-white text-[#13513D] hover:bg-[#F9F4DF]"
             >
-              View Products
+              {t(locale, 'hero.cta')}
               <IoIosArrowDropright className="h-4 w-4 md:h-5 md:w-5" />
             </Link>
           </div>

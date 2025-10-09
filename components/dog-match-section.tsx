@@ -28,58 +28,41 @@ import {
   HeartPulse,
 } from "lucide-react";
 
-const dogCategories = [
-  // {
-  //   id: "puppy",
-  //   title: "Puppy",
-  //   dogImage: "/dog-1.webp",
-  //   cardBg: "/card1-bg.webp",
-  //   hoverColor: "from-[#E8DCC0] to-[#D4C4A8]",
-  //   defaultColor: "from-[#F5F1E8] to-[#E8DCC0]",
-  //   description: "Coming Soon",
-  // },
+const getDogCategories = (locale: Locale) => [
   {
     id: "small-adult",
-    title: "Small Breed Adult",
+    title: t(locale, 'products.categories.small'),
     dogImage: "/dog-2.webp",
     cardBg: "/card1-bg.webp",
     hoverColor: "from-[#E8DCC0] to-[#C4956B]",
     defaultColor: "from-[#F5F1E8] to-[#E8DCC0]",
-    features: [
-      "Easy to chew and digest",
-      "Tested for safety, quality and nutritional accuracy",
-      "Trusted ingredients, proven to nourish and protect",
-    ],
+    features: t(locale, 'dogMatch.features.small'),
   },
   {
     id: "medium-adult",
-    title: "Medium & Large Breed Adult",
+    title: t(locale, 'products.categories.medium'),
     dogImage: "/dog-3.webp",
     cardBg: "/card1-bg.webp",
     hoverColor: "from-[#E8DCC0] to-[#D4A574]",
     defaultColor: "from-[#F5F1E8] to-[#E8DCC0]",
-    features: [
-      "Rich in essential vitamins and minerals",
-      "Tested for safety, quality and nutritional accuracy",
-      "Trusted ingredients, proven to nourish and protect",
-    ],
+    features: t(locale, 'dogMatch.features.medium'),
   },
   {
     id: "giant-adult",
-    title: "Giant Breed Adult",
+    title: t(locale, 'products.categories.giant'),
     dogImage: "/dog-4.webp",
     cardBg: "/card1-bg.webp",
     hoverColor: "from-[#E8DCC0] to-[#B8956A]",
     defaultColor: "from-[#F5F1E8] to-[#E8DCC0]",
-    features: [
-      "Promotes Digestive Health",
-      "Tested for safety, quality and nutritional accuracy",
-      "Trusted ingredients, proven to nourish and protect",
-    ],
+    features: t(locale, 'dogMatch.features.giant'),
   },
 ];
 
-export function DogMatchSection() {
+import { Locale } from '@/lib/i18n/config';
+import { t } from '@/lib/i18n/translations';
+
+export function DogMatchSection({ locale }: { locale: Locale }) {
+  const dogCategories = getDogCategories(locale);
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
@@ -119,11 +102,10 @@ export function DogMatchSection() {
           {/* Header */}
           <div className="text-center mb-8 md:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 text-[#2d5a3d] leading-tight">
-              Find Your Dog's Perfect Match
+              {t(locale, 'dogMatch.title')}
             </h2>
             <p className="text-sm sm:text-md md:text-lg text-gray-600 max-w-2xl mx-auto">
-              Choose the right nutrition based on your dog's breed size and life
-              stage
+              {t(locale, 'dogMatch.subtitle')}
             </p>
           </div>
 
@@ -150,6 +132,7 @@ export function DogMatchSection() {
                     setHoveredCard={setHoveredCard}
                     openProductModal={openProductModal}
                     isMobile={true}
+                    locale={locale}
                   />
                 ))}
               </div>
@@ -173,6 +156,7 @@ export function DogMatchSection() {
                     setHoveredCard={setHoveredCard}
                     openProductModal={openProductModal}
                     isMobile={false}
+                    locale={locale}
                   />
                 ))}
               </div>
@@ -218,18 +202,20 @@ function DogCategoryCard({
   setHoveredCard,
   openProductModal,
   isMobile = false,
+  locale,
 }: {
   category: any;
   hoveredCard: string | null;
   setHoveredCard: (id: string | null) => void;
   openProductModal: (product: any) => void;
   isMobile?: boolean;
+  locale: Locale;
 }) {
   return (
     <Sheet>
       <SheetTrigger asChild>
         <Card
-          className={`flex-shrink-0 m-2 cursor-pointer transform transition-all duration-500 hover:scale-105 border-0 rounded-xl md:rounded-2xl overflow-hidden group ${
+          className={`flex-shrink-0 m-2 transform transition-all duration-500 hover:scale-105 border-0 rounded-xl md:rounded-2xl overflow-hidden group ${
             isMobile ? "w-44 sm:w-56" : "w-full sm:w-80"
           }`}
           onMouseEnter={() => setHoveredCard(category.id)}
@@ -274,10 +260,10 @@ function DogCategoryCard({
 
               {/* Title */}
               <div
-                className={`absolute ${isMobile ? "top-3 left-3 right-3" : "top-6 left-6 right-6"} text-left transition-all duration-300 z-10`}
+                className={`absolute ${isMobile ? "top-3 left-3 right-3" : "top-6 left-6 right-6"} transition-all duration-300 z-10`}
               >
                 <h3
-                  className={`font-bold text-[#2d5a3d] leading-tight transition-all duration-300 group-hover:scale-105 ${
+                  className={`font-bold text-[#2d5a3d] leading-tight transition-all duration-300 group-hover:scale-105 ${locale === 'ar' ? 'text-right' : 'text-left'} ${
                     isMobile ? "text-sm" : "text-xl lg:text-2xl"
                   }`}
                 >
@@ -296,7 +282,7 @@ function DogCategoryCard({
       >
         <SheetHeader className="pb-6">
           <SheetTitle
-            className={`font-bold text-[#2d5a3d] flex items-center gap-3 ${
+            className={`font-bold text-[#2d5a3d] flex items-center gap-3 ${locale === 'ar' ? 'text-right' : 'text-left'} ${
               isMobile ? "text-lg" : "text-2xl md:text-3xl"
             }`}
           >
@@ -321,9 +307,9 @@ function DogCategoryCard({
             <div className="bg-gradient-to-r from-[#2d5a3d] to-[#1e3a2a] p-4 relative">
               <div className="absolute inset-0 bg-black/10"></div>
               <h4
-                className={`font-bold text-white relative z-10 flex items-center gap-3 ${isMobile ? "text-base" : "text-md"}`}
+                className={`font-bold text-white relative z-10 flex items-center gap-3 ${locale === 'ar' ? 'text-right' : 'text-left'} ${isMobile ? "text-base" : "text-md"}`}
               >
-                Perfect Nutrition for {category.title}
+                {t(locale, 'dogMatch.modalTitle')} {category.title}
               </h4>
             </div>
 

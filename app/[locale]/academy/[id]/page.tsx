@@ -3,13 +3,19 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AcademyPosts } from "@/app/data/academy-posts";
+import { AcademyPostsAr } from "@/app/data/academy-posts-ar";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-// Remove the hardcoded blogPosts array and use:
-const blogPosts = AcademyPosts;
+import { Locale } from "@/lib/i18n/config";
+import { t } from "@/lib/i18n/translations";
 
-export default function PostDetailPage({ params }: { params: { id: string } }) {
+export default function PostDetailPage({
+  params,
+}: {
+  params: { id: string; locale: Locale };
+}) {
+  const blogPosts = params.locale === "ar" ? AcademyPostsAr : AcademyPosts;
   const post =
     blogPosts.find(
       (p) => p.slug === params.id || p.id.toString() === params.id
@@ -25,18 +31,27 @@ export default function PostDetailPage({ params }: { params: { id: string } }) {
       : blogPosts[0];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen =">
       {/* Add top padding to account for fixed header */}
       <div className="pt-1 md:pt-16">
         {/* Navigation */}
-        <div className="bg-white border-b">
+        <div>
           <div className="container mx-auto px-4 py-4">
             <Link
-              href="/academy"
+              href={`/${params.locale}/academy`}
               className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors"
             >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Academy
+              {params.locale === "ar" ? (
+                <>
+                  {t(params.locale, "common.backToAcademy")}
+                  <ArrowLeft className="w-4 h-4 mr-3 " />
+                </>
+              ) : (
+                <>
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  {t(params.locale, "common.backToAcademy")}
+                </>
+              )}
             </Link>
           </div>
         </div>
@@ -61,7 +76,9 @@ export default function PostDetailPage({ params }: { params: { id: string } }) {
             </h1>
 
             <div className="flex items-center text-gray-600 mb-8">
-              <span>Written by {post.author}</span>
+              <span>
+                {t(params.locale, "common.writtenBy")} {post.author}
+              </span>
             </div>
 
             {/* Article Content */}
@@ -75,28 +92,39 @@ export default function PostDetailPage({ params }: { params: { id: string } }) {
 
             {/* Read More Section */}
             <div className="mt-12 pt-8 border-t border-gray-200">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div
+                className={`flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 ${params.locale === "ar" ? "text-left" : ""}`}
+              >
                 <div>
                   <h3 className="text-lg font-semibold text-[#2d5a3d] mb-2">
-                    Continue Reading
+                    {t(params.locale, "common.continueReading")}
                   </h3>
                   <p className="text-gray-600 text-sm">
-                    Discover more pet care tips and expert advice
+                    {t(params.locale, "common.discoverMore")}
                   </p>
                 </div>
                 <div className="flex gap-3">
-                  <Link href="/academy">
+                  <Link href={`/${params.locale}/academy`}>
                     <Button
                       variant="outline"
                       className="border-[#2d5a3d] text-[#2d5a3d] hover:bg-[#2d5a3d] hover:text-white"
                     >
-                      All Articles
+                      {t(params.locale, "common.allArticles")}
                     </Button>
                   </Link>
-                  <Link href={`/academy/${nextPost.slug}`}>
+                  <Link href={`/${params.locale}/academy/${nextPost.slug}`}>
                     <Button className="bg-[#2d5a3d] text-white hover:bg-[#1e3a2a]">
-                      Next Article
-                      <ArrowRight className="w-4 h-4 ml-2" />
+                      {params.locale === "ar" ? (
+                        <>
+                          {t(params.locale, "common.nextArticle")}
+                          <ArrowLeft className="w-4 h-4 ml-2" />
+                        </>
+                      ) : (
+                        <>
+                          {t(params.locale, "common.nextArticle")}
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </>
+                      )}
                     </Button>
                   </Link>
                 </div>
