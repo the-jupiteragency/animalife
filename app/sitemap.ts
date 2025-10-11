@@ -70,7 +70,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Academy posts in Arabic
   const academyPostsAr: MetadataRoute.Sitemap = AcademyPostsAr.map((post) => ({
     url: `${baseUrl}/ar/academy/${post.slug}`,
-    lastModified: new Date(post.date || lastModified),
+    lastModified: lastModified,
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   }))
@@ -78,7 +78,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Academy posts in English
   const academyPostsEn: MetadataRoute.Sitemap = AcademyPosts.map((post) => ({
     url: `${baseUrl}/en/academy/${post.slug}`,
-    lastModified: new Date(post.date || lastModified),
+    lastModified: lastModified,
     changeFrequency: 'monthly' as const,
     priority: 0.5,
   }))
