@@ -9,7 +9,12 @@ import { Slider } from "@/components/ui/slider";
 import { ProductModal } from "@/components/product-modal";
 import { Filter, X, SlidersHorizontal } from "lucide-react";
 import { Locale } from "@/lib/i18n/config";
-import { t, translateSize, getProductName, getProductBenefits } from "@/lib/i18n/translations";
+import {
+  t,
+  translateSize,
+  getProductName,
+  getProductBenefits,
+} from "@/lib/i18n/translations";
 import {
   Sheet,
   SheetContent,
@@ -306,7 +311,7 @@ const allProducts = [
     price: "",
     frontImage: "/dog-packages/gaint-f-10kg.webp",
     backImage: "/dog-packages/gaint-b-10kg.webp",
-    ageGroup: "Adult",
+    ageGroup: "Adults",
     breedSize: "Giant",
     feeding: [
       { weight: "30-35 kg", daily: "511-590g", meals: "2" },
@@ -331,7 +336,7 @@ const filterOptions = {
   size: ["1kg", "3kg", "5kg", "10kg"],
 };
 
-export function ProductsGrid({ locale = 'en' }: { locale?: Locale }) {
+export function ProductsGrid({ locale = "en" }: { locale?: Locale }) {
   const [selectedProduct, setSelectedProduct] = useState<
     (typeof allProducts)[0] | null
   >(null);
@@ -441,7 +446,9 @@ export function ProductsGrid({ locale = 'en' }: { locale?: Locale }) {
     <div className="space-y-6">
       {/* Clear Filters */}
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-[#0A3D2C]">{t(locale, 'products.page.filters')}</h3>
+        <h3 className="text-lg font-semibold text-[#0A3D2C]">
+          {t(locale, "products.page.filters")}
+        </h3>
         <Button
           variant="ghost"
           size="sm"
@@ -449,15 +456,20 @@ export function ProductsGrid({ locale = 'en' }: { locale?: Locale }) {
           className="text-[#0A3D2C] hover:text-[#1e3a2a]"
         >
           <X className="w-4 h-4 mr-1" />
-          {t(locale, 'products.page.clear')}
+          {t(locale, "products.page.clear")}
         </Button>
       </div>
 
       {/* Breed Size Filter */}
       <div className="space-y-3">
-        <h4 className="font-medium text-gray-800">{t(locale, 'products.page.breedSize')}</h4>
+        <h4 className="font-medium text-gray-800">
+          {t(locale, "products.page.breedSize")}
+        </h4>
         {filterOptions.breedSize.map((option) => (
-          <div key={option} className={`flex items-center ${locale === 'ar' ? 'space-x-reverse space-x-3' : 'space-x-2'}`}>
+          <div
+            key={option}
+            className={`flex items-center ${locale === "ar" ? "space-x-reverse space-x-3" : "space-x-2"}`}
+          >
             <Checkbox
               id={`breed-${option}`}
               checked={filters.breedSize.includes(option)}
@@ -469,7 +481,7 @@ export function ProductsGrid({ locale = 'en' }: { locale?: Locale }) {
               htmlFor={`breed-${option}`}
               className="text-sm text-gray-700"
             >
-              {getProductName(option + ' Breed Adults', locale)}
+              {getProductName(option + " Breed Adults", locale)}
             </label>
           </div>
         ))}
@@ -477,9 +489,14 @@ export function ProductsGrid({ locale = 'en' }: { locale?: Locale }) {
 
       {/* Size Filter */}
       <div className="space-y-3">
-        <h4 className="font-medium text-gray-800">{t(locale, 'products.page.packageSize')}</h4>
+        <h4 className="font-medium text-gray-800">
+          {t(locale, "products.page.packageSize")}
+        </h4>
         {filterOptions.size.map((option) => (
-          <div key={option} className={`flex items-center ${locale === 'ar' ? 'space-x-reverse space-x-3' : 'space-x-2'}`}>
+          <div
+            key={option}
+            className={`flex items-center ${locale === "ar" ? "space-x-reverse space-x-3" : "space-x-2"}`}
+          >
             <Checkbox
               id={`size-${option}`}
               checked={filters.size.includes(option)}
@@ -487,10 +504,7 @@ export function ProductsGrid({ locale = 'en' }: { locale?: Locale }) {
                 handleFilterChange("size", option, checked as boolean)
               }
             />
-            <label
-              htmlFor={`size-${option}`}
-              className="text-sm text-gray-700"
-            >
+            <label htmlFor={`size-${option}`} className="text-sm text-gray-700">
               {translateSize(option, locale)}
             </label>
           </div>
@@ -537,7 +551,7 @@ export function ProductsGrid({ locale = 'en' }: { locale?: Locale }) {
               product.breedSize === "Giant") && (
               <div className="absolute top-3 right-3">
                 <Badge className="bg-orange-500 text-white font-semibold shadow-lg">
-                  {t(locale, 'products.comingSoon')}
+                  {t(locale, "products.comingSoon")}
                 </Badge>
               </div>
             )}
@@ -569,7 +583,7 @@ export function ProductsGrid({ locale = 'en' }: { locale?: Locale }) {
                 variant="outline"
                 className="text-[#2d5a3d] border-[#2d5a3d] text-xs font-medium flex-shrink-0"
               >
-                {t(locale, 'products.productType')}
+                {t(locale, "products.productType")}
               </Badge>
               <Badge
                 variant="outline"
@@ -581,7 +595,7 @@ export function ProductsGrid({ locale = 'en' }: { locale?: Locale }) {
                 variant="outline"
                 className="text-[#2d5a3d] border-[#2d5a3d] text-xs font-medium flex-shrink-0"
               >
-                {t(locale, 'products.ageRange')}
+                {t(locale, "products.ageRange")}
               </Badge>
             </div>
 
@@ -590,15 +604,19 @@ export function ProductsGrid({ locale = 'en' }: { locale?: Locale }) {
                 variant="outline"
                 className="text-gray-600 border-gray-300 text-xs"
               >
-                {product.ageGroup === 'Adults' ? t(locale, 'products.categories.small').split(' ')[0] : product.ageGroup}
+                {t(locale, "productLabels.adults")}
               </Badge>
               <Badge
                 variant="outline"
                 className="text-gray-600 border-gray-300 text-xs"
               >
-                {product.breedSize === 'Medium & Large' ? t(locale, 'products.categories.medium').split(' ')[2] + ' ' + t(locale, 'products.categories.medium').split(' ')[3] : 
-                 product.breedSize === 'Small' ? t(locale, 'products.categories.small').split(' ')[2] :
-                 product.breedSize === 'Giant' ? t(locale, 'products.categories.giant').split(' ')[2] : product.breedSize}
+                {product.breedSize === "Small"
+                  ? t(locale, "productLabels.smallBreed")
+                  : product.breedSize === "Medium & Large"
+                    ? t(locale, "productLabels.mediumLargeBreed")
+                    : product.breedSize === "Giant"
+                      ? t(locale, "productLabels.giantBreed")
+                      : product.breedSize}
               </Badge>
             </div>
 
@@ -634,13 +652,13 @@ export function ProductsGrid({ locale = 'en' }: { locale?: Locale }) {
                   className="flex-1 border-[#2d5a3d] text-[#2d5a3d] hover:bg-[#2d5a3d] hover:text-white"
                 >
                   <SlidersHorizontal className="w-4 h-4 mr-2" />
-                  {t(locale, 'products.page.filters')}
+                  {t(locale, "products.page.filters")}
                 </Button>
               </SheetTrigger>
               <SheetContent side="left" className="w-80 overflow-y-auto">
                 <SheetHeader>
                   <SheetTitle className="text-[#2d5a3d]">
-                    {t(locale, 'products.page.filterProducts')}
+                    {t(locale, "products.page.filterProducts")}
                   </SheetTitle>
                 </SheetHeader>
                 <div className="mt-6">
@@ -654,25 +672,31 @@ export function ProductsGrid({ locale = 'en' }: { locale?: Locale }) {
               onChange={(e) => setSortBy(e.target.value)}
               className="flex-1 border border-[#2d5a3d] text-[#2d5a3d] rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2d5a3d] focus:border-[#2d5a3d] bg-white"
             >
-              <option value="name">{t(locale, 'products.page.sortBy')}</option>
-              <option value="price-low">{t(locale, 'products.page.priceLowHigh')}</option>
-              <option value="price-high">{t(locale, 'products.page.priceHighLow')}</option>
-              <option value="rating">{t(locale, 'products.page.highestRated')}</option>
+              <option value="name">{t(locale, "products.page.sortBy")}</option>
+              <option value="price-low">
+                {t(locale, "products.page.priceLowHigh")}
+              </option>
+              <option value="price-high">
+                {t(locale, "products.page.priceHighLow")}
+              </option>
+              <option value="rating">
+                {t(locale, "products.page.highestRated")}
+              </option>
             </select>
           </div>
 
           {/* Mobile Product Count */}
           <div className="lg:hidden mb-4">
             <p className="text-gray-700 font-medium text-sm">
-              {t(locale, 'products.page.showing')}{" "}
+              {t(locale, "products.page.showing")}{" "}
               <span className="text-[#2d5a3d] font-bold">
                 {filteredProducts.length}
               </span>{" "}
-              {t(locale, 'products.page.of')}{" "}
+              {t(locale, "products.page.of")}{" "}
               <span className="text-[#2d5a3d] font-bold">
                 {allProducts.length}
               </span>{" "}
-              {t(locale, 'products.page.products')}
+              {t(locale, "products.page.products")}
             </p>
           </div>
 
@@ -681,15 +705,15 @@ export function ProductsGrid({ locale = 'en' }: { locale?: Locale }) {
             {/* Desktop Sort and Results */}
             <div className="hidden lg:flex justify-between items-center mb-8">
               <p className="text-gray-700 font-medium">
-                {t(locale, 'products.page.showing')}{" "}
+                {t(locale, "products.page.showing")}{" "}
                 <span className="text-[#2d5a3d] font-bold">
                   {filteredProducts.length}
                 </span>{" "}
-                {t(locale, 'products.page.of')}{" "}
+                {t(locale, "products.page.of")}{" "}
                 <span className="text-[#2d5a3d] font-bold">
                   {allProducts.length}
                 </span>{" "}
-                {t(locale, 'products.page.products')}
+                {t(locale, "products.page.products")}
               </p>
               <select
                 value={sortBy}
@@ -721,16 +745,16 @@ export function ProductsGrid({ locale = 'en' }: { locale?: Locale }) {
                   <Filter className="w-20 h-20 mx-auto" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-700 mb-3">
-                  {t(locale, 'products.page.noProducts')}
+                  {t(locale, "products.page.noProducts")}
                 </h3>
                 <p className="text-gray-500 mb-6 text-lg">
-                  {t(locale, 'products.page.tryAdjusting')}
+                  {t(locale, "products.page.tryAdjusting")}
                 </p>
                 <Button
                   onClick={clearFilters}
                   className="bg-[#2d5a3d] hover:bg-[#1e3a2a] text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105"
                 >
-                  {t(locale, 'products.page.clearAllFilters')}
+                  {t(locale, "products.page.clearAllFilters")}
                 </Button>
               </div>
             )}

@@ -35,7 +35,7 @@ User-agent: Slurp
 Allow: /
 Crawl-delay: 2
 
-# Sitemap location
+# Sitemap locations
 Sitemap: https://www.myanimalife.com/sitemap.xml
 
 # Host directive for preferred domain

@@ -260,6 +260,14 @@ export const translations = {
       },
     },
 
+    // Product Labels
+    productLabels: {
+      adults: "Adults",
+      smallBreed: "Small Breed",
+      mediumLargeBreed: "Medium & Large",
+      giantBreed: "Giant Breed",
+    },
+
     // Common
     common: {
       learnMore: "Learn More",
@@ -526,6 +534,14 @@ export const translations = {
         freshFoodSubtitle: "وجبات صحية وطازجة مُحضّرة خصيصًا للحيوانات الأليفة",
         comingSoon: "قريبًا",
       },
+    },
+
+    // Product Labels
+    productLabels: {
+      adults: "البالغين",
+      smallBreed: "السلالات الصغيرة",
+      mediumLargeBreed: "المتوسطة والكبيرة",
+      giantBreed: "السلالات العملاقة",
     },
 
     // Common

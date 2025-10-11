@@ -10,21 +10,20 @@ import {
 } from "@/lib/seo/structured-data";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://animalife.vercel.app"),
+  metadataBase: new URL("https://www.myanimalife.com"),
   title: {
-    default: "AnimaLife | Science-Driven Pet Nutrition & Wellness",
-    template: "%s | AnimaLife",
+    default:
+      "AnimaLife Egypt | أفضل طعام كلاب وقطط في مصر - تغذية علمية للحيوانات الأليفة",
+    template: "%s | AnimaLife Egypt",
   },
   description:
-    "AnimaLife offers science-driven, complete, and balanced nutrition for pets. Discover products tailored to your pet's unique needs, expert advice, and a passionate community of animal lovers.",
+    "AnimaLife Egypt - أفضل طعام كلاب وقطط في مصر. تغذية علمية متكاملة ومتوازنة للحيوانات الأليفة. اكتشف منتجاتنا المصممة خصيصاً لاحتياجات حيوانك الأليف مع استشارات بيطرية مجانية.",
   keywords: [
-    "AnimaLife",
-    "pet nutrition",
-    "dog food",
-    "cat food",
-    "science-based pet care",
-    "pet wellness",
-    "healthy pets",
+    "animalife",
+    "animal life",
+    "animal care",
+    "animal nutrition",
+    "animal wellness",
     "animal health",
     "animal treatment",
     "animal veterinary",
@@ -62,6 +61,23 @@ export const metadata: Metadata = {
     "رعاية حيوانات أليفة",
     "premium pet food Egypt",
     "طعام حيوانات فاخر",
+    "alternative to petsegypt",
+    "better than petsegypt",
+    "pet food delivery Egypt",
+    "توصيل طعام حيوانات مصر",
+    "أفضل طعام للكلاب الصغيرة",
+    "طعام كلاب كبيرة الحجم",
+    "best small dog food Egypt",
+    "large breed dog food Egypt",
+    "puppy food Egypt",
+    "طعام جراء مصر",
+    "senior dog food Egypt",
+    "طعام كلاب كبيرة السن",
+    "pet food Middle East",
+    "طعام حيوانات الشرق الأوسط",
+    "pet nutrition Middle East",
+    "pet shop Egypt",
+    "محل حيوانات أليفة مصر",
   ],
   authors: [{ name: "AnimaLife Team", url: "https://www.myanimalife.com" }],
   creator: "AnimaLife",
@@ -74,31 +90,23 @@ export const metadata: Metadata = {
   category: "Pet Care",
   classification: "Pet Nutrition and Wellness",
   openGraph: {
-    title: "AnimaLife | Science-Driven Pet Nutrition & Wellness",
+    title: "AnimaLife Egypt | أفضل طعام كلاب وقطط في مصر",
     description:
-      "AnimaLife offers science-driven, complete, and balanced nutrition for pets. Discover products tailored to your pet's unique needs, expert advice, and a passionate community of animal lovers.",
-    url: "https://animalife.vercel.app",
-    siteName: "AnimaLife",
+      "AnimaLife Egypt - أفضل طعام كلاب وقطط في مصر. تغذية علمية متكاملة ومتوازنة للحيوانات الأليفة مع استشارات بيطرية مجانية.",
+    url: "https://www.myanimalife.com",
+    siteName: "AnimaLife Egypt",
     images: [
       {
         url: "/hero1.webp",
         width: 1200,
         height: 630,
-        alt: "AnimaLife - Science-Driven Pet Nutrition",
+        alt: "AnimaLife Egypt - أفضل طعام كلاب وقطط في مصر",
       },
     ],
-    locale: "en_US",
+    locale: "ar_EG",
     type: "website",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "AnimaLife | Science-Driven Pet Nutrition & Wellness",
-    description:
-      "AnimaLife offers science-driven, complete, and balanced nutrition for pets. Discover products tailored to your pet's unique needs.",
-    images: ["/hero1.webp"],
-    creator: "@animalife",
-    site: "@animalife",
-  },
+
   robots: {
     index: true,
     follow: true,
@@ -125,7 +133,11 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   alternates: {
-    canonical: "https://animalife.vercel.app",
+    canonical: "https://www.myanimalife.com",
+    languages: {
+      ar: "https://www.myanimalife.com/ar",
+      en: "https://www.myanimalife.com/en",
+    },
   },
   verification: {
     google: "your-google-verification-code",
@@ -144,26 +156,67 @@ const websiteSchema = generateWebsiteSchema("ar");
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.myanimalife.com",
+  "@id": "https://www.myanimalife.com#localbusiness",
   name: "AnimaLife Egypt",
   alternateName: "أنيمالايف مصر",
   url: "https://www.myanimalife.com",
   logo: "https://www.myanimalife.com/logo.svg",
   description:
-    "AnimaLife offers science-driven, complete, and balanced nutrition for pets.",
-  contactPoint: {
-    "@type": "ContactPoint",
-    contactType: "Customer Service",
-    availableLanguage: "English",
+    "أفضل طعام كلاب وقطط في مصر - تغذية علمية متكاملة ومتوازنة للحيوانات الأليفة",
+  telephone: "+20 (122) 229-4101",
+  email: "Info@myanimalife.com",
+  priceRange: "$$",
+  servesCuisine: "Pet Food",
+  serviceArea: {
+    "@type": "Country",
+    name: "Egypt",
   },
-  sameAs: [
-    "https://facebook.com/animalife",
-    "https://twitter.com/animalife",
-    "https://instagram.com/animalife",
-  ],
   address: {
     "@type": "PostalAddress",
+    streetAddress: "32H Mourad Street",
+    addressLocality: "Giza",
+    addressRegion: "Giza Governorate",
+    postalCode: "12511",
     addressCountry: "EG",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 30.0444,
+    longitude: 31.2357,
+  },
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      contactType: "Customer Service",
+      telephone: "+20 (122) 229-4101",
+      email: "Info@myanimalife.com",
+      availableLanguage: ["Arabic", "English"],
+    },
+  ],
+  openingHours: "Mo-Su 09:00-18:00",
+  paymentAccepted: "Cash, Credit Card",
+  currenciesAccepted: "EGP",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Pet Food Products",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Product",
+          name: "Dog Food - Small Breed Adults",
+          category: "Pet Food",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Product",
+          name: "Dog Food - Medium & Large Breed Adults",
+          category: "Pet Food",
+        },
+      },
+    ],
   },
 };
 
@@ -182,6 +235,10 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <meta
+          name="google-site-verification"
+          content="WQJ-sIfgQNCQskQMd7DNMmxOGLUGJC0rR-u4nvlR9zs"
+        />
         <meta name="theme-color" content="#1B4838" />
         <meta name="msapplication-TileColor" content="#1B4838" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
