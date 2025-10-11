@@ -9,6 +9,11 @@ import { AcademyPostsAr } from "@/app/data/academy-posts-ar";
 
 import { Locale } from "@/lib/i18n/config";
 import { t } from "@/lib/i18n/translations";
+import { generatePageMetadata } from '@/lib/seo/metadata';
+
+export async function generateMetadata({ params: { locale } }: { params: { locale: Locale } }) {
+  return generatePageMetadata('academy', locale);
+}
 
 export default function AcademyPage({
   params: { locale },

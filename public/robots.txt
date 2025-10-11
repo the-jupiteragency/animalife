@@ -1,13 +1,17 @@
+# AnimaLife Egypt - Pet Food & Nutrition
+# Robots.txt for https://www.myanimalife.com
+
 User-agent: *
 Allow: /
 
-# Disallow admin or private areas (if any)
+# Disallow admin, API, and build directories
 Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
+Disallow: /.next/
+Disallow: /node_modules/
 
-# Allow all search engines to crawl images
-User-agent: *
+# Allow search engines to crawl all media files
 Allow: /public/
 Allow: /*.webp$
 Allow: /*.jpg$
@@ -15,9 +19,24 @@ Allow: /*.jpeg$
 Allow: /*.png$
 Allow: /*.gif$
 Allow: /*.svg$
+Allow: /*.mp4$
+Allow: /*.webm$
+
+# Special rules for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
 
 # Sitemap location
-Sitemap: https://animalife.vercel.app/sitemap.xml
+Sitemap: https://www.myanimalife.com/sitemap.xml
 
-# Crawl delay (optional - adjust as needed)
-Crawl-delay: 1
+# Host directive for preferred domain
+Host: https://www.myanimalife.com

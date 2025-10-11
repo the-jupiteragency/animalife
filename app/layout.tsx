@@ -4,6 +4,10 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import Script from "next/script";
 import { isRTL, defaultLocale } from "@/lib/i18n/config";
+import {
+  generateOrganizationSchema,
+  generateWebsiteSchema,
+} from "@/lib/seo/structured-data";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://animalife.vercel.app"),
@@ -22,14 +26,44 @@ export const metadata: Metadata = {
     "pet wellness",
     "healthy pets",
     "animal health",
-    "pet products",
-    "pet academy",
-    "pet community",
-    "premium pet food",
-    "natural pet nutrition",
-    "pet health supplements",
+    "animal treatment",
+    "animal veterinary",
+    "animal pet care",
+    "animal pet nutrition",
+    "animal pet wellness",
+    "animal pet health",
+    "animal pet treatment",
+    "animal pet veterinary",
+    "animal pet food",
+    "animal pet food egypt",
+    "أنيمالايف",
+    "animalife Egypt",
+    "أنيمالايف مصر",
+    "طعام حيوانات أليفة مصر",
+    "pet food Egypt",
+    "طعام كلاب مصر",
+    "طعام قطط مصر",
+    "dog food Egypt",
+    "cat food Egypt",
+    "AnimaLife Egypt",
+    "أكل كلاب",
+    "أكل قطط",
+    "حيوانات أليفة مصر",
+    "pets Egypt",
+    "علاج حيوانات أليفة",
+    "pet treatment Egypt",
+    "تغذية حيوانات أليفة",
+    "pet nutrition Egypt",
+    "طبيب بيطري مصر",
+    "veterinary Egypt",
+    "كلاب مصر",
+    "قطط مصر",
+    "pet care Egypt",
+    "رعاية حيوانات أليفة",
+    "premium pet food Egypt",
+    "طعام حيوانات فاخر",
   ],
-  authors: [{ name: "AnimaLife Team", url: "https://animalife.vercel.app" }],
+  authors: [{ name: "AnimaLife Team", url: "https://www.myanimalife.com" }],
   creator: "AnimaLife",
   publisher: "AnimaLife",
   formatDetection: {
@@ -104,12 +138,17 @@ export const viewport: Viewport = {
   themeColor: "#1B4838",
 };
 
-const jsonLd = {
+const organizationSchema = generateOrganizationSchema();
+const websiteSchema = generateWebsiteSchema("ar");
+
+const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "AnimaLife",
-  url: "https://animalife.vercel.app",
-  logo: "https://animalife.vercel.app/logo.svg",
+  "@type": "LocalBusiness",
+  "@id": "https://www.myanimalife.com",
+  name: "AnimaLife Egypt",
+  alternateName: "أنيمالايف مصر",
+  url: "https://www.myanimalife.com",
+  logo: "https://www.myanimalife.com/logo.svg",
   description:
     "AnimaLife offers science-driven, complete, and balanced nutrition for pets.",
   contactPoint: {
@@ -149,14 +188,26 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="format-detection" content="telephone=no" />
         <Script
-          id="json-ld"
+          id="organization-schema"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+        <Script
+          id="website-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <Script
+          id="local-business-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessSchema),
+          }}
         />
       </head>
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

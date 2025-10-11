@@ -7,6 +7,11 @@ import { AcademySection } from "@/components/academy-section";
 import { AboutSection } from "@/components/about-section";
 
 import { Locale } from '@/lib/i18n/config';
+import { generatePageMetadata } from '@/lib/seo/metadata';
+
+export async function generateMetadata({ params: { locale } }: { params: { locale: Locale } }) {
+  return generatePageMetadata('home', locale);
+}
 
 export default function Home({ params: { locale } }: { params: { locale: Locale } }) {
   return (
