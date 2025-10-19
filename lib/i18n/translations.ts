@@ -154,7 +154,8 @@ export const translations = {
       page: {
         title: "Welcome to AnimaLife Academy!",
         subtitle: "Your trusted space where science meets everyday pet care.",
-        description: "Because a healthier pet starts with a better-informed you. At AnimaLife, we know that being a great pet parent goes beyond just feeding right. It's about truly understanding your dog and cat's needs at every stage. That's why we created AnimaLife Academy: a trusted space where science meets everyday care.\n\nHere, you'll find expert-backed articles that simplify nutrition, strengthen the human–pet bond, and guide you through safer, more mindful pet parenting. Whether you're raising a playful kitten, navigating puppyhood, or supporting your senior fur baby, this is your go-to guide for building a happier and healthier life together.",
+        description:
+          "Because a healthier pet starts with a better-informed you. At AnimaLife, we know that being a great pet parent goes beyond just feeding right. It's about truly understanding your dog and cat's needs at every stage. That's why we created AnimaLife Academy: a trusted space where science meets everyday care.\n\nHere, you'll find expert-backed articles that simplify nutrition, strengthen the human–pet bond, and guide you through safer, more mindful pet parenting. Whether you're raising a playful kitten, navigating puppyhood, or supporting your senior fur baby, this is your go-to guide for building a happier and healthier life together.",
       },
     },
 
@@ -431,7 +432,8 @@ export const translations = {
       page: {
         title: "أهلاً بكم في أنيمالايف أكاديمي!",
         subtitle: "منصة موثوقة تجمع بين المعرفة العلمية والعناية اليومية",
-        description: "لأن صحة حيوانك الأليف تبدأ بفهمك الصحيح لاحتياجاته. في أنيمالايف، نحن نؤمن أن مسؤوليتك تجاه حيوانك الأليف تتجاوز مجرد التغذية الصحيحة، ولكن تشمل فهم احتياجات كلبك وقطتك في كل مرحلة من حياتهم. لذلك أنشأنا أنيمالايف أكاديمي، منصة موثوقة تجمع بين المعرفة العلمية والعناية اليومية.\n\nهنا يمكنك الاطلاع على مقالات موثوقة من خبراء، تُبسّط مفاهيم التغذية، وتقوي العلاقة بينك وبين حيوانك الأليف. سواء كنتَ تربي قطة صغيرًا، أو تمر بمرحلة تربية كلب صغير، أو تدعم كلبك المسنّ، فهذا دليلك الأساسي لبناء حياة سعيدة مع حيوانك الأليف.",
+        description:
+          "لأن صحة حيوانك الأليف تبدأ بفهمك الصحيح لاحتياجاته. في أنيمالايف، نحن نؤمن أن مسؤوليتك تجاه حيوانك الأليف تتجاوز مجرد التغذية الصحيحة، ولكن تشمل فهم احتياجات كلبك وقطتك في كل مرحلة من حياتهم. لذلك أنشأنا أنيمالايف أكاديمي، منصة موثوقة تجمع بين المعرفة العلمية والعناية اليومية.\n\nهنا يمكنك الاطلاع على مقالات موثوقة من خبراء، تُبسّط مفاهيم التغذية، وتقوي العلاقة بينك وبين حيوانك الأليف. سواء كنتَ تربي قطة صغيرًا، أو تمر بمرحلة تربية كلب صغير، أو تدعم كلبك المسنّ، فهذا دليلك الأساسي لبناء حياة سعيدة مع حيوانك الأليف.",
       },
     },
 
@@ -461,7 +463,7 @@ export const translations = {
       info: {
         address: "٣٢ شارع مراد، العمرانية أول، محافظة الجيزة ٣٧٢٥١١٣",
         email: "Info@myanimalife.com",
-        phone: "+20 (122) 229-4101",
+        phone: "+٠٢٠ (١٢٢) ٢٢٩-٤١٠١",
       },
       nav: {
         shop: "المتجر",
@@ -488,7 +490,7 @@ export const translations = {
       hero: {
         title: "خلف الوعاء:\nعلم تثق فيه",
         description:
-          "أنيمالايف نشأت من حبّنا العميق للحيوانات وشغفنا بالعلم بهدف توفير طعام للـكلاب يجمع بين التغذية السليمة والنكهة المميزة.",
+          "أنيمالايف نشأت من حبّنا العميق للحيوانات وشغفنا بالعلم بهدف توفير طعام للحيوانات الأليفة يجمع بين التغذية السليمة والنكهة المميزة.",
       },
       mission: {
         title: "هدف أنيمالايف",
@@ -552,7 +554,8 @@ export const translations = {
       allArticles: "جميع المقالات",
       nextArticle: "المقال التالي",
       writtenBy: "كتبه",
-      discoverMore: "اكتشف المزيد من نصائح رعاية الحيوانات الأليفة والمشورة المتخصصة",
+      discoverMore:
+        "اكتشف المزيد من نصائح رعاية الحيوانات الأليفة والمشورة المتخصصة",
     },
   },
 } as const;
